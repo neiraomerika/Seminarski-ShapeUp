@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ShapeUp.Database;
+using ShapeUp.Database.Models;
 using ShapeUp.Filters;
 
 namespace ShapeUp
@@ -30,6 +32,12 @@ namespace ShapeUp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ShapeUpDBContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("MiralemovaConnection")));
+
+            services.AddIdentity<Klijent, IdentityRole>()
+                .AddEntityFrameworkStores<ShapeUpDBContext>();
+
             services.AddControllers(x =>
             {
                 x.Filters.Add<ErrorFilter>();
@@ -38,11 +46,6 @@ namespace ShapeUp
             services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen();
-
-            services.AddDbContext<ShapeUpDBContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

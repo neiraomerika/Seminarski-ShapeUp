@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShapeUp.Database.Models;
+using System;
 using System.Collections.Generic;
 
 //#nullable disable
@@ -15,5 +16,8 @@ namespace ShapeUp.Database
         public int? ObimKukova { get; set; }
         public int? ObimDesneNoge { get; set; }
         public int? ObimLijeveNoge { get; set; }
+        public int KlijentId { get; set; }
+
+        public virtual Klijent Klijent { get; set; }
     }
 }
