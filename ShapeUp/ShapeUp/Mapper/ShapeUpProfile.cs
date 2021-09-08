@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ShapeUp.Database;
+using ShapeUp.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace ShapeUp.Mapper
     {
         public ShapeUpProfile()
         {
-            //CreateMap<>
+            CreateMap<Proizvod, MProizvodi>();
         }
            
            

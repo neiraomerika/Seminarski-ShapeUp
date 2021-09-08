@@ -12,8 +12,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using ShapeUp.Database;
 using ShapeUp.Filters;
+using ShapeUp.Interface;
+using ShapeUp.Service;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ShapeUp
 {
@@ -25,8 +29,10 @@ namespace ShapeUp
         }
 
         public IConfiguration Configuration { get; }
-
        
+
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -39,8 +45,33 @@ namespace ShapeUp
 
             services.AddSwaggerGen();
 
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShapeUp API", Version = "v1" });
+            //    c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+            //    {
+            //        Name = "Authorization",
+            //        Type = SecuritySchemeType.Http,
+            //        Scheme = "basic",
+            //        In = ParameterLocation.Header
+
+            //    });
+            //    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            //    {
+            //        {
+            //            new OpenApiSecurityScheme
+            //            {
+            //                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basic" }
+            //            },
+            //            new string[]{}
+            //        }
+            //    });
+            //});
+
             services.AddDbContext<ShapeUpDBContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IProizvodiService, ProizvodiService>();
 
 
         }
@@ -54,13 +85,16 @@ namespace ShapeUp
             }
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
+            app.UseSwagger(c =>
+            {
+                c.SerializeAsV2 = true;
+            });
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ShapeUp_API");
             });
 
             app.UseHttpsRedirection();
