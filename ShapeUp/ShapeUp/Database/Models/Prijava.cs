@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShapeUp.Database.Models;
+using System;
 using System.Collections.Generic;
 
 //#nullable disable
@@ -9,5 +10,8 @@ namespace ShapeUp.Database
     {
         public int Id { get; set; }
         public DateTime? Datum { get; set; }
+        public int KlijentId { get; set; }
+
+        public virtual Klijent Klijent { get; set; }
     }
 }

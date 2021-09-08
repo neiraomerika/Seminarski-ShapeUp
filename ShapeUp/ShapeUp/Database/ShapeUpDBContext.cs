@@ -1,50 +1,54 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ShapeUp.Database.Configuration;
+using ShapeUp.Database.Models;
 
 //#nullable disable
 
 namespace ShapeUp.Database
 {
-    public partial class ShapeUpDBContext : DbContext
+    public partial class ShapeUpDBContext : IdentityDbContext<Klijent>
     {
-        public ShapeUpDBContext()
-        {
-        }
-
         public ShapeUpDBContext(DbContextOptions<ShapeUpDBContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Cilj> Ciljs { get; set; }
-        public virtual DbSet<Formular> Formulars { get; set; }
+        public virtual DbSet<Cilj> Cilj { get; set; }
+        public virtual DbSet<Formular> Formular { get; set; }
         public virtual DbSet<KategorijaProizvodum> KategorijaProizvoda { get; set; }
-        public virtual DbSet<KategorijaTreninga> KategorijaTreningas { get; set; }
-        public virtual DbSet<KlijentProizvodOcjena> KlijentProizvodOcjenas { get; set; }
-        public virtual DbSet<Mentorstvo> Mentorstvos { get; set; }
-        public virtual DbSet<Napredak> Napredaks { get; set; }
+        public virtual DbSet<KategorijaTreninga> KategorijaTreninga { get; set; }
+        public virtual DbSet<KlijentProizvodOcjena> KlijentProizvodOcjena { get; set; }
+        public virtual DbSet<Mentorstvo> Mentorstvo { get; set; }
+        public virtual DbSet<Napredak> Napredak { get; set; }
         public virtual DbSet<OdgovoriKlijentum> OdgovoriKlijenta { get; set; }
-        public virtual DbSet<Pitanja> Pitanjas { get; set; }
-        public virtual DbSet<Plan> Plans { get; set; }
-        public virtual DbSet<PlanPrehrane> PlanPrehranes { get; set; }
-        public virtual DbSet<Prijava> Prijavas { get; set; }
-        public virtual DbSet<Proizvod> Proizvods { get; set; }
-        public virtual DbSet<Recenzija> Recenzijas { get; set; }
-        public virtual DbSet<Trening> Trenings { get; set; }
+        public virtual DbSet<Pitanja> Pitanja { get; set; }
+        public virtual DbSet<Plan> Plan { get; set; }
+        public virtual DbSet<PlanPrehrane> PlanPrehrane { get; set; }
+        public virtual DbSet<Prijava> Prijava { get; set; }
+        public virtual DbSet<Proizvod> Proizvod { get; set; }
+        public virtual DbSet<Recenzija> Recenzija { get; set; }
+        public virtual DbSet<Trening> Trening { get; set; }
         public virtual DbSet<Uplatum> Uplata { get; set; }
+        public DbSet<Klijent> Klijent { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=localhost, 1434;Initial Catalog=ShapeUpDB; user=sa; Password=SqlServer2021");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Cilj>(entity =>
@@ -74,18 +78,18 @@ namespace ShapeUp.Database
             });
 
             modelBuilder.Entity<KlijentProizvodOcjena>(entity =>
-            {
-                entity.HasNoKey();
+                {
+                    entity.HasNoKey();
 
-                entity.ToTable("KlijentProizvodOcjena");
+                    entity.ToTable("KlijentProizvodOcjena");
 
-                entity.Property(e => e.Ocjena).HasColumnType("decimal(18, 0)");
+                    entity.Property(e => e.Ocjena).HasColumnType("decimal(18, 0)");
 
-                entity.HasOne(d => d.Proizvod)
-                    .WithMany()
-                    .HasForeignKey(d => d.ProizvodId)
-                    .HasConstraintName("Proizvod_Ocjena_FK");
-            });
+                    entity.HasOne(d => d.Proizvod)
+                                .WithMany()
+                                .HasForeignKey(d => d.ProizvodId)
+                                .HasConstraintName("Proizvod_Ocjena_FK");
+                });
 
             modelBuilder.Entity<Mentorstvo>(entity =>
             {
