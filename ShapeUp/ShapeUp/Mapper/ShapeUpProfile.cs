@@ -12,7 +12,8 @@ namespace ShapeUp.Mapper
     {
         public ShapeUpProfile()
         {
-            CreateMap<Proizvod, MProizvodi>();
+            CreateMap<Proizvod, MProizvodi>().ReverseMap();
+            CreateMap<Trening, MTrening>().ReverseMap();
         }
            
            

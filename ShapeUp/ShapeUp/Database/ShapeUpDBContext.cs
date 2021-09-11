@@ -48,6 +48,9 @@ namespace ShapeUp.Database
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new KategTreningConfiguration());
+            modelBuilder.ApplyConfiguration(new CiljConfiguration());
+
 
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 

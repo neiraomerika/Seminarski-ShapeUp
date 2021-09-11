@@ -37,7 +37,7 @@ namespace ShapeUp.Service
             }
         }
 
-        public IEnumerable<MProizvodi> Get(ProizvodiSearchObject search = null)
+        public virtual Task<List<MProizvodi>> Get(ProizvodiSearchObject search = null)
         {
             throw new NotImplementedException();
         }

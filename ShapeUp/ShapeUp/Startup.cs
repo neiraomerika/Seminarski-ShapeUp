@@ -39,7 +39,7 @@ namespace ShapeUp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ShapeUpDBContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("MiralemovaConnection")));
+               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<Klijent, IdentityRole>()
                 .AddEntityFrameworkStores<ShapeUpDBContext>();
@@ -55,7 +55,7 @@ namespace ShapeUp
 
             //services.AddSwaggerGen(c =>
             //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShapeUp API", Version = "v1" });
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShapeUp_API", Version = "v1" });
             //    c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
             //    {
             //        Name = "Authorization",
@@ -80,6 +80,7 @@ namespace ShapeUp
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IProizvodiService, ProizvodiService>();
+            services.AddScoped<ITreningService, TreningService>();
 
 
         }
