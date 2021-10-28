@@ -15,8 +15,8 @@ namespace ShapeUp.Service
     public class ProizvodiService : BaseCRUDService<MProizvodi,Proizvod,ProizvodiSearchObject,ProizvodiInsertRequest,ProizvodiUpdateRequest>, IProizvodiService
     {
         private readonly ShapeUpDBContext _context;
-        private readonly IMapper mapper;
-        public ProizvodiService(ShapeUpDBContext context,IMapper mapper):base(context,mapper)
+        private readonly IMapper _mapper;
+        public ProizvodiService(ShapeUpDBContext context, IMapper mapper): base(context, mapper)
         {
             _context = context;
             _mapper = mapper;

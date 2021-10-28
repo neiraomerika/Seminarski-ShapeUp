@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using ShapeUp.Database;
+using ShapeUp.Database.Models;
+using ShapeUp.Dto;
 using ShapeUp.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ namespace ShapeUp.Mapper
         {
             CreateMap<Proizvod, MProizvodi>().ReverseMap();
             CreateMap<Trening, MTrening>().ReverseMap();
+            CreateMap<Klijent, UserRegistration>();
         }
            
            

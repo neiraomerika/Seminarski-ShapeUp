@@ -39,7 +39,7 @@ namespace ShapeUp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ShapeUpDBContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+               options.UseSqlServer(Configuration.GetConnectionString("MiralemovaConnection")));
 
             services.AddIdentity<Klijent, IdentityRole>()
                 .AddEntityFrameworkStores<ShapeUpDBContext>();
@@ -75,9 +75,6 @@ namespace ShapeUp
             //        }
             //    });
             //});
-
-            services.AddDbContext<ShapeUpDBContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IProizvodiService, ProizvodiService>();
             services.AddScoped<ITreningService, TreningService>();
