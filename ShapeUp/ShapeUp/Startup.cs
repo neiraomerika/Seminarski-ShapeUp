@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +16,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ShapeUp.Controllers;
 using ShapeUp.Database;
 using ShapeUp.Database.Models;
 using ShapeUp.Filters;
@@ -44,14 +49,45 @@ namespace ShapeUp
             services.AddIdentity<Klijent, IdentityRole>()
                 .AddEntityFrameworkStores<ShapeUpDBContext>();
 
-            services.AddControllers(x =>
+            var jwtSettings = Configuration.GetSection("JwtSettings");
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
             {
-                x.Filters.Add<ErrorFilter>();
+                opt.Cookie.HttpOnly = true;
+                opt.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                opt.LoginPath = "/Identity/Account/Login";
+                opt.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                opt.SlidingExpiration = true;
+
+            })
+            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+            {
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+
+                    ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
+                    ValidAudience = jwtSettings.GetSection("validAudience").Value,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.GetSection("securityKey").Value))
+                };
             });
+
+            services.AddControllers(
+            //    x =>
+            //{
+            //    x.Filters.Add<ErrorFilter>();
+            //}
+            );
                        
             services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen();
+
+            services.AddMvc();
 
             //services.AddSwaggerGen(c =>
             //{
@@ -78,6 +114,7 @@ namespace ShapeUp
 
             services.AddScoped<IProizvodiService, ProizvodiService>();
             services.AddScoped<ITreningService, TreningService>();
+            services.AddTransient<JwtHandler>();
 
 
         }

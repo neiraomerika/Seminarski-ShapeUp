@@ -7,30 +7,37 @@ using ShapeUp.Dto;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using ShapeUp.Database.Models;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace ShapeUp.Controllers
 {
+    [ApiController]
+    [Route("api/auth")]
     public class AuthController : Controller
     {
         private readonly IMapper _mapper;
         private readonly UserManager<Klijent> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly JwtHandler _jwtHandler;
 
 
         public AuthController(IMapper mapper, 
                               UserManager<Klijent> userManager,
-                              RoleManager<IdentityRole> roleManager)
+                              RoleManager<IdentityRole> roleManager,
+                              JwtHandler jwtHandler)
         {
             _mapper = mapper;
             _userManager = userManager;
             _roleManager = roleManager;
+            _jwtHandler = jwtHandler;
         }
 
 
         [HttpPost("registration")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([FromBody] UserRegistration model)
         {
+            return Ok("registracija");
             if (model == null || !ModelState.IsValid)
             {
                 return BadRequest();
@@ -57,10 +64,30 @@ namespace ShapeUp.Controllers
                 if (!roleResult.Succeeded)
                     return BadRequest(new RegistrationError { Errors = roleError });
 
-
+                return StatusCode(201);
             }
 
             return null;
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserLogin model)
+        {
+            var user = await _userManager.FindByNameAsync(model.Email);
+
+            if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
+                return Unauthorized(new LoginResponse { ErrorMessage = "Sorry we couldn\'t log you in. Try different email or password" });
+
+            if (!await _userManager.IsEmailConfirmedAsync(user))
+                return Unauthorized(new LoginResponse { ErrorMessage = "Email is not confirmed" });
+
+            var signingCredentials = _jwtHandler.GetSigningCredentials();
+            var claims = await _jwtHandler.GetClaims(user);
+            var tokenOptions = _jwtHandler.GenerateTokenOptions(signingCredentials, claims);
+            var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+            return Ok(new LoginResponse { IsAuthSuccessful = true, Token = token });
+
         }
     }
 }
