@@ -13,7 +13,5 @@ namespace ShapeUp.Model.Models
         public bool? Slika { get; set; }
         public decimal? Cijena { get; set; }
         public int? KategorijaProizvodaId { get; set; }
-
-        public virtual MKategorijaProizvodum KategorijaProizvoda { get; set; }
     }
 }

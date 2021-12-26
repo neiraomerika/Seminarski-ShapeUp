@@ -10,7 +10,7 @@ namespace ShapeUp.Database
     {
         public int Id { get; set; }
         public DateTime? Datum { get; set; }
-        public int KlijentId { get; set; }
+        public string KlijentId { get; set; }
 
         public virtual Klijent Klijent { get; set; }
     }

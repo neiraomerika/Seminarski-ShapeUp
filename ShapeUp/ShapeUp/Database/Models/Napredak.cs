@@ -16,7 +16,7 @@ namespace ShapeUp.Database
         public int? ObimKukova { get; set; }
         public int? ObimDesneNoge { get; set; }
         public int? ObimLijeveNoge { get; set; }
-        public int KlijentId { get; set; }
+        public string KlijentId { get; set; }
 
         public virtual Klijent Klijent { get; set; }
     }

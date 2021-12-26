@@ -34,6 +34,11 @@ namespace ShapeUp.Database.Configuration
             {
                 Naziv = "Ruke",
                 Id=4
+            },
+            new KategorijaTreninga
+            {
+                Naziv = "Ledja",
+                Id=5
             });
 
         }

@@ -33,11 +33,10 @@ namespace ShapeUp.Controllers
         }
 
 
-        [HttpPost("registration")]
+    [HttpPost("registration")]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([FromBody] UserRegistration model)
         {
-            return Ok("registracija");
             if (model == null || !ModelState.IsValid)
             {
                 return BadRequest();

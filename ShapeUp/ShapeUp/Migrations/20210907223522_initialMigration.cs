@@ -233,15 +233,14 @@ namespace ShapeUp.Migrations
                     ObimKukova = table.Column<int>(type: "int", nullable: true),
                     ObimDesneNoge = table.Column<int>(type: "int", nullable: true),
                     ObimLijeveNoge = table.Column<int>(type: "int", nullable: true),
-                    KlijentId = table.Column<int>(type: "int", nullable: false),
-                    KlijentId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    KlijentId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Napredak", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Napredak_AspNetUsers_KlijentId1",
-                        column: x => x.KlijentId1,
+                        name: "FK_Napredak_AspNetUsers_KlijentId",
+                        column: x => x.KlijentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -254,15 +253,14 @@ namespace ShapeUp.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Datum = table.Column<DateTime>(type: "date", nullable: true),
-                    KlijentId = table.Column<int>(type: "int", nullable: false),
-                    KlijentId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    KlijentId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Prijava", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Prijava_AspNetUsers_KlijentId1",
-                        column: x => x.KlijentId1,
+                        name: "FK_Prijava_AspNetUsers_KlijentId",
+                        column: x => x.KlijentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -389,16 +387,15 @@ namespace ShapeUp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    KlijentId = table.Column<int>(type: "int", nullable: false),
                     PitanjeId = table.Column<int>(type: "int", nullable: true),
                     Odgovor = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    KlijentId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    KlijentId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.ForeignKey(
-                        name: "FK_OdgovoriKlijenta_AspNetUsers_KlijentId1",
-                        column: x => x.KlijentId1,
+                        name: "FK_OdgovoriKlijenta_AspNetUsers_KlijentId",
+                        column: x => x.KlijentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -415,16 +412,15 @@ namespace ShapeUp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    KlijentId = table.Column<int>(type: "int", nullable: true),
                     ProizvodId = table.Column<int>(type: "int", nullable: true),
                     Ocjena = table.Column<decimal>(type: "decimal(18,0)", nullable: true),
-                    KlijentId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    KlijentId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.ForeignKey(
-                        name: "FK_KlijentProizvodOcjena_AspNetUsers_KlijentId1",
-                        column: x => x.KlijentId1,
+                        name: "FK_KlijentProizvodOcjena_AspNetUsers_KlijentId",
+                        column: x => x.KlijentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -446,15 +442,14 @@ namespace ShapeUp.Migrations
                     TreningId = table.Column<int>(type: "int", nullable: true),
                     PlanPrehraneId = table.Column<int>(type: "int", nullable: true),
                     MentorstvoId = table.Column<int>(type: "int", nullable: true),
-                    KlijentId = table.Column<int>(type: "int", nullable: false),
-                    KlijentId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    KlijentId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Plan", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Plan_AspNetUsers_KlijentId1",
-                        column: x => x.KlijentId1,
+                        name: "FK_Plan_AspNetUsers_KlijentId",
+                        column: x => x.KlijentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -540,9 +535,9 @@ namespace ShapeUp.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_KlijentProizvodOcjena_KlijentId1",
+                name: "IX_KlijentProizvodOcjena_KlijentId",
                 table: "KlijentProizvodOcjena",
-                column: "KlijentId1");
+                column: "KlijentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_KlijentProizvodOcjena_ProizvodId",
@@ -555,14 +550,14 @@ namespace ShapeUp.Migrations
                 column: "UplataId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Napredak_KlijentId1",
+                name: "IX_Napredak_KlijentId",
                 table: "Napredak",
-                column: "KlijentId1");
+                column: "KlijentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OdgovoriKlijenta_KlijentId1",
+                name: "IX_OdgovoriKlijenta_KlijentId",
                 table: "OdgovoriKlijenta",
-                column: "KlijentId1");
+                column: "KlijentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OdgovoriKlijenta_PitanjeId",
@@ -575,9 +570,9 @@ namespace ShapeUp.Migrations
                 column: "FormularId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plan_KlijentId1",
+                name: "IX_Plan_KlijentId",
                 table: "Plan",
-                column: "KlijentId1");
+                column: "KlijentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Plan_MentorstvoId",
@@ -600,9 +595,9 @@ namespace ShapeUp.Migrations
                 column: "CiljId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prijava_KlijentId1",
+                name: "IX_Prijava_KlijentId",
                 table: "Prijava",
-                column: "KlijentId1");
+                column: "KlijentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Proizvod_KategorijaProizvodaId",

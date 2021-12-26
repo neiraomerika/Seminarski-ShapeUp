@@ -16,6 +16,7 @@ namespace ShapeUp.Mapper
         {
             CreateMap<Proizvod, MProizvodi>().ReverseMap();
             CreateMap<Trening, MTrening>().ReverseMap();
+            CreateMap<KategorijaTreninga, MKategorijaTreninga>().ReverseMap();
             CreateMap<UserRegistration, Klijent>()
                 .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
         }

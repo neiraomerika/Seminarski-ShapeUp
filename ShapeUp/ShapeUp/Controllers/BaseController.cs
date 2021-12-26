@@ -9,7 +9,7 @@ namespace ShapeUp.Controllers
 {
 
     [ApiController]
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class BaseController <T,TSearch> :ControllerBase where T:class where TSearch:class
     {
         private readonly IBaseService<T, TSearch> _service;

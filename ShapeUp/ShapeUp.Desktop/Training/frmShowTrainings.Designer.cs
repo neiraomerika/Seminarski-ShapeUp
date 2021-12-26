@@ -41,8 +41,6 @@ namespace ShapeUp.Desktop.Training
             this.videoUrlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ciljIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kategorijaTreningaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ciljDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kategorijaTreningaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mTreningBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,35 +56,33 @@ namespace ShapeUp.Desktop.Training
             this.slikaDataGridViewTextBoxColumn,
             this.videoUrlDataGridViewTextBoxColumn,
             this.ciljIdDataGridViewTextBoxColumn,
-            this.kategorijaTreningaIdDataGridViewTextBoxColumn,
-            this.ciljDataGridViewTextBoxColumn,
-            this.kategorijaTreningaDataGridViewTextBoxColumn});
+            this.kategorijaTreningaIdDataGridViewTextBoxColumn});
             this.dgvTrainings.DataSource = this.mTreningBindingSource;
             this.dgvTrainings.Location = new System.Drawing.Point(13, 47);
             this.dgvTrainings.Name = "dgvTrainings";
-            this.dgvTrainings.Size = new System.Drawing.Size(546, 303);
+            this.dgvTrainings.Size = new System.Drawing.Size(643, 303);
             this.dgvTrainings.TabIndex = 0;
             // 
             // cmbTCateg
             // 
             this.cmbTCateg.FormattingEnabled = true;
-            this.cmbTCateg.Location = new System.Drawing.Point(291, 11);
+            this.cmbTCateg.Location = new System.Drawing.Point(315, 10);
             this.cmbTCateg.Name = "cmbTCateg";
-            this.cmbTCateg.Size = new System.Drawing.Size(141, 21);
+            this.cmbTCateg.Size = new System.Drawing.Size(180, 21);
             this.cmbTCateg.TabIndex = 1;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(13, 11);
+            this.txtSearch.Location = new System.Drawing.Point(13, 10);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(258, 20);
+            this.txtSearch.Size = new System.Drawing.Size(287, 20);
             this.txtSearch.TabIndex = 2;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(452, 10);
+            this.btnSearch.Location = new System.Drawing.Point(510, 9);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(107, 23);
+            this.btnSearch.Size = new System.Drawing.Size(146, 23);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -122,32 +118,20 @@ namespace ShapeUp.Desktop.Training
             // ciljIdDataGridViewTextBoxColumn
             // 
             this.ciljIdDataGridViewTextBoxColumn.DataPropertyName = "CiljId";
-            this.ciljIdDataGridViewTextBoxColumn.HeaderText = "CiljId";
+            this.ciljIdDataGridViewTextBoxColumn.HeaderText = "Cilj";
             this.ciljIdDataGridViewTextBoxColumn.Name = "ciljIdDataGridViewTextBoxColumn";
             // 
             // kategorijaTreningaIdDataGridViewTextBoxColumn
             // 
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.DataPropertyName = "KategorijaTreningaId";
-            this.kategorijaTreningaIdDataGridViewTextBoxColumn.HeaderText = "KategorijaTreningaId";
+            this.kategorijaTreningaIdDataGridViewTextBoxColumn.HeaderText = "Kategorija Treninga";
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.Name = "kategorijaTreningaIdDataGridViewTextBoxColumn";
-            // 
-            // ciljDataGridViewTextBoxColumn
-            // 
-            this.ciljDataGridViewTextBoxColumn.DataPropertyName = "Cilj";
-            this.ciljDataGridViewTextBoxColumn.HeaderText = "Cilj";
-            this.ciljDataGridViewTextBoxColumn.Name = "ciljDataGridViewTextBoxColumn";
-            // 
-            // kategorijaTreningaDataGridViewTextBoxColumn
-            // 
-            this.kategorijaTreningaDataGridViewTextBoxColumn.DataPropertyName = "KategorijaTreninga";
-            this.kategorijaTreningaDataGridViewTextBoxColumn.HeaderText = "KategorijaTreninga";
-            this.kategorijaTreningaDataGridViewTextBoxColumn.Name = "kategorijaTreningaDataGridViewTextBoxColumn";
             // 
             // frmShowTrainings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 362);
+            this.ClientSize = new System.Drawing.Size(669, 362);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbTCateg);
@@ -155,6 +139,7 @@ namespace ShapeUp.Desktop.Training
             this.Name = "frmShowTrainings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ShowTrainings";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmShowTrainings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mTreningBindingSource)).EndInit();
@@ -169,14 +154,12 @@ namespace ShapeUp.Desktop.Training
         private System.Windows.Forms.ComboBox cmbTCateg;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.BindingSource mTreningBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn opisDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn slikaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn videoUrlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ciljIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kategorijaTreningaIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ciljDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kategorijaTreningaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource mTreningBindingSource;
     }
 }

@@ -13,7 +13,7 @@ namespace ShapeUp.Database
         public int? TreningId { get; set; }
         public int? PlanPrehraneId { get; set; }
         public int? MentorstvoId { get; set; }
-        public int KlijentId { get; set; }
+        public string KlijentId { get; set; }
 
         public virtual Mentorstvo Mentorstvo { get; set; }
         public virtual PlanPrehrane PlanPrehrane { get; set; }

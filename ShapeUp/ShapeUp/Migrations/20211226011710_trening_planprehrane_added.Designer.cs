@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShapeUp.Database;
 
 namespace ShapeUp.Migrations
 {
     [DbContext(typeof(ShapeUpDBContext))]
-    partial class ShapeUpDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211226011710_trening_planprehrane_added")]
+    partial class trening_planprehrane_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

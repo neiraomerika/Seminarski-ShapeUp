@@ -14,6 +14,7 @@ namespace ShapeUp.Desktop.Training
     public partial class frmShowTrainings : Form
     {
         APIService trainingService = new APIService("Trening");
+        APIService kategTService = new APIService("KategTreninga");
         public frmShowTrainings()
         {
             InitializeComponent();
@@ -22,6 +23,10 @@ namespace ShapeUp.Desktop.Training
         private async void frmShowTrainings_Load(object sender, EventArgs e)
         {
             dgvTrainings.DataSource = await trainingService.Get<List<MTrening>>(null);
+
+            cmbTCateg.DataSource = await kategTService.Get<List<MKategorijaTreninga>>(null);
+            cmbTCateg.DisplayMember = "naziv";
+            cmbTCateg.ValueMember = "id";
         }
     }
 }

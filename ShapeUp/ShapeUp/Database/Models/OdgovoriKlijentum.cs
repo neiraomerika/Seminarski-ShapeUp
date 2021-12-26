@@ -9,7 +9,7 @@ namespace ShapeUp.Database
     public partial class OdgovoriKlijentum
     {
         public int Id { get; set; }
-        public int KlijentId { get; set; }
+        public string KlijentId { get; set; }
         public int? PitanjeId { get; set; }
         public string Odgovor { get; set; }
 

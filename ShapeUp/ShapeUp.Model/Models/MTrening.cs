@@ -12,8 +12,5 @@ namespace ShapeUp.Model.Models
         public string VideoUrl { get; set; }
         public int? CiljId { get; set; }
         public int? KategorijaTreningaId { get; set; }
-
-        public virtual MCilj Cilj { get; set; }
-        public virtual MKategorijaTreninga KategorijaTreninga { get; set; }
     }
 }
