@@ -35,7 +35,7 @@ namespace ShapeUp.Service
             return _mapper.Map<List<MKategorijaTreninga>>(list);
         }
 
-        public Task<MKategorijaTreninga> GetById(int ID)
+        public Task<MKategorijaTreninga> GetById(int id)
         {
             throw new NotImplementedException();
         }

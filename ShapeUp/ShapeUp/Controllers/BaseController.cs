@@ -19,7 +19,7 @@ namespace ShapeUp.Controllers
             _service = service;
         }
         [HttpGet]
-        public async Task<List<T>> Get([FromQuery] TSearch search)
+        public virtual async Task<List<T>> Get([FromQuery] TSearch search)
         {
             return await _service.Get(search);
         }

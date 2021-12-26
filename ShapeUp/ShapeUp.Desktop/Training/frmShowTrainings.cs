@@ -26,7 +26,20 @@ namespace ShapeUp.Desktop.Training
 
             cmbTCateg.DataSource = await kategTService.Get<List<MKategorijaTreninga>>(null);
             cmbTCateg.DisplayMember = "naziv";
-            cmbTCateg.ValueMember = "id";
+            cmbTCateg.ValueMember = "Id";
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            var search = cmbTCateg.SelectedValue;
+
+            dgvTrainings.DataSource = await trainingService.Get<List<MTrening>>(search);
+        }
+
+        private async void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            dgvTrainings.DataSource = await trainingService.Get<List<MTrening>>(null);
+            cmbTCateg.SelectedIndex = 0;
         }
     }
 }

@@ -111,5 +111,12 @@ namespace ShapeUp.Desktop
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void dodajNoviTreningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddTraining frm = new frmAddTraining();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

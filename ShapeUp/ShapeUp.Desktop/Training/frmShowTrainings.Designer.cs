@@ -31,16 +31,16 @@ namespace ShapeUp.Desktop.Training
         {
             this.components = new System.ComponentModel.Container();
             this.dgvTrainings = new System.Windows.Forms.DataGridView();
-            this.cmbTCateg = new System.Windows.Forms.ComboBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.mTreningBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slikaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.videoUrlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ciljIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kategorijaTreningaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mTreningBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbTCateg = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnClearSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mTreningBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -62,34 +62,6 @@ namespace ShapeUp.Desktop.Training
             this.dgvTrainings.Name = "dgvTrainings";
             this.dgvTrainings.Size = new System.Drawing.Size(643, 303);
             this.dgvTrainings.TabIndex = 0;
-            // 
-            // cmbTCateg
-            // 
-            this.cmbTCateg.FormattingEnabled = true;
-            this.cmbTCateg.Location = new System.Drawing.Point(315, 10);
-            this.cmbTCateg.Name = "cmbTCateg";
-            this.cmbTCateg.Size = new System.Drawing.Size(180, 21);
-            this.cmbTCateg.TabIndex = 1;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(13, 10);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(287, 20);
-            this.txtSearch.TabIndex = 2;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(510, 9);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(146, 23);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // mTreningBindingSource
-            // 
-            this.mTreningBindingSource.DataSource = typeof(ShapeUp.Model.Models.MTrening);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -127,13 +99,45 @@ namespace ShapeUp.Desktop.Training
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.HeaderText = "Kategorija Treninga";
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.Name = "kategorijaTreningaIdDataGridViewTextBoxColumn";
             // 
+            // mTreningBindingSource
+            // 
+            this.mTreningBindingSource.DataSource = typeof(ShapeUp.Model.Models.MTrening);
+            // 
+            // cmbTCateg
+            // 
+            this.cmbTCateg.FormattingEnabled = true;
+            this.cmbTCateg.Location = new System.Drawing.Point(13, 10);
+            this.cmbTCateg.Name = "cmbTCateg";
+            this.cmbTCateg.Size = new System.Drawing.Size(180, 21);
+            this.cmbTCateg.TabIndex = 1;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(199, 9);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(135, 23);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Text = "Pretrazi";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.Location = new System.Drawing.Point(340, 9);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(135, 23);
+            this.btnClearSearch.TabIndex = 4;
+            this.btnClearSearch.Text = "Ocisti Filtere";
+            this.btnClearSearch.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
+            // 
             // frmShowTrainings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 362);
+            this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbTCateg);
             this.Controls.Add(this.dgvTrainings);
             this.Name = "frmShowTrainings";
@@ -144,7 +148,6 @@ namespace ShapeUp.Desktop.Training
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mTreningBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -152,7 +155,6 @@ namespace ShapeUp.Desktop.Training
 
         private System.Windows.Forms.DataGridView dgvTrainings;
         private System.Windows.Forms.ComboBox cmbTCateg;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.BindingSource mTreningBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -161,5 +163,6 @@ namespace ShapeUp.Desktop.Training
         private System.Windows.Forms.DataGridViewTextBoxColumn videoUrlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ciljIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kategorijaTreningaIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnClearSearch;
     }
 }

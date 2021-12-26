@@ -27,9 +27,9 @@ namespace ShapeUp.Service
         {
             var entity = _context.Set<Trening>().AsQueryable();
 
-           if (search.KategorijaTreningaId.HasValue)
+           if (search.Id.HasValue)
             {
-                entity = entity.Where(x => x.KategorijaTreningaId == search.KategorijaTreningaId);
+                entity = entity.Where(x => x.KategorijaTreningaId == search.Id);
             }
             var list = await entity.ToListAsync();
             return _mapper.Map<List<MTrening>>(list);

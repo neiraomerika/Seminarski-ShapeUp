@@ -11,9 +11,14 @@ namespace ShapeUp.Controllers
 {
     public class TreningController : BaseCRUDController<MTrening,TreningSearchObject,TreningInsertRequest,TreningUpdateRequest>
     {
+        private readonly ITreningService _service;
         public TreningController(ITreningService service):base(service)
         {
-
+            _service = service;
+        }
+        public override async Task<List<MTrening>> Get(TreningSearchObject search)
+        {
+            return await _service.Get(search);
         }
     }
 }
