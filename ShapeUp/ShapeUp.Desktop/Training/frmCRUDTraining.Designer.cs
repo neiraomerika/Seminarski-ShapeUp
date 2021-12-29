@@ -1,7 +1,7 @@
 ﻿
 namespace ShapeUp.Desktop.Training
 {
-    partial class frmAddTraining
+    partial class frmCRUDTraining
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,18 @@ namespace ShapeUp.Desktop.Training
         private void InitializeComponent()
         {
             this.lblDescription = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblPicture = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtVideo = new System.Windows.Forms.TextBox();
             this.lblVideoUrl = new System.Windows.Forms.Label();
             this.cmbGoal = new System.Windows.Forms.ComboBox();
             this.lblGoal = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.cmbCategories = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.ofdLoadPicture = new System.Windows.Forms.OpenFileDialog();
+            this.pbTrainingPicture = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrainingPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDescription
@@ -51,14 +54,14 @@ namespace ShapeUp.Desktop.Training
             this.lblDescription.TabIndex = 0;
             this.lblDescription.Text = "Opis";
             // 
-            // textBox1
+            // txtDesc
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(57, 13);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(248, 209);
-            this.textBox1.TabIndex = 1;
+            this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtDesc.Location = new System.Drawing.Point(57, 13);
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(248, 209);
+            this.txtDesc.TabIndex = 1;
             // 
             // lblPicture
             // 
@@ -70,13 +73,13 @@ namespace ShapeUp.Desktop.Training
             this.lblPicture.TabIndex = 2;
             this.lblPicture.Text = "Slika";
             // 
-            // textBox3
+            // txtVideo
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox3.Location = new System.Drawing.Point(414, 141);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(173, 23);
-            this.textBox3.TabIndex = 5;
+            this.txtVideo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtVideo.Location = new System.Drawing.Point(414, 141);
+            this.txtVideo.Name = "txtVideo";
+            this.txtVideo.Size = new System.Drawing.Size(173, 23);
+            this.txtVideo.TabIndex = 5;
             // 
             // lblVideoUrl
             // 
@@ -136,24 +139,45 @@ namespace ShapeUp.Desktop.Training
             this.btnSave.Text = "Spasi";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // frmAddTraining
+            // ofdLoadPicture
+            // 
+            this.ofdLoadPicture.FileName = "SlikaTreninga";
+            // 
+            // pbTrainingPicture
+            // 
+            this.pbTrainingPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbTrainingPicture.Image = global::ShapeUp.Desktop.Properties.Resources.upload;
+            this.pbTrainingPicture.InitialImage = global::ShapeUp.Desktop.Properties.Resources.upload;
+            this.pbTrainingPicture.Location = new System.Drawing.Point(414, 13);
+            this.pbTrainingPicture.Name = "pbTrainingPicture";
+            this.pbTrainingPicture.Size = new System.Drawing.Size(173, 122);
+            this.pbTrainingPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTrainingPicture.TabIndex = 12;
+            this.pbTrainingPicture.TabStop = false;
+            this.pbTrainingPicture.Click += new System.EventHandler(this.pbTrainingPicture_Click);
+            // 
+            // frmCRUDTraining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 282);
+            this.Controls.Add(this.pbTrainingPicture);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.cmbCategories);
             this.Controls.Add(this.lblGoal);
             this.Controls.Add(this.cmbGoal);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtVideo);
             this.Controls.Add(this.lblVideoUrl);
             this.Controls.Add(this.lblPicture);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.lblDescription);
-            this.Name = "frmAddTraining";
+            this.Name = "frmCRUDTraining";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddTraining";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmCRUDTraining_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrainingPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,14 +186,16 @@ namespace ShapeUp.Desktop.Training
         #endregion
 
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.Label lblPicture;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtVideo;
         private System.Windows.Forms.Label lblVideoUrl;
         private System.Windows.Forms.ComboBox cmbGoal;
         private System.Windows.Forms.Label lblGoal;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.ComboBox cmbCategories;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.PictureBox pbTrainingPicture;
+        private System.Windows.Forms.OpenFileDialog ofdLoadPicture;
     }
 }

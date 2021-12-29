@@ -108,13 +108,17 @@ namespace ShapeUp.Desktop
         private void prikaziSveTreningeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowTrainings frm = new frmShowTrainings();
+            if(this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
             frm.MdiParent = this;
             frm.Show();
         }
 
         private void dodajNoviTreningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddTraining frm = new frmAddTraining();
+            frmCRUDTraining frm = new frmCRUDTraining();
+            if(this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
             frm.MdiParent = this;
             frm.Show();
         }

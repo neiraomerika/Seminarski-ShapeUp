@@ -115,6 +115,7 @@ namespace ShapeUp
             services.AddScoped<IProizvodiService, ProizvodiService>();
             services.AddScoped<ITreningService, TreningService>();
             services.AddScoped<IKategTreningaService, KategTreningaService>();
+            services.AddScoped<ICiljService, CiljService>();
             services.AddTransient<JwtHandler>();
 
 

@@ -22,9 +22,16 @@ namespace ShapeUp.Desktop.Training
 
         private async void frmShowTrainings_Load(object sender, EventArgs e)
         {
-            dgvTrainings.DataSource = await trainingService.Get<List<MTrening>>(null);
+            try
+            {
+                dgvTrainings.DataSource = await trainingService.Get<List<MTrening>>(null);
 
-            cmbTCateg.DataSource = await kategTService.Get<List<MKategorijaTreninga>>(null);
+                cmbTCateg.DataSource = await kategTService.Get<List<MKategorijaTreninga>>(null);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             cmbTCateg.DisplayMember = "naziv";
             cmbTCateg.ValueMember = "Id";
         }
@@ -40,6 +47,20 @@ namespace ShapeUp.Desktop.Training
         {
             dgvTrainings.DataSource = await trainingService.Get<List<MTrening>>(null);
             cmbTCateg.SelectedIndex = 0;
+        }
+
+        private void dgvTrainings_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MTrening trening = dgvTrainings.SelectedRows[0].DataBoundItem as MTrening;
+            frmCRUDTraining frm = new frmCRUDTraining(trening);
+
+            var parent = this.ParentForm;
+            frm.MdiParent = parent;
+
+            if(parent.ActiveMdiChild != null)
+                parent.ActiveMdiChild.Close();
+
+            frm.Show();
         }
     }
 }

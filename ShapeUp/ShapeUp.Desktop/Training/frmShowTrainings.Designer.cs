@@ -60,8 +60,10 @@ namespace ShapeUp.Desktop.Training
             this.dgvTrainings.DataSource = this.mTreningBindingSource;
             this.dgvTrainings.Location = new System.Drawing.Point(13, 47);
             this.dgvTrainings.Name = "dgvTrainings";
+            this.dgvTrainings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTrainings.Size = new System.Drawing.Size(643, 303);
             this.dgvTrainings.TabIndex = 0;
+            this.dgvTrainings.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvTrainings_MouseDoubleClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
