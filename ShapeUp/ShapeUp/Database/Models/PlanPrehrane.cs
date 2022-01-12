@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 //#nullable disable
 
@@ -14,7 +16,7 @@ namespace ShapeUp.Database
 
         public int Id { get; set; }
         public string Opis { get; set; }
-        public bool? Slika { get; set; }
+        public byte[] Slika { get; set; }
         public string NutritivneVrijednosti { get; set; }
         public int? CiljId { get; set; }
 

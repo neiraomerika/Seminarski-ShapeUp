@@ -111,6 +111,8 @@ namespace ShapeUp.Desktop
             if(this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
             frm.MdiParent = this;
+            frm.Size = this.ClientRectangle.Size;
+            frm.Text = "Treninzi";
             frm.Show();
         }
 
@@ -120,6 +122,8 @@ namespace ShapeUp.Desktop
             if(this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
             frm.MdiParent = this;
+            frm.Size = this.ClientRectangle.Size;
+            frm.Text = "Trening";
             frm.Show();
         }
     }

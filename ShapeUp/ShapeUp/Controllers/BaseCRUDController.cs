@@ -24,10 +24,10 @@ namespace ShapeUp.Controllers
             return await _service.Insert(request);
         }
 
-        [HttpPut("{ID}")]
-        public async Task<T>Update(int ID,TUpdate request)
+        [HttpPut("{Id}")]
+        public async Task<T>Update(int id,TUpdate request)
         {
-            return await _service.Update(ID, request);
+            return await _service.Update(id, request);
         }
         [HttpDelete("{ID}")]
         public async Task<bool>Delete(int ID)

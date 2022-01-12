@@ -63,14 +63,14 @@ namespace ShapeUp.Desktop
             // prikaziSveTreningeToolStripMenuItem
             // 
             this.prikaziSveTreningeToolStripMenuItem.Name = "prikaziSveTreningeToolStripMenuItem";
-            this.prikaziSveTreningeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikaziSveTreningeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.prikaziSveTreningeToolStripMenuItem.Text = "Prikazi sve treninge";
             this.prikaziSveTreningeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveTreningeToolStripMenuItem_Click);
             // 
             // dodajNoviTreningToolStripMenuItem
             // 
             this.dodajNoviTreningToolStripMenuItem.Name = "dodajNoviTreningToolStripMenuItem";
-            this.dodajNoviTreningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajNoviTreningToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.dodajNoviTreningToolStripMenuItem.Text = "Dodaj novi trening";
             this.dodajNoviTreningToolStripMenuItem.Click += new System.EventHandler(this.dodajNoviTreningToolStripMenuItem_Click);
             // 
@@ -94,6 +94,7 @@ namespace ShapeUp.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(765, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);

@@ -39,10 +39,18 @@ namespace ShapeUp.Desktop
             return result;
         }
 
-        public async Task<T> Update<T>()
+        public async Task<T> Update<T>(int id, object request)
         {
-            var result = await $"{Properties.Settings.Default.ApiURL}/{_route}".GetJsonAsync<T>();
+            var url = $"{Properties.Settings.Default.ApiURL}/{_route}/{id}";
+            var result = await url.PutJsonAsync(request).ReceiveJson<T>();
             return result;
+        }
+
+        public async Task Delete (int id)
+        {
+            var url = $"{Properties.Settings.Default.ApiURL}/{_route}/{id}";
+            var result = await url.DeleteAsync();
+            //return result;
         }
 
     }

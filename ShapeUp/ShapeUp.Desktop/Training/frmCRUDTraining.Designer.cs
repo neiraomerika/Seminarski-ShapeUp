@@ -29,6 +29,7 @@ namespace ShapeUp.Desktop.Training
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblPicture = new System.Windows.Forms.Label();
@@ -41,7 +42,11 @@ namespace ShapeUp.Desktop.Training
             this.btnSave = new System.Windows.Forms.Button();
             this.ofdLoadPicture = new System.Windows.Forms.OpenFileDialog();
             this.pbTrainingPicture = new System.Windows.Forms.PictureBox();
+            this.sfdPicture = new System.Windows.Forms.SaveFileDialog();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrainingPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDescription
@@ -131,6 +136,8 @@ namespace ShapeUp.Desktop.Training
             // 
             // btnSave
             // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSave.Location = new System.Drawing.Point(414, 243);
             this.btnSave.Name = "btnSave";
@@ -138,6 +145,7 @@ namespace ShapeUp.Desktop.Training
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Spasi";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ofdLoadPicture
             // 
@@ -156,11 +164,31 @@ namespace ShapeUp.Desktop.Training
             this.pbTrainingPicture.TabStop = false;
             this.pbTrainingPicture.Click += new System.EventHandler(this.pbTrainingPicture_Click);
             // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Maroon;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Location = new System.Drawing.Point(236, 243);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(173, 31);
+            this.btnDelete.TabIndex = 13;
+            this.btnDelete.Text = "Obrisi";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmCRUDTraining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 282);
+            this.ClientSize = new System.Drawing.Size(602, 298);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.pbTrainingPicture);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblCategory);
@@ -178,6 +206,7 @@ namespace ShapeUp.Desktop.Training
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCRUDTraining_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTrainingPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +226,8 @@ namespace ShapeUp.Desktop.Training
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.PictureBox pbTrainingPicture;
         private System.Windows.Forms.OpenFileDialog ofdLoadPicture;
+        private System.Windows.Forms.SaveFileDialog sfdPicture;
+        private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
