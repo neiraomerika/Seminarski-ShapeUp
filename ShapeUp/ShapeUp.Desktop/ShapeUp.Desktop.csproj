@@ -82,6 +82,12 @@
     <Compile Include="Training\frmShowTrainings.Designer.cs">
       <DependentUpon>frmShowTrainings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\frmShowUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmShowUsers.Designer.cs">
+      <DependentUpon>frmShowUsers.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +110,9 @@
     <EmbeddedResource Include="Training\frmShowTrainings.resx">
       <DependentUpon>frmShowTrainings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmShowUsers.resx">
+      <DependentUpon>frmShowUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MTrening.datasource" />
@@ -125,9 +134,6 @@
       <Project>{a5f50b9b-5aaf-4be0-a315-975a5503ff13}</Project>
       <Name>ShapeUp.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\upload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
