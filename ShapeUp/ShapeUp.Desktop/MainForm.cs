@@ -1,4 +1,5 @@
 ﻿using ShapeUp.Desktop.Training;
+using ShapeUp.Desktop.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -124,6 +125,17 @@ namespace ShapeUp.Desktop
             frm.MdiParent = this;
             frm.Size = this.ClientRectangle.Size;
             frm.Text = "Trening";
+            frm.Show();
+        }
+
+        private void prikaziSveKorisnikeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowUsers frm = new frmShowUsers();
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+            frm.MdiParent = this;
+            frm.Size = this.ClientRectangle.Size;
+            frm.Text = "Korisnici";
             frm.Show();
         }
     }

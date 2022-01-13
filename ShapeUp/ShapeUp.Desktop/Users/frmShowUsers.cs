@@ -12,9 +12,21 @@ namespace ShapeUp.Desktop.Users
 {
     public partial class frmShowUsers : Form
     {
+        APIService _usersApiService = new APIService("Korisnici");
+
         public frmShowUsers()
         {
             InitializeComponent();
+        }
+
+        private void frmShowUsers_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+
         }
     }
 }

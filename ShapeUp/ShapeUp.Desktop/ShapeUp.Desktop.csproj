@@ -115,6 +115,7 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ShapeUp.Model.Models.MKlijent.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MTrening.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
