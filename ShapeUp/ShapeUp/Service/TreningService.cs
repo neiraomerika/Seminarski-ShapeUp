@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ShapeUp.Service
 {
-    public class TreningService : BaseCRUDService<MTrening,TreningSearchObject,Trening,TreningInsertRequest,TreningUpdateRequest>, ITreningService
+    public class TreningService : BaseCRUDService<MTrening,TreningSearchObject, Database.Trening,TreningInsertRequest,TreningUpdateRequest>, ITreningService
     {
         private readonly ShapeUpDBContext _context;
         private readonly IMapper _mapper;
@@ -23,16 +23,16 @@ namespace ShapeUp.Service
             _mapper = mapper;
         }
 
-        public override async Task<List<MTrening>> Get(TreningSearchObject search)
+        public override async Task<List<Model.Models.MTrening>> Get(TreningSearchObject search)
         {
-            var entity = _context.Set<Trening>().AsQueryable();
+            var entity = _context.Set<Database.Trening>().AsQueryable();
 
            if (search.Id.HasValue)
             {
                 entity = entity.Where(x => x.KategorijaTreningaId == search.Id);
             }
             var list = await entity.ToListAsync();
-            return _mapper.Map<List<MTrening>>(list);
+            return _mapper.Map<List<Model.Models.MTrening>>(list);
         }
 
     }

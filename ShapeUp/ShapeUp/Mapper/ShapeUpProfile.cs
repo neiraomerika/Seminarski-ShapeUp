@@ -17,14 +17,18 @@ namespace ShapeUp.Mapper
         {
             CreateMap<Proizvod, MProizvodi>().ReverseMap();
             CreateMap<Trening, MTrening>().ReverseMap();
-            CreateMap<TreningInsertRequest, Trening>();
-            CreateMap<TreningUpdateRequest, Trening>();
+            CreateMap<TreningInsertRequest, Database.Trening>();
+            CreateMap<TreningUpdateRequest, Database.Trening>();
             CreateMap<Cilj, MCilj>().ReverseMap();
             CreateMap<KategorijaTreninga, MKategorijaTreninga>().ReverseMap();
             CreateMap<UserRegistration, Klijent>()
                 .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
+            CreateMap<Plan, MPlan>().ReverseMap();
+            CreateMap<PlanPrehrane, MPlanPrehrane>().ReverseMap();
+            CreateMap<Mentorstvo, MMentorstvo>().ReverseMap();
+            CreateMap<Klijent, MKlijent>().ReverseMap();
         }
-           
-           
+
+
     }
 }
