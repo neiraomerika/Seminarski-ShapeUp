@@ -15,9 +15,6 @@ namespace ShapeUp.Model.Models
         public bool Active { get; set; }
         public byte[] Picture { get; set; }
         public DateTime SignUpDate { get; set; }
-        public List<int> MentorstvoId { get; set; }
-        public virtual List<MMentorstvo> Mentorships { get; set; }
-        public List<int> UplataId { get; set; }
-        public virtual List<MUplata> Uplate { get; set; }
+        public List<MPlan> Plans { get; set; }
     }
 }

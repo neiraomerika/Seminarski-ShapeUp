@@ -7,7 +7,7 @@ namespace ShapeUp.Model.Models
     public class MUplata
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public int Amount { get; set; }
+        public DateTime Datum { get; set; }
+        public int Iznos { get; set; }
     }
 }

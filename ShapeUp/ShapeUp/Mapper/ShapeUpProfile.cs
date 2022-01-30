@@ -27,6 +27,7 @@ namespace ShapeUp.Mapper
             CreateMap<PlanPrehrane, MPlanPrehrane>().ReverseMap();
             CreateMap<Mentorstvo, MMentorstvo>().ReverseMap();
             CreateMap<Klijent, MKlijent>().ReverseMap();
+            CreateMap<Uplatum, MUplata>().ReverseMap();
         }
 
 

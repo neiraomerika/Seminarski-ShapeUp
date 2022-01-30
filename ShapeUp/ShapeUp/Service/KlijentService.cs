@@ -40,10 +40,10 @@ namespace ShapeUp.Service
                 klijenti = klijenti.Where(x => (x.FirstName.ToLower() + ' ' + x.LastName.ToLower()).Contains(search.FirstnameLastname.ToLower()));
             }
             var list = await klijenti.ToListAsync();
-            var mappedList = _mapper.Map<List<MKlijent>>(list);
+            var mappedClients = _mapper.Map<List<MKlijent>>(list);
             var mappedPlan = _mapper.Map<List<MPlan>>(mentorshipPlans).AsQueryable();
 
-            foreach (MKlijent klijent in mappedList)
+            foreach (MKlijent klijent in mappedClients)
             {
                 foreach (Prijava prijava in signUps)
                 {
@@ -55,26 +55,15 @@ namespace ShapeUp.Service
                 {
                     if (klijent.Id == plan.KlijentId)
                     {
-                        if (plan.MentorstvoId != null)
-                        {
-                            if(klijent.MentorstvoId == null)
-                                klijent.MentorstvoId = new List<int>();
+                        if (klijent.Plans == null)
+                            klijent.Plans = new List<MPlan>();
 
-                            klijent.MentorstvoId.Add(plan.MentorstvoId);
-                        }
-
-                        if (plan.Mentorstvo.UplataId != null)
-                        {
-                            if (klijent.UplataId == null)
-                                klijent.UplataId = new List<int>();
-
-                            klijent.UplataId.Add(plan.Mentorstvo.UplataId);
-                        }
+                        klijent.Plans.Add(plan);
                     }
                 }
             }
 
-            return mappedList;
+            return mappedClients;
         }
 
         public Task<MKlijent> GetById(int Id)
