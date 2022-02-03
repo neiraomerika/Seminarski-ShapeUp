@@ -11,8 +11,9 @@ namespace ShapeUp.Interface
     public interface IKlijentService
     {
         Task<List<MKlijent>> Get(KlijentSearchObject search);
-        Task<MKlijent> GetById(int Id);
-        Task<MKlijent> Update(int Id, KlijentUpdateRequest request);
-        Task<bool> Delete(int Id);
+        Task<MKlijent> GetById(string Id);
+        Task<MKlijent> Update(string Id, KlijentUpdateRequest request);
+        Task<bool> Delete(string Id);
+        Task<MKlijent> Insert(KlijentInsertRequest request);
     }
 }

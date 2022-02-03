@@ -112,11 +112,14 @@ namespace ShapeUp
             //    });
             //});
 
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+
             services.AddScoped<IProizvodiService, ProizvodiService>();
             services.AddScoped<ITreningService, TreningService>();
             services.AddScoped<IKategTreningaService, KategTreningaService>();
             services.AddScoped<ICiljService, CiljService>();
             services.AddScoped<IKlijentService, KlijentService>();
+            services.AddScoped<IEmailSender, EmailSender>();
             services.AddTransient<JwtHandler>();
 
 

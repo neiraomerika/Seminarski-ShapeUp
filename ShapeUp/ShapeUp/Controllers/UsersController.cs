@@ -27,5 +27,23 @@ namespace ShapeUp.Controllers
         {
             return await _service.Get(search);
         }
+
+        [HttpPost("createUser")]
+        public async Task<MKlijent> Insert([FromQuery] KlijentInsertRequest request)
+        {
+            return await _service.Insert(request);
+        }
+
+        [HttpGet("getUser/{Id}")]
+        public async Task<MKlijent> GetById(string Id)
+        {
+            return await _service.GetById(Id);
+        }
+
+        [HttpDelete("deleteUser/{Id}")]
+        public async Task<bool> Delete(string Id)
+        {
+            return await _service.Delete(Id);
+        }
     }
 }
