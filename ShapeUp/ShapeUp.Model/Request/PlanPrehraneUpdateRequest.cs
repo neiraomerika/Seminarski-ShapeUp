@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ShapeUp.Model.Models
+namespace ShapeUp.Model.Request
 {
-    public class MPlanPrehrane
+    public class PlanPrehraneUpdateRequest
     {
-        public int Id { get; set; }
         public string Opis { get; set; }
         public byte[] Slika { get; set; }
         public string NutritivneVrijednosti { get; set; }

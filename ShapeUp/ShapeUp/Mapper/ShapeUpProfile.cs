@@ -25,6 +25,8 @@ namespace ShapeUp.Mapper
                 .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
             CreateMap<Plan, MPlan>().ReverseMap();
             CreateMap<PlanPrehrane, MPlanPrehrane>().ReverseMap();
+            CreateMap<PlanPrehraneInsertRequest, PlanPrehrane>().ReverseMap();
+            CreateMap<PlanPrehraneUpdateRequest, PlanPrehrane>().ReverseMap();
             CreateMap<Mentorstvo, MMentorstvo>().ReverseMap();
             CreateMap<Klijent, MKlijent>().ReverseMap();
             CreateMap<Uplatum, MUplata>().ReverseMap();

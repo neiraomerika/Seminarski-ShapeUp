@@ -120,6 +120,7 @@ namespace ShapeUp
             services.AddScoped<ICiljService, CiljService>();
             services.AddScoped<IKlijentService, KlijentService>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IPlanPrehraneService, PlanPrehraneService>();
             services.AddTransient<JwtHandler>();
 
 
