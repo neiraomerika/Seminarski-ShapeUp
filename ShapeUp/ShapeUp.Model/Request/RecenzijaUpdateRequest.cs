@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-//#nullable disable
-
-namespace ShapeUp.Database
+namespace ShapeUp.Model.Request
 {
-    public partial class Recenzija
+    public class RecenzijaUpdateRequest
     {
-        public int Id { get; set; }
         public string Opis { get; set; }
         public int Ocjena { get; set; }
         public DateTime Datum { get; set; }
         public int MentorstvoId { get; set; }
-
-        public virtual Mentorstvo Mentorstvo { get; set; }
     }
 }

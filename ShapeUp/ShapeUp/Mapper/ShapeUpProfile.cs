@@ -33,6 +33,9 @@ namespace ShapeUp.Mapper
             CreateMap<Klijent, MKlijent>().ReverseMap();
             CreateMap<Uplatum, MUplata>().ReverseMap();
             CreateMap<KategorijaProizvodum, MKategorijaProizvodum>().ReverseMap();
+            CreateMap<Recenzija, MRecenzija>().ReverseMap();
+            CreateMap<RecenzijaInsertRequest, Recenzija>().ReverseMap();
+            CreateMap<RecenzijaUpdateRequest, Recenzija>().ReverseMap();
         }
 
 
