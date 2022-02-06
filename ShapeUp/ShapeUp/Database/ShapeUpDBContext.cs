@@ -47,11 +47,13 @@ namespace ShapeUp.Database
         {
             base.OnModelCreating(modelBuilder);
 
+            // pocetni podaci za bazu
             //modelBuilder.ApplyConfiguration(new RoleConfiguration());
             //modelBuilder.ApplyConfiguration(new KategTreningConfiguration());
             //modelBuilder.ApplyConfiguration(new CiljConfiguration());
             //modelBuilder.ApplyConfiguration(new TreningConfiguration());
             //modelBuilder.ApplyConfiguration(new PlanPrehraneConfiguration());
+            //modelBuilder.ApplyConfiguration(new KategProizvodaConfiguration());
 
 
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");

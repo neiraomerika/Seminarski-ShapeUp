@@ -11,28 +11,28 @@ using System.Threading.Tasks;
 
 namespace ShapeUp.Service
 {
-    public class KategTreningaService : BaseService<MKategorijaTreninga, KategTreningaSearchObject, KategorijaTreninga>, IKategTreningaService
+    public class KategProizvodaService : BaseService<MKategorijaProizvodum, KategProizvodaSearchObject, KategorijaProizvodum>, IKategorijaProizvodaService
     {
         private readonly ShapeUpDBContext _context;
         private readonly IMapper _mapper;
 
-        public KategTreningaService(ShapeUpDBContext context, IMapper mapper):base(context, mapper)
+        public KategProizvodaService(ShapeUpDBContext context, IMapper mapper) : base(context, mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public override async Task<List<MKategorijaTreninga>> Get(KategTreningaSearchObject search)
+        public override async Task<List<MKategorijaProizvodum>> Get(KategProizvodaSearchObject search)
         {
-            var entity = _context.Set<KategorijaTreninga>().AsQueryable();
+            var entity = _context.Set<KategorijaProizvodum>().AsQueryable();
 
-            if(!string.IsNullOrEmpty(search.Naziv))
+            if (!string.IsNullOrEmpty(search.Naziv))
             {
                 entity = entity.Where(x => x.Naziv.StartsWith(search.Naziv));
             }
 
             var list = await entity.ToListAsync();
-            return _mapper.Map<List<MKategorijaTreninga>>(list);
+            return _mapper.Map<List<MKategorijaProizvodum>>(list);
         }
     }
 }

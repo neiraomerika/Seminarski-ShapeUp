@@ -11,8 +11,10 @@ namespace ShapeUp.Controllers
 {
     public class ProizvodiController : BaseCRUDController<MProizvodi, ProizvodiSearchObject, ProizvodiInsertRequest, ProizvodiUpdateRequest>
     {
+        private readonly IProizvodiService _service;
         public ProizvodiController(IProizvodiService service) : base (service)
             {
+                _service = service;
             }
     }
 }

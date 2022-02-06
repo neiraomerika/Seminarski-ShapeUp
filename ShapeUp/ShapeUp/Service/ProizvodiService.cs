@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ShapeUp.Service
 {
-    public class ProizvodiService : BaseCRUDService<MProizvodi,Proizvod,ProizvodiSearchObject,ProizvodiInsertRequest,ProizvodiUpdateRequest>, IProizvodiService
+    public class ProizvodiService : BaseCRUDService<MProizvodi, ProizvodiSearchObject, Proizvod,ProizvodiInsertRequest,ProizvodiUpdateRequest>, IProizvodiService
     {
         private readonly ShapeUpDBContext _context;
         private readonly IMapper _mapper;

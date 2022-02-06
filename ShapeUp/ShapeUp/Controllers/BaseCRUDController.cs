@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc; 
 using ShapeUp.Interface;
 using System;
 using System.Collections.Generic;
@@ -24,10 +24,10 @@ namespace ShapeUp.Controllers
             return await _service.Insert(request);
         }
 
-        [HttpPut("{Id}")]
-        public async Task<T>Update(int id,TUpdate request)
+        [HttpPut("{ID}")]
+        public async Task<T>Update(int ID,TUpdate request)
         {
-            return await _service.Update(id, request);
+            return await _service.Update(ID, request);
         }
         [HttpDelete("{ID}")]
         public async Task<bool>Delete(int ID)

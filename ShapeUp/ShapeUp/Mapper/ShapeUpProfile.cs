@@ -16,6 +16,8 @@ namespace ShapeUp.Mapper
         public ShapeUpProfile()
         {
             CreateMap<Proizvod, MProizvodi>().ReverseMap();
+            CreateMap<ProizvodiInsertRequest, Proizvod>().ReverseMap();
+            CreateMap<ProizvodiUpdateRequest, Proizvod>().ReverseMap();
             CreateMap<Trening, MTrening>().ReverseMap();
             CreateMap<TreningInsertRequest, Database.Trening>();
             CreateMap<TreningUpdateRequest, Database.Trening>();
@@ -30,6 +32,7 @@ namespace ShapeUp.Mapper
             CreateMap<Mentorstvo, MMentorstvo>().ReverseMap();
             CreateMap<Klijent, MKlijent>().ReverseMap();
             CreateMap<Uplatum, MUplata>().ReverseMap();
+            CreateMap<KategorijaProizvodum, MKategorijaProizvodum>().ReverseMap();
         }
 
 
