@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShapeUp.Database;
 using ShapeUp.Interface;
 using ShapeUp.Model.Models;
+using ShapeUp.Model.Request;
 using ShapeUp.Model.SearchObjects;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ShapeUp.Service
 {
-    public class MentorstvoService : BaseService<MMentorstvo, MentorstvoSearchObject, Mentorstvo>, IMentorstvoService
+    public class MentorstvoService : BaseCRUDService<MMentorstvo, MentorstvoSearchObject, Mentorstvo, MentorstvoInsertRequest, MentorstvoUpdateRequest>, IMentorstvoService
     {
         private readonly ShapeUpDBContext _context;
         private readonly IMapper _mapper;
@@ -25,6 +26,7 @@ namespace ShapeUp.Service
         public override async Task<List<MMentorstvo>> Get(MentorstvoSearchObject search)
         {
             var entity = _context.Set<Mentorstvo>().AsQueryable();
+            entity = entity.Include(x => x.Uplata);
 
             //if(!string.IsNullOrEmpty(search.Naziv))
             //{

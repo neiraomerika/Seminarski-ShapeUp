@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShapeUp.Interface
 {
-    public interface IMentorstvoService : ICRUDService<MMentorstvo, MentorstvoSearchObject, MentorstvoInsertRequest, MentorstvoUpdateRequest>
+    public interface IPlanService : ICRUDService<MPlan, PlanSearchObject, PlanInsertRequest, PlanUpdateRequest>
     {
-
     }
 }
