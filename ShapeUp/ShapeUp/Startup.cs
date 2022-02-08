@@ -123,6 +123,7 @@ namespace ShapeUp
             services.AddScoped<IPlanPrehraneService, PlanPrehraneService>();
             services.AddScoped<IKategorijaProizvodaService, KategProizvodaService>();
             services.AddScoped<IRecenzijaService, RecenzijaService>();
+            services.AddScoped<IMentorstvoService, MentorstvoService>();
             services.AddTransient<JwtHandler>();
 
 
