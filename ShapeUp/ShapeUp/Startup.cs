@@ -125,6 +125,7 @@ namespace ShapeUp
             services.AddScoped<IRecenzijaService, RecenzijaService>();
             services.AddScoped<IMentorstvoService, MentorstvoService>();
             services.AddScoped<IPlanService, PlanService>();
+            services.AddScoped<IUplataService, UplataService>();
             services.AddTransient<JwtHandler>();
 
 

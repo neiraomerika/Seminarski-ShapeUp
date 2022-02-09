@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ShapeUp.Interface;
 using ShapeUp.Model.Models;
 using Stripe;
 using System;
@@ -14,11 +15,17 @@ namespace ShapeUp.Controllers
     [Route("api/[controller]")]
     public class PaymentController : Controller
     {
+        public PaymentController(IUplataService uplataService)
+        {
+            _uplataService = uplataService;
+        }
+
         private Token stripeToken;
         private TokenService tokenService;
 
         private string stripePublishableApiKey = "pk_test_51KPCVJGaEg6pakfZs5knHOXZKybwOTLc9xfoHwT0BNZFJe8ccyAPvv6VejtT79GAvs7OqkdbjDmpeH3mweI7FP7Y00nzh2tpJx";
         private string stripeSecretApiKey = "sk_test_51KPCVJGaEg6pakfZMXk3ctLRAl6jcGKFUyeNkDEKW5Agw9Rtjg9zs8l05bJ9NWP394pHf4zoJTE7CJuMhMP1Tk5200NlTRNaM8";
+        private IUplataService _uplataService;
 
         public bool IsTransactionSuccess { get; set; }
 
@@ -33,7 +40,7 @@ namespace ShapeUp.Controllers
             {
                 var Token = CreateToken(creditCard);
                 if (Token != null)
-                    IsTransactionSuccess = MakePayment(Token, creditCard.Amount, creditCard.Currency, creditCard.PropertyId, creditCard.Description);
+                    IsTransactionSuccess = MakePayment(Token, creditCard.Amount, creditCard.Currency, creditCard.UplataId, creditCard.Description);
             });
 
             if (IsTransactionSuccess)
@@ -80,7 +87,7 @@ namespace ShapeUp.Controllers
             }
         }
 
-        private bool MakePayment(string token, long? amount, string currency, int mentorstvoId, string description)
+        private bool MakePayment(string token, long? amount, string currency, int uplataId, string description)
         {
             try
             {
@@ -98,8 +105,7 @@ namespace ShapeUp.Controllers
 
                 var service = new ChargeService();
                 Charge charge = service.Create(options);
-                //dodati servis i dodati ovaj payment u bazu
-                //_uplataService.setPaid(mentorstvoId, true, charge.Id);
+                _uplataService.SetPaid(uplataId, true, charge.Id);
                 return true;
             }
             catch (Exception ex)
@@ -109,7 +115,7 @@ namespace ShapeUp.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetCharges()
         {
             StripeConfiguration.SetApiKey(stripeSecretApiKey);

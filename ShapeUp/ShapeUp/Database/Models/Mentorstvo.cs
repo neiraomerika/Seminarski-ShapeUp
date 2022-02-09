@@ -14,9 +14,9 @@ namespace ShapeUp.Database
         }
 
         public int Id { get; set; }
-        public DateTime? DatumPocetka { get; set; }
-        public DateTime? DatumZavrsetka { get; set; }
-        public int? UplataId { get; set; }
+        public DateTime DatumPocetka { get; set; }
+        public DateTime DatumZavrsetka { get; set; }
+        public int UplataId { get; set; }
 
         public virtual Uplatum Uplata { get; set; }
         public virtual ICollection<Plan> Plans { get; set; }

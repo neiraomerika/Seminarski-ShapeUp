@@ -15,6 +15,8 @@ namespace ShapeUp.Database
         public int Id { get; set; }
         public DateTime? Datum { get; set; }
         public int? Iznos { get; set; }
+        public bool Placeno { get; set; } = false;
+        public string ChargeId { get; set; }
 
         public virtual ICollection<Mentorstvo> Mentorstvos { get; set; }
     }
