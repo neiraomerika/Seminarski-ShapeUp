@@ -22,25 +22,25 @@ namespace ShapeUp.Controllers
             _service = service;
         }
 
-        [HttpGet("getUsers")]
+        [HttpGet]
         public async Task<List<MKlijent>> Get([FromQuery] KlijentSearchObject search)
         {
             return await _service.Get(search);
         }
 
-        [HttpPost("createUser")]
+        [HttpPost]
         public async Task<MKlijent> Insert([FromQuery] KlijentInsertRequest request)
         {
             return await _service.Insert(request);
         }
 
-        [HttpGet("getUser/{Id}")]
+        [HttpGet("/{Id}")]
         public async Task<MKlijent> GetById(string Id)
         {
             return await _service.GetById(Id);
         }
 
-        [HttpDelete("deleteUser/{Id}")]
+        [HttpDelete("/{Id}")]
         public async Task<bool> Delete(string Id)
         {
             return await _service.Delete(Id);

@@ -51,6 +51,11 @@ namespace ShapeUp.Service
             {
                 klijenti = klijenti.Where(x => (x.FirstName.ToLower() + ' ' + x.LastName.ToLower()).Contains(search.FirstnameLastname.ToLower()));
             }
+            if(search.Active != null)
+            {
+                klijenti = klijenti.Where(x => x.Active == search.Active);
+            }
+
             var list = await klijenti.ToListAsync();
             var mappedClients = _mapper.Map<List<MKlijent>>(list);
             var mappedPlan = _mapper.Map<List<MPlan>>(mentorshipPlans).AsQueryable();

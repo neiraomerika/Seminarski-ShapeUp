@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShapeUp.Model.Models;
+using ShapeUp.Model.SearchObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,21 +14,48 @@ namespace ShapeUp.Desktop.Users
 {
     public partial class frmShowUsers : Form
     {
-        APIService _usersApiService = new APIService("Korisnici");
+        APIService _usersService = new APIService("Users");
+        KlijentSearchObject searchObject = new KlijentSearchObject();
 
         public frmShowUsers()
         {
             InitializeComponent();
         }
 
-        private void frmShowUsers_Load(object sender, EventArgs e)
+        private async void frmShowUsers_Load(object sender, EventArgs e)
         {
-            LoadData();
+            LoadDgv();
+            LoadCmb();
         }
 
-        private void LoadData()
+        private async void LoadDgv(KlijentSearchObject search = null)
         {
+            try
+            {
+                dgvUsers.DataSource = await _usersService.Get<List<MKlijent>>(search);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        private void LoadCmb()
+        {
+            cmbActive.Items.Insert(0, "Neaktivan");
+            cmbActive.Items.Insert(1, "Aktivan");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            searchObject.FirstnameLastname = txtSearch.Text;
+            LoadDgv(searchObject);
+        }
+
+        private void cmbActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchObject.Active = cmbActive.SelectedIndex == 0 ? false : true;
+            LoadDgv(searchObject);
         }
     }
 }
