@@ -45,7 +45,9 @@ namespace ShapeUp.Service
 
             var mentorshipPlans = _context.Set<Plan>().AsQueryable()
                 .Include(x => x.Mentorstvo)
-                .Include(x => x.Mentorstvo).ThenInclude(x => x.Uplata);
+                .Include(x => x.Mentorstvo).ThenInclude(x => x.Uplata)
+                .Include(x => x.PlanPrehrane)
+                .Include(x => x.Trening);
 
             if (!string.IsNullOrEmpty(search.FirstnameLastname))
             {

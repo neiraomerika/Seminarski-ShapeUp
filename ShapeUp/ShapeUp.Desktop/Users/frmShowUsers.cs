@@ -33,6 +33,7 @@ namespace ShapeUp.Desktop.Users
             try
             {
                 dgvUsers.DataSource = await _usersService.Get<List<MKlijent>>(search);
+                dgvUsers.UseWaitCursor = false;
             }
             catch (Exception ex)
             {
@@ -56,6 +57,25 @@ namespace ShapeUp.Desktop.Users
         {
             searchObject.Active = cmbActive.SelectedIndex == 0 ? false : true;
             LoadDgv(searchObject);
+        }
+
+        private void btnPonistiFiltere_Click(object sender, EventArgs e)
+        {
+            txtSearch.Text = null;
+            cmbActive.SelectedItem = null;
+            searchObject.Active = null;
+            searchObject.FirstnameLastname = "";
+            LoadDgv(searchObject);
+        }
+
+        private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var klijent = dgvUsers.SelectedRows[0].DataBoundItem as MKlijent;
+            frmKlijent frm = new frmKlijent(klijent);
+
+            frm.MdiParent = this.ParentForm;
+
+            frm.Show();
         }
     }
 }
