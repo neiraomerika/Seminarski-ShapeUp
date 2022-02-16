@@ -15,12 +15,15 @@ namespace ShapeUp.Desktop.PlanPrehrane
     public partial class frmDgvPlanPrehrane : Form
     {
         public MPlan _plan;
+        public bool _isUpdate;
         private readonly APIService _prehranaService = new APIService("PlanPrehrane");
-        public frmDgvPlanPrehrane(MPlan plan)
+        public frmDgvPlanPrehrane(MPlan plan, bool update = false)
         {
             InitializeComponent();
             if (plan != null)
                 _plan = plan;
+
+            _isUpdate = update;
         }
 
         private async void frmDgvPlanPrehrane_Load(object sender, EventArgs e)
@@ -35,7 +38,7 @@ namespace ShapeUp.Desktop.PlanPrehrane
             _plan.PlanPrehrane = planPrehrane;
             _plan.PlanPrehraneId = planPrehrane.Id;
 
-            frmDodajPlan frm = new frmDodajPlan(_plan);
+            frmDodajPlan frm = new frmDodajPlan(_plan, _isUpdate);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();

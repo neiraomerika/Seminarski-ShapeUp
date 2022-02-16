@@ -15,12 +15,15 @@ namespace ShapeUp.Desktop.Mentorstvo
     public partial class frmDgvMentorstvo : Form
     {
         public MPlan _plan;
+        public bool _isUpdate;
         private readonly APIService _mentorstvoService = new APIService("Mentorstvo");
-        public frmDgvMentorstvo(MPlan plan)
+        public frmDgvMentorstvo(MPlan plan, bool update = false)
         {
             InitializeComponent();
             if (plan != null)
                 _plan = plan;
+
+            _isUpdate = update;
         }
 
         private async void frmDgvMentorstvo_Load(object sender, EventArgs e)
@@ -35,7 +38,7 @@ namespace ShapeUp.Desktop.Mentorstvo
             _plan.Mentorstvo = mentorstvo;
             _plan.MentorstvoId = mentorstvo.Id;
 
-            frmDodajPlan frm = new frmDodajPlan(_plan);
+            frmDodajPlan frm = new frmDodajPlan(_plan, _isUpdate);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();

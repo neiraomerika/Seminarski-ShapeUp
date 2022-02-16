@@ -42,20 +42,20 @@ namespace ShapeUp.Desktop.Users
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.dgvPlanovi = new System.Windows.Forms.DataGridView();
-            this.lblDodaj = new System.Windows.Forms.Label();
-            this.btnDodajPlan = new System.Windows.Forms.Button();
-            this.cbActive = new System.Windows.Forms.CheckBox();
-            this.pbProfilna = new System.Windows.Forms.PictureBox();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.mPlanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treningIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.planPrehraneIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mentorstvoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mPlanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblDodaj = new System.Windows.Forms.Label();
+            this.btnDodajPlan = new System.Windows.Forms.Button();
+            this.cbActive = new System.Windows.Forms.CheckBox();
+            this.pbProfilna = new System.Windows.Forms.PictureBox();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanovi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfilna)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlanBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProfilna)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFirst
@@ -171,6 +171,47 @@ namespace ShapeUp.Desktop.Users
             this.dgvPlanovi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanovi.Size = new System.Drawing.Size(581, 236);
             this.dgvPlanovi.TabIndex = 13;
+            this.dgvPlanovi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvPlanovi_MouseDoubleClick);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datumDataGridViewTextBoxColumn
+            // 
+            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
+            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
+            this.datumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // treningIdDataGridViewTextBoxColumn
+            // 
+            this.treningIdDataGridViewTextBoxColumn.DataPropertyName = "TreningId";
+            this.treningIdDataGridViewTextBoxColumn.HeaderText = "TreningId";
+            this.treningIdDataGridViewTextBoxColumn.Name = "treningIdDataGridViewTextBoxColumn";
+            this.treningIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // planPrehraneIdDataGridViewTextBoxColumn
+            // 
+            this.planPrehraneIdDataGridViewTextBoxColumn.DataPropertyName = "PlanPrehraneId";
+            this.planPrehraneIdDataGridViewTextBoxColumn.HeaderText = "PlanPrehraneId";
+            this.planPrehraneIdDataGridViewTextBoxColumn.Name = "planPrehraneIdDataGridViewTextBoxColumn";
+            this.planPrehraneIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mentorstvoIdDataGridViewTextBoxColumn
+            // 
+            this.mentorstvoIdDataGridViewTextBoxColumn.DataPropertyName = "MentorstvoId";
+            this.mentorstvoIdDataGridViewTextBoxColumn.HeaderText = "MentorstvoId";
+            this.mentorstvoIdDataGridViewTextBoxColumn.Name = "mentorstvoIdDataGridViewTextBoxColumn";
+            this.mentorstvoIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mPlanBindingSource
+            // 
+            this.mPlanBindingSource.DataSource = typeof(ShapeUp.Model.Models.MPlan);
             // 
             // lblDodaj
             // 
@@ -219,46 +260,6 @@ namespace ShapeUp.Desktop.Users
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // mPlanBindingSource
-            // 
-            this.mPlanBindingSource.DataSource = typeof(ShapeUp.Model.Models.MPlan);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datumDataGridViewTextBoxColumn
-            // 
-            this.datumDataGridViewTextBoxColumn.DataPropertyName = "Datum";
-            this.datumDataGridViewTextBoxColumn.HeaderText = "Datum";
-            this.datumDataGridViewTextBoxColumn.Name = "datumDataGridViewTextBoxColumn";
-            this.datumDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // treningIdDataGridViewTextBoxColumn
-            // 
-            this.treningIdDataGridViewTextBoxColumn.DataPropertyName = "TreningId";
-            this.treningIdDataGridViewTextBoxColumn.HeaderText = "TreningId";
-            this.treningIdDataGridViewTextBoxColumn.Name = "treningIdDataGridViewTextBoxColumn";
-            this.treningIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // planPrehraneIdDataGridViewTextBoxColumn
-            // 
-            this.planPrehraneIdDataGridViewTextBoxColumn.DataPropertyName = "PlanPrehraneId";
-            this.planPrehraneIdDataGridViewTextBoxColumn.HeaderText = "PlanPrehraneId";
-            this.planPrehraneIdDataGridViewTextBoxColumn.Name = "planPrehraneIdDataGridViewTextBoxColumn";
-            this.planPrehraneIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mentorstvoIdDataGridViewTextBoxColumn
-            // 
-            this.mentorstvoIdDataGridViewTextBoxColumn.DataPropertyName = "MentorstvoId";
-            this.mentorstvoIdDataGridViewTextBoxColumn.HeaderText = "MentorstvoId";
-            this.mentorstvoIdDataGridViewTextBoxColumn.Name = "mentorstvoIdDataGridViewTextBoxColumn";
-            this.mentorstvoIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // frmKlijent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,8 +287,8 @@ namespace ShapeUp.Desktop.Users
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmKlijent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanovi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfilna)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlanBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProfilna)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

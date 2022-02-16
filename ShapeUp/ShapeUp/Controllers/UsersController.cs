@@ -34,13 +34,13 @@ namespace ShapeUp.Controllers
             return await _service.Insert(request);
         }
 
-        [HttpGet("/{Id}")]
+        [HttpGet("{Id}")]
         public async Task<MKlijent> GetById(string Id)
         {
             return await _service.GetById(Id);
         }
 
-        [HttpDelete("/{Id}")]
+        [HttpDelete("{Id}")]
         public async Task<bool> Delete(string Id)
         {
             return await _service.Delete(Id);

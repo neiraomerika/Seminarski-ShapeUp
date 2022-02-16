@@ -17,7 +17,7 @@ namespace ShapeUp.Desktop.Users
     {
         private MKlijent _klijent;
         private readonly APIService _klijentService = new APIService("Users");
-        public frmKlijent(MKlijent klijent = null, string id = null)
+        public frmKlijent(MKlijent klijent)
         {
             InitializeComponent();
 
@@ -26,14 +26,6 @@ namespace ShapeUp.Desktop.Users
                 _klijent = klijent;
                 this.Text = _klijent.FirstName + " " + _klijent.LastName;
             }
-
-            if (id != null)
-                UcitajKlijenta(id);
-        }
-
-        private async void UcitajKlijenta(string id)
-        {
-            _klijent = await _klijentService.GetById<MKlijent>(id);
         }
 
         private void frmKlijent_Load(object sender, EventArgs e)
@@ -81,6 +73,16 @@ namespace ShapeUp.Desktop.Users
                 Datum = DateTime.Now
             };
             frmDodajPlan frm = new frmDodajPlan(plan);
+            frm.MdiParent = this.ParentForm;
+            this.Close();
+            frm.Show();
+        }
+
+        private void dgvPlanovi_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MPlan plan = dgvPlanovi.SelectedRows[0].DataBoundItem as MPlan;
+
+            frmDodajPlan frm = new frmDodajPlan(plan, true);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();
