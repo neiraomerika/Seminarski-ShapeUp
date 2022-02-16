@@ -12,11 +12,8 @@ namespace ShapeUp.Controllers
 {
     public class MentorstvoController : BaseCRUDController<MMentorstvo, MentorstvoSearchObject, MentorstvoInsertRequest, MentorstvoUpdateRequest>
     {
-        private readonly IMentorstvoService _service;
-
         public MentorstvoController(IMentorstvoService service):base(service)
         {
-            _service = service;
         }
     }
 }

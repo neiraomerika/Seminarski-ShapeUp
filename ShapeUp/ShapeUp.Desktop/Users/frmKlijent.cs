@@ -1,4 +1,5 @@
-﻿using ShapeUp.Helpers;
+﻿using ShapeUp.Desktop.Plan;
+using ShapeUp.Helpers;
 using ShapeUp.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace ShapeUp.Desktop.Users
     public partial class frmKlijent : Form
     {
         private MKlijent _klijent;
-        public frmKlijent(MKlijent klijent)
+        private readonly APIService _klijentService = new APIService("Users");
+        public frmKlijent(MKlijent klijent = null, string id = null)
         {
             InitializeComponent();
 
@@ -25,7 +27,13 @@ namespace ShapeUp.Desktop.Users
                 this.Text = _klijent.FirstName + " " + _klijent.LastName;
             }
 
+            if (id != null)
+                UcitajKlijenta(id);
+        }
 
+        private async void UcitajKlijenta(string id)
+        {
+            _klijent = await _klijentService.GetById<MKlijent>(id);
         }
 
         private void frmKlijent_Load(object sender, EventArgs e)
@@ -66,7 +74,16 @@ namespace ShapeUp.Desktop.Users
 
         private void btnDodajPlan_Click(object sender, EventArgs e)
         {
-
+            MPlan plan = new MPlan() 
+            {
+                KlijentId = _klijent.Id,
+                Klijent = _klijent,
+                Datum = DateTime.Now
+            };
+            frmDodajPlan frm = new frmDodajPlan(plan);
+            frm.MdiParent = this.ParentForm;
+            this.Close();
+            frm.Show();
         }
     }
 }

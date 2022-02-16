@@ -26,9 +26,9 @@ namespace ShapeUp.Desktop
             return result;
         }
 
-        public async Task<T> GetById<T>()
+        public async Task<T> GetById<T>(string id)
         {
-            var result = await $"{Properties.Settings.Default.ApiURL}/{_route}".GetJsonAsync<T>();
+            var result = await $"{Properties.Settings.Default.ApiURL}/{_route}/{id}".GetJsonAsync<T>();
             return result;
         }
 
