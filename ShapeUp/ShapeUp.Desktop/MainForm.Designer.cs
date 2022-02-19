@@ -39,6 +39,9 @@ namespace ShapeUp.Desktop
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.recenzijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikaziSveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajRecenzijuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +50,8 @@ namespace ShapeUp.Desktop
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisniciToolStripMenuItem,
-            this.treninziToolStripMenuItem});
+            this.treninziToolStripMenuItem,
+            this.recenzijaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(804, 24);
@@ -65,7 +69,7 @@ namespace ShapeUp.Desktop
             // prikaziSveKorisnikeToolStripMenuItem
             // 
             this.prikaziSveKorisnikeToolStripMenuItem.Name = "prikaziSveKorisnikeToolStripMenuItem";
-            this.prikaziSveKorisnikeToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.prikaziSveKorisnikeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.prikaziSveKorisnikeToolStripMenuItem.Text = "Prikazi sve korisnike";
             this.prikaziSveKorisnikeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveKorisnikeToolStripMenuItem_Click);
             // 
@@ -81,14 +85,14 @@ namespace ShapeUp.Desktop
             // prikaziSveTreningeToolStripMenuItem
             // 
             this.prikaziSveTreningeToolStripMenuItem.Name = "prikaziSveTreningeToolStripMenuItem";
-            this.prikaziSveTreningeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.prikaziSveTreningeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.prikaziSveTreningeToolStripMenuItem.Text = "Prikazi sve treninge";
             this.prikaziSveTreningeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveTreningeToolStripMenuItem_Click);
             // 
             // dodajNoviTreningToolStripMenuItem
             // 
             this.dodajNoviTreningToolStripMenuItem.Name = "dodajNoviTreningToolStripMenuItem";
-            this.dodajNoviTreningToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.dodajNoviTreningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajNoviTreningToolStripMenuItem.Text = "Dodaj novi trening";
             this.dodajNoviTreningToolStripMenuItem.Click += new System.EventHandler(this.dodajNoviTreningToolStripMenuItem_Click);
             // 
@@ -107,6 +111,29 @@ namespace ShapeUp.Desktop
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // recenzijaToolStripMenuItem
+            // 
+            this.recenzijaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikaziSveToolStripMenuItem,
+            this.dodajRecenzijuToolStripMenuItem});
+            this.recenzijaToolStripMenuItem.Name = "recenzijaToolStripMenuItem";
+            this.recenzijaToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.recenzijaToolStripMenuItem.Text = "Recenzija";
+            // 
+            // prikaziSveToolStripMenuItem
+            // 
+            this.prikaziSveToolStripMenuItem.Name = "prikaziSveToolStripMenuItem";
+            this.prikaziSveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikaziSveToolStripMenuItem.Text = "Prikazi sve recenzije";
+            this.prikaziSveToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveToolStripMenuItem_Click);
+            // 
+            // dodajRecenzijuToolStripMenuItem
+            // 
+            this.dodajRecenzijuToolStripMenuItem.Name = "dodajRecenzijuToolStripMenuItem";
+            this.dodajRecenzijuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajRecenzijuToolStripMenuItem.Text = "Dodaj recenziju";
+            this.dodajRecenzijuToolStripMenuItem.Click += new System.EventHandler(this.dodajRecenzijuToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -141,6 +168,9 @@ namespace ShapeUp.Desktop
         private System.Windows.Forms.ToolStripMenuItem dodajNoviTreningToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikaziSveKorisnikeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recenzijaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikaziSveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajRecenzijuToolStripMenuItem;
     }
 }
 

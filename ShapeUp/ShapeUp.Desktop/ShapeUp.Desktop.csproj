@@ -234,6 +234,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recenzija\frmCRUDRecenzija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recenzija\frmCRUDRecenzija.Designer.cs">
+      <DependentUpon>frmCRUDRecenzija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recenzija\frmShowRecenzije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recenzija\frmShowRecenzije.Designer.cs">
+      <DependentUpon>frmShowRecenzije.cs</DependentUpon>
+    </Compile>
     <Compile Include="Training\frmCRUDTraining.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +301,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Recenzija\frmCRUDRecenzija.resx">
+      <DependentUpon>frmCRUDRecenzija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recenzija\frmShowRecenzije.resx">
+      <DependentUpon>frmShowRecenzije.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Training\frmCRUDTraining.resx">
       <DependentUpon>frmCRUDTraining.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +328,7 @@
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MMentorstvo.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MPlan.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MPlanPrehrane.datasource" />
+    <None Include="Properties\DataSources\ShapeUp.Model.Models.MRecenzija.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MTrening.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
