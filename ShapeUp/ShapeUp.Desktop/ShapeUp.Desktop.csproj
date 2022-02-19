@@ -220,11 +220,23 @@
     <Compile Include="Mentorstvo\frmDgvMentorstvo.Designer.cs">
       <DependentUpon>frmDgvMentorstvo.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanPrehrane\frmCRUDPlanPrehrane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanPrehrane\frmCRUDPlanPrehrane.Designer.cs">
+      <DependentUpon>frmCRUDPlanPrehrane.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanPrehrane\frmDgvPlanPrehrane.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlanPrehrane\frmDgvPlanPrehrane.Designer.cs">
       <DependentUpon>frmDgvPlanPrehrane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanPrehrane\frmShowPlanPrehrane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanPrehrane\frmShowPlanPrehrane.Designer.cs">
+      <DependentUpon>frmShowPlanPrehrane.cs</DependentUpon>
     </Compile>
     <Compile Include="Plan\frmDodajPlan.cs">
       <SubType>Form</SubType>
@@ -273,8 +285,14 @@
     <EmbeddedResource Include="Mentorstvo\frmDgvMentorstvo.resx">
       <DependentUpon>frmDgvMentorstvo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanPrehrane\frmCRUDPlanPrehrane.resx">
+      <DependentUpon>frmCRUDPlanPrehrane.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanPrehrane\frmDgvPlanPrehrane.resx">
       <DependentUpon>frmDgvPlanPrehrane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanPrehrane\frmShowPlanPrehrane.resx">
+      <DependentUpon>frmShowPlanPrehrane.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Plan\frmDodajPlan.resx">
       <DependentUpon>frmDodajPlan.cs</DependentUpon>
