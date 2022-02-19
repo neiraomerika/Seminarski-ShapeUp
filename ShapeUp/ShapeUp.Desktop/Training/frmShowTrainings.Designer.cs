@@ -49,6 +49,7 @@ namespace ShapeUp.Desktop.Training
             // dgvTrainings
             // 
             this.dgvTrainings.AllowUserToAddRows = false;
+            this.dgvTrainings.AutoGenerateColumns = false;
             this.dgvTrainings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTrainings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrainings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -58,11 +59,14 @@ namespace ShapeUp.Desktop.Training
             this.videoUrlDataGridViewTextBoxColumn,
             this.ciljIdDataGridViewTextBoxColumn,
             this.kategorijaTreningaIdDataGridViewTextBoxColumn});
-            this.dgvTrainings.Location = new System.Drawing.Point(13, 47);
+            this.dgvTrainings.DataSource = this.mTreningBindingSource;
+            this.dgvTrainings.Location = new System.Drawing.Point(17, 58);
+            this.dgvTrainings.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTrainings.Name = "dgvTrainings";
             this.dgvTrainings.ReadOnly = true;
+            this.dgvTrainings.RowHeadersWidth = 51;
             this.dgvTrainings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrainings.Size = new System.Drawing.Size(643, 303);
+            this.dgvTrainings.Size = new System.Drawing.Size(857, 373);
             this.dgvTrainings.TabIndex = 0;
             this.dgvTrainings.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvTrainings_MouseDoubleClick);
             // 
@@ -73,14 +77,16 @@ namespace ShapeUp.Desktop.Training
             dataGridViewCellStyle1.NullValue = "byte[0]";
             this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 41;
+            this.idDataGridViewTextBoxColumn.Width = 48;
             // 
             // Slika
             // 
             this.Slika.DataPropertyName = "Slika";
             this.Slika.HeaderText = "Slika";
+            this.Slika.MinimumWidth = 6;
             this.Slika.Name = "Slika";
             this.Slika.ReadOnly = true;
             this.Slika.Visible = false;
@@ -89,6 +95,7 @@ namespace ShapeUp.Desktop.Training
             // 
             this.opisDataGridViewTextBoxColumn.DataPropertyName = "Opis";
             this.opisDataGridViewTextBoxColumn.HeaderText = "Opis";
+            this.opisDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.opisDataGridViewTextBoxColumn.Name = "opisDataGridViewTextBoxColumn";
             this.opisDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -96,6 +103,7 @@ namespace ShapeUp.Desktop.Training
             // 
             this.videoUrlDataGridViewTextBoxColumn.DataPropertyName = "VideoUrl";
             this.videoUrlDataGridViewTextBoxColumn.HeaderText = "VideoUrl";
+            this.videoUrlDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.videoUrlDataGridViewTextBoxColumn.Name = "videoUrlDataGridViewTextBoxColumn";
             this.videoUrlDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -103,6 +111,7 @@ namespace ShapeUp.Desktop.Training
             // 
             this.ciljIdDataGridViewTextBoxColumn.DataPropertyName = "CiljId";
             this.ciljIdDataGridViewTextBoxColumn.HeaderText = "Cilj";
+            this.ciljIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.ciljIdDataGridViewTextBoxColumn.Name = "ciljIdDataGridViewTextBoxColumn";
             this.ciljIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -110,6 +119,7 @@ namespace ShapeUp.Desktop.Training
             // 
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.DataPropertyName = "KategorijaTreningaId";
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.HeaderText = "Kategorija Treninga";
+            this.kategorijaTreningaIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.Name = "kategorijaTreningaIdDataGridViewTextBoxColumn";
             this.kategorijaTreningaIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -117,16 +127,18 @@ namespace ShapeUp.Desktop.Training
             // 
             this.cmbTCateg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cmbTCateg.FormattingEnabled = true;
-            this.cmbTCateg.Location = new System.Drawing.Point(13, 10);
+            this.cmbTCateg.Location = new System.Drawing.Point(17, 12);
+            this.cmbTCateg.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTCateg.Name = "cmbTCateg";
-            this.cmbTCateg.Size = new System.Drawing.Size(180, 28);
+            this.cmbTCateg.Size = new System.Drawing.Size(239, 33);
             this.cmbTCateg.TabIndex = 1;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(199, 9);
+            this.btnSearch.Location = new System.Drawing.Point(265, 11);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(135, 29);
+            this.btnSearch.Size = new System.Drawing.Size(180, 36);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Pretrazi";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -134,9 +146,10 @@ namespace ShapeUp.Desktop.Training
             // 
             // btnClearSearch
             // 
-            this.btnClearSearch.Location = new System.Drawing.Point(340, 9);
+            this.btnClearSearch.Location = new System.Drawing.Point(453, 11);
+            this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearSearch.Name = "btnClearSearch";
-            this.btnClearSearch.Size = new System.Drawing.Size(135, 29);
+            this.btnClearSearch.Size = new System.Drawing.Size(180, 36);
             this.btnClearSearch.TabIndex = 4;
             this.btnClearSearch.Text = "Ocisti Filtere";
             this.btnClearSearch.UseVisualStyleBackColor = true;
@@ -148,15 +161,16 @@ namespace ShapeUp.Desktop.Training
             // 
             // frmShowTrainings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(669, 362);
+            this.ClientSize = new System.Drawing.Size(892, 446);
             this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cmbTCateg);
             this.Controls.Add(this.dgvTrainings);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmShowTrainings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ShowTrainings";

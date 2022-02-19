@@ -62,5 +62,7 @@ namespace ShapeUp.Desktop.Training
 
             frm.Show();
         }
+
+      
     }
 }

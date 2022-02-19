@@ -1,5 +1,4 @@
-﻿using ShapeUp.Desktop.Recenzija;
-using ShapeUp.Desktop.Training;
+﻿using ShapeUp.Desktop.Training;
 using ShapeUp.Desktop.Users;
 using System;
 using System.Collections.Generic;
@@ -137,6 +136,28 @@ namespace ShapeUp.Desktop
             frm.MdiParent = this;
             frm.Size = this.ClientRectangle.Size;
             frm.Text = "Korisnici";
+            frm.Show();
+        }
+
+        private void dodajPlanPrehraneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCRUDPlanPrehrane frm = new frmCRUDPlanPrehrane();
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+            frm.MdiParent = this;
+            frm.Size = this.ClientRectangle.Size;
+            frm.Text = "Plan prehrane";
+            frm.Show();
+        }
+
+        private void prikažiPlanovePrehraneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowPlanPrehrane frm = new frmShowPlanPrehrane();
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+            frm.MdiParent = this;
+            frm.Size = this.ClientRectangle.Size;
+            frm.Text = "Prehrana";
             frm.Show();
         }
 
