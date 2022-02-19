@@ -90,13 +90,23 @@ namespace ShapeUp.Service
             try
             {
                 var klijent = _context.Set<Klijent>().AsQueryable();
-
+                var signUp = _context.Set<Prijava>().AsQueryable();
+                
                 if (!string.IsNullOrEmpty(Id))
+                {
                     klijent = klijent.Where(x => x.Id == Id);
+                    signUp = signUp.Where(x => x.KlijentId == Id);
+                }
 
                 var lista = await klijent.FirstAsync();
+                var mappedClient = _mapper.Map<MKlijent>(lista);
 
-                return _mapper.Map<MKlijent>(lista);
+                foreach (Prijava item in signUp)
+                {
+                    mappedClient.SignUpDate = item.Datum;
+                }
+
+                return mappedClient;
             }
             catch (Exception ex)
             {

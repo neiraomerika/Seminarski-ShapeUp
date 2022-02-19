@@ -22,6 +22,7 @@ namespace ShapeUp.Desktop.Plan
     {
         public MPlan _plan;
         APIService _usersService = new APIService("Users");
+        APIService _planService = new APIService("Plan");
         private bool _fieldsEmpty = false;
         private bool _isUpdate = false;
         private MBoxHelper _mboxHelper = new MBoxHelper();
@@ -31,6 +32,7 @@ namespace ShapeUp.Desktop.Plan
             InitializeComponent();
             if (plan != null)
                 _plan = plan;
+
             _isUpdate = isUpdate;
         }
 
@@ -51,7 +53,6 @@ namespace ShapeUp.Desktop.Plan
                     {
                         Text = item.FirstName + ' ' + item.LastName,
                         Value = item.Id,
-                        Selected = true
                     };
                     cmbKlijenti.Items.Add(selectItem);
 
@@ -89,7 +90,7 @@ namespace ShapeUp.Desktop.Plan
             }
         }
 
-        private void btnSpasi_Click(object sender, EventArgs e)
+        private async void btnSpasi_Click(object sender, EventArgs e)
         {
             FieldsNotEmpty();
 
@@ -103,26 +104,33 @@ namespace ShapeUp.Desktop.Plan
                         TreningId = Int32.Parse(txtTrening.Text),
                         PlanPrehraneId = Int32.Parse(txtPrehrana.Text),
                         MentorstvoId = Int32.Parse(txtMentorstvo.Text),
-                        KlijentId = cmbKlijenti.SelectedItem.ToString()
+                        KlijentId = ((SelectListItem)cmbKlijenti.SelectedItem).Value
                     };
 
-                    MessageBox.Show(update.KlijentId);
+                    var result = await _planService.Update<PlanUpdateRequest>(_plan.Id, update);
+                    _mboxHelper.Inform("Uspjesno izmijenjen plan.");
                 }
                 else
                 {
-                    PlanInsertRequest update = new PlanInsertRequest
+                    PlanInsertRequest insert = new PlanInsertRequest
                     {
                         Datum = dtmPlan.Value,
                         TreningId = Int32.Parse(txtTrening.Text),
                         PlanPrehraneId = Int32.Parse(txtPrehrana.Text),
                         MentorstvoId = Int32.Parse(txtMentorstvo.Text),
-                        KlijentId = cmbKlijenti.SelectedItem.ToString()
+                        KlijentId = ((SelectListItem)cmbKlijenti.SelectedItem).Value
                     };
 
-                    MessageBox.Show(update.KlijentId);
+                    var result = await _planService.Insert<PlanUpdateRequest>(insert);
+                    _mboxHelper.Inform("Uspjesno dodan plan.");
                 }
 
-                frmKlijent frm = new frmKlijent(null, _plan.KlijentId);
+                var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);
+                var plans = await _planService.Get<List<MPlan>>(klijent.Id);
+
+                klijent.Plans = plans;
+
+                frmKlijent frm = new frmKlijent(klijent);
 
                 frm.MdiParent = this.ParentForm;
 
@@ -131,9 +139,14 @@ namespace ShapeUp.Desktop.Plan
             }
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private async void btnBack_Click(object sender, EventArgs e)
         {
-            frmKlijent frm = new frmKlijent(_plan.Klijent);
+            var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);
+            var plans = await _planService.Get<List<MPlan>>(klijent.Id);
+
+            klijent.Plans = plans;
+
+            frmKlijent frm = new frmKlijent(klijent);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();
@@ -141,7 +154,7 @@ namespace ShapeUp.Desktop.Plan
 
         private void btnTrening_Click(object sender, EventArgs e)
         {
-            frmDgvTrening frm = new frmDgvTrening(_plan);
+            frmDgvTrening frm = new frmDgvTrening(_plan, _isUpdate);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();
@@ -149,7 +162,7 @@ namespace ShapeUp.Desktop.Plan
 
         private void btnObrok_Click(object sender, EventArgs e)
         {
-            frmDgvPlanPrehrane frm = new frmDgvPlanPrehrane(_plan);
+            frmDgvPlanPrehrane frm = new frmDgvPlanPrehrane(_plan, _isUpdate);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();
@@ -157,7 +170,7 @@ namespace ShapeUp.Desktop.Plan
 
         private void btnMentorstvo_Click(object sender, EventArgs e)
         {
-            frmDgvMentorstvo frm = new frmDgvMentorstvo(_plan);
+            frmDgvMentorstvo frm = new frmDgvMentorstvo(_plan, _isUpdate);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();
@@ -202,6 +215,36 @@ namespace ShapeUp.Desktop.Plan
             {
                 _fieldsEmpty = false;
                 return;
+            }
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (_plan != null)
+            {
+                bool confirmation = _mboxHelper.Delete("Da li ste sigurni?");
+
+                if (confirmation)
+                {
+                    object result = _planService.Delete(_plan.Id);
+                    _mboxHelper.Inform("Uspjesno obrisan trening.");
+
+                    var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);
+                    var plans = await _planService.Get<List<MPlan>>(klijent.Id);
+
+                    klijent.Plans = plans;
+
+                    frmKlijent frm = new frmKlijent(klijent);
+
+                    frm.MdiParent = this.ParentForm;
+
+                    frm.Show();
+                    return;
+                }
+            }
+            else
+            {
+                _mboxHelper.Error("Plan ne postoji.");
             }
         }
     }

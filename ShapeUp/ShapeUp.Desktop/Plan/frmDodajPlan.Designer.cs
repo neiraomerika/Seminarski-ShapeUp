@@ -46,6 +46,7 @@ namespace ShapeUp.Desktop.Plan
             this.txtPrehrana = new System.Windows.Forms.TextBox();
             this.txtMentorstvo = new System.Windows.Forms.TextBox();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,9 +142,9 @@ namespace ShapeUp.Desktop.Plan
             // 
             // btnSpasi
             // 
-            this.btnSpasi.Location = new System.Drawing.Point(114, 285);
+            this.btnSpasi.Location = new System.Drawing.Point(139, 285);
             this.btnSpasi.Name = "btnSpasi";
-            this.btnSpasi.Size = new System.Drawing.Size(145, 23);
+            this.btnSpasi.Size = new System.Drawing.Size(120, 23);
             this.btnSpasi.TabIndex = 11;
             this.btnSpasi.Text = "Spasi";
             this.btnSpasi.UseVisualStyleBackColor = true;
@@ -184,11 +185,27 @@ namespace ShapeUp.Desktop.Plan
             // 
             this.errProvider.ContainerControl = this;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Maroon;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Location = new System.Drawing.Point(12, 285);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(120, 23);
+            this.btnDelete.TabIndex = 23;
+            this.btnDelete.Text = "Obrisi";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmDodajPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtMentorstvo);
             this.Controls.Add(this.txtPrehrana);
             this.Controls.Add(this.txtTrening);
@@ -231,5 +248,6 @@ namespace ShapeUp.Desktop.Plan
         private System.Windows.Forms.TextBox txtPrehrana;
         private System.Windows.Forms.TextBox txtMentorstvo;
         private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
