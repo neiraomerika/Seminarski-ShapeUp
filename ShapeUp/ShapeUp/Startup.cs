@@ -44,7 +44,7 @@ namespace ShapeUp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ShapeUpDBContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+               options.UseSqlServer(Configuration.GetConnectionString("MiralemovaConnection")));
 
             services.AddIdentity<Klijent, IdentityRole>()
                 .AddEntityFrameworkStores<ShapeUpDBContext>();

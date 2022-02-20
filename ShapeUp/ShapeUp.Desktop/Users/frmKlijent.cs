@@ -17,6 +17,8 @@ namespace ShapeUp.Desktop.Users
     {
         private MKlijent _klijent;
         private readonly APIService _klijentService = new APIService("Users");
+        private bool _isUpdate = false;
+
         public frmKlijent(MKlijent klijent)
         {
             InitializeComponent();
@@ -25,12 +27,14 @@ namespace ShapeUp.Desktop.Users
             {
                 _klijent = klijent;
                 this.Text = _klijent.FirstName + " " + _klijent.LastName;
+                _isUpdate = true;
             }
         }
 
         private void frmKlijent_Load(object sender, EventArgs e)
         {
-            LoadUser();
+            if(_isUpdate)
+                LoadUser();
         }
 
         private void LoadUser()
