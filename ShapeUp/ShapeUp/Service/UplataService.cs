@@ -33,7 +33,7 @@ namespace ShapeUp.Service
             var entity = new Uplatum()
             {
                 Datum = DateTime.Now,
-                Iznos = Int32.Parse(amount.ToString()),
+                Iznos = decimal.Parse(amount.ToString()),
                 Placeno = paid,
                 ChargeId = chargeId
 

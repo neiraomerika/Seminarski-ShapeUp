@@ -1,6 +1,7 @@
 ﻿using ShapeUp.Desktop.PlanPrehrane;
 using ShapeUp.Desktop.Recenzija;
 using ShapeUp.Desktop.Training;
+using ShapeUp.Desktop.Uplata;
 using ShapeUp.Desktop.Users;
 using System;
 using System.Collections.Generic;
@@ -187,6 +188,18 @@ namespace ShapeUp.Desktop
             frmCRUDRecenzija frm = new frmCRUDRecenzija();
             frm.MdiParent = this;
             frm.Text = "Recenzija";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void prikaziSveUplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowUplate frm = new frmShowUplate();
+            frm.MdiParent = this;
+            frm.Text = "Uplate";
 
             if (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();

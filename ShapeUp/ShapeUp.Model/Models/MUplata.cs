@@ -8,6 +8,6 @@ namespace ShapeUp.Model.Models
     {
         public int Id { get; set; }
         public DateTime Datum { get; set; }
-        public int Iznos { get; set; }
+        public decimal Iznos { get; set; }
     }
 }

@@ -46,6 +46,8 @@ namespace ShapeUp.Desktop
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dodajPlanPrehraneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikažiPlanovePrehraneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prikaziSveUplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +58,8 @@ namespace ShapeUp.Desktop
             this.korisniciToolStripMenuItem,
             this.treninziToolStripMenuItem,
             this.planPrehraneToolStripMenuItem,
-            this.recenzijaToolStripMenuItem});
+            this.recenzijaToolStripMenuItem,
+            this.uplateToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -145,14 +148,14 @@ namespace ShapeUp.Desktop
             // prikaziSveRecenzijeToolStripMenuItem
             // 
             this.prikaziSveRecenzijeToolStripMenuItem.Name = "prikaziSveRecenzijeToolStripMenuItem";
-            this.prikaziSveRecenzijeToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.prikaziSveRecenzijeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.prikaziSveRecenzijeToolStripMenuItem.Text = "Prikazi sve recenzije";
             this.prikaziSveRecenzijeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveRecenzijeToolStripMenuItem_Click);
             // 
             // dodajRecenzijuToolStripMenuItem
             // 
             this.dodajRecenzijuToolStripMenuItem.Name = "dodajRecenzijuToolStripMenuItem";
-            this.dodajRecenzijuToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.dodajRecenzijuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajRecenzijuToolStripMenuItem.Text = "Dodaj recenziju";
             this.dodajRecenzijuToolStripMenuItem.Click += new System.EventHandler(this.dodajRecenzijuToolStripMenuItem_Click);
             // 
@@ -165,6 +168,21 @@ namespace ShapeUp.Desktop
             // 
             this.prikažiPlanovePrehraneToolStripMenuItem.Name = "prikažiPlanovePrehraneToolStripMenuItem";
             this.prikažiPlanovePrehraneToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // uplateToolStripMenuItem
+            // 
+            this.uplateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prikaziSveUplateToolStripMenuItem});
+            this.uplateToolStripMenuItem.Name = "uplateToolStripMenuItem";
+            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.uplateToolStripMenuItem.Text = "Uplate";
+            // 
+            // prikaziSveUplateToolStripMenuItem
+            // 
+            this.prikaziSveUplateToolStripMenuItem.Name = "prikaziSveUplateToolStripMenuItem";
+            this.prikaziSveUplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikaziSveUplateToolStripMenuItem.Text = "Prikazi sve uplate";
+            this.prikaziSveUplateToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveUplateToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -204,6 +222,8 @@ namespace ShapeUp.Desktop
         private System.Windows.Forms.ToolStripMenuItem dodajRecenzijuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajPlanPrehraneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikažiPlanovePrehraneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prikaziSveUplateToolStripMenuItem;
     }
 }
 

@@ -353,6 +353,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MKlijent.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MMentorstvo.datasource" />
+    <None Include="Properties\DataSources\ShapeUp.Model.Models.MPayment.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MPlan.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MPlanPrehrane.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MRecenzija.datasource" />
