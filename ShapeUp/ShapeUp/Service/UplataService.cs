@@ -28,16 +28,24 @@ namespace ShapeUp.Service
             return true;
         }
 
-        public bool SetPaid(int id, bool paid, string chargeId)
+        public bool CreateUplata(int mentorstvoId, bool paid, string chargeId, long? amount)
         {
-            var entity = _context.Set<Uplatum>().Find(id);
-            entity.Placeno = paid;
-            entity.ChargeId = chargeId;
-            entity.Datum = DateTime.Now;
-            _context.Entry(entity).Property(x => x.Placeno).IsModified = true;
-            _context.Entry(entity).Property(x => x.ChargeId).IsModified = true;
-            _context.Entry(entity).Property(x => x.Datum).IsModified = true;
+            var entity = new Uplatum()
+            {
+                Datum = DateTime.Now,
+                Iznos = Int32.Parse(amount.ToString()),
+                Placeno = paid,
+                ChargeId = chargeId
+
+            };
+            _context.Set<Uplatum>().Add(entity);
             _context.SaveChanges();
+
+            var mentorstvo = _context.Set<Mentorstvo>().Find(mentorstvoId);
+            mentorstvo.UplataId = entity.Id;
+            _context.Entry(mentorstvo).Property(x => x.UplataId).IsModified = true;
+            _context.SaveChanges();
+
             return true;
         }
     }

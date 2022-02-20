@@ -276,6 +276,12 @@
     <Compile Include="Training\frmShowTrainings.Designer.cs">
       <DependentUpon>frmShowTrainings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Uplata\frmShowUplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uplata\frmShowUplate.Designer.cs">
+      <DependentUpon>frmShowUplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmKlijent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Training\frmShowTrainings.resx">
       <DependentUpon>frmShowTrainings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uplata\frmShowUplate.resx">
+      <DependentUpon>frmShowUplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmKlijent.resx">
       <DependentUpon>frmKlijent.cs</DependentUpon>

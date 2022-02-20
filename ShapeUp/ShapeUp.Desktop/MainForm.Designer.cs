@@ -31,20 +31,20 @@ namespace ShapeUp.Desktop
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treninziToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.planPrehraneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajPlanPrehraneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recenzijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikaziSveKorisnikeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treninziToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikaziSveTreningeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajTreningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planPrehraneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikaziSveObrokeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajObrokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recenzijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikaziSveRecenzijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajRecenzijuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.dodajPlanPrehraneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikažiPlanovePrehraneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +59,8 @@ namespace ShapeUp.Desktop
             this.recenzijaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(884, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -69,8 +70,22 @@ namespace ShapeUp.Desktop
             this.prikaziSveKorisnikeToolStripMenuItem,
             this.dodajKorisnikaToolStripMenuItem});
             this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
-            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.korisniciToolStripMenuItem.Text = "Korisnici";
+            // 
+            // prikaziSveKorisnikeToolStripMenuItem
+            // 
+            this.prikaziSveKorisnikeToolStripMenuItem.Name = "prikaziSveKorisnikeToolStripMenuItem";
+            this.prikaziSveKorisnikeToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.prikaziSveKorisnikeToolStripMenuItem.Text = "Prikazi sve korisnike";
+            this.prikaziSveKorisnikeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveKorisnikeToolStripMenuItem_Click);
+            // 
+            // dodajKorisnikaToolStripMenuItem
+            // 
+            this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
+            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
+            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
             // 
             // treninziToolStripMenuItem
             // 
@@ -81,14 +96,42 @@ namespace ShapeUp.Desktop
             this.treninziToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.treninziToolStripMenuItem.Text = "Treninzi";
             // 
+            // prikaziSveTreningeToolStripMenuItem
+            // 
+            this.prikaziSveTreningeToolStripMenuItem.Name = "prikaziSveTreningeToolStripMenuItem";
+            this.prikaziSveTreningeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.prikaziSveTreningeToolStripMenuItem.Text = "Prikazi sve treninge";
+            this.prikaziSveTreningeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveTreningeToolStripMenuItem_Click);
+            // 
+            // dodajTreningToolStripMenuItem
+            // 
+            this.dodajTreningToolStripMenuItem.Name = "dodajTreningToolStripMenuItem";
+            this.dodajTreningToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.dodajTreningToolStripMenuItem.Text = "Dodaj trening";
+            this.dodajTreningToolStripMenuItem.Click += new System.EventHandler(this.dodajTreningToolStripMenuItem_Click);
+            // 
             // planPrehraneToolStripMenuItem
             // 
             this.planPrehraneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.prikaziSveObrokeToolStripMenuItem,
             this.dodajObrokToolStripMenuItem});
             this.planPrehraneToolStripMenuItem.Name = "planPrehraneToolStripMenuItem";
-            this.planPrehraneToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.planPrehraneToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.planPrehraneToolStripMenuItem.Text = "Obroci";
+            // 
+            // prikaziSveObrokeToolStripMenuItem
+            // 
+            this.prikaziSveObrokeToolStripMenuItem.Name = "prikaziSveObrokeToolStripMenuItem";
+            this.prikaziSveObrokeToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.prikaziSveObrokeToolStripMenuItem.Text = "Prikazi sve obroke";
+            this.prikaziSveObrokeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveObrokeToolStripMenuItem_Click);
+            // 
+            // dodajObrokToolStripMenuItem
+            // 
+            this.dodajObrokToolStripMenuItem.Name = "dodajObrokToolStripMenuItem";
+            this.dodajObrokToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.dodajObrokToolStripMenuItem.Text = "Dodaj obrok";
+            this.dodajObrokToolStripMenuItem.Click += new System.EventHandler(this.dodajObrokToolStripMenuItem_Click);
             // 
             // recenzijaToolStripMenuItem
             // 
@@ -99,78 +142,43 @@ namespace ShapeUp.Desktop
             this.recenzijaToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.recenzijaToolStripMenuItem.Text = "Recenzija";
             // 
-            // prikaziSveKorisnikeToolStripMenuItem
-            // 
-            this.prikaziSveKorisnikeToolStripMenuItem.Name = "prikaziSveKorisnikeToolStripMenuItem";
-            this.prikaziSveKorisnikeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.prikaziSveKorisnikeToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
-            this.prikaziSveKorisnikeToolStripMenuItem.Text = "Prikazi sve korisnike";
-            this.prikaziSveKorisnikeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveKorisnikeToolStripMenuItem_Click);
-            // 
-            // dodajKorisnikaToolStripMenuItem
-            // 
-            this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
-            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
-            this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
-            // 
-            // prikaziSveTreningeToolStripMenuItem
-            // 
-            this.prikaziSveTreningeToolStripMenuItem.Name = "prikaziSveTreningeToolStripMenuItem";
-            this.prikaziSveTreningeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.prikaziSveTreningeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.prikaziSveTreningeToolStripMenuItem.Text = "Prikazi sve treninge";
-            this.prikaziSveTreningeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveTreningeToolStripMenuItem_Click);
-            // 
-            // dodajTreningToolStripMenuItem
-            // 
-            this.dodajTreningToolStripMenuItem.Name = "dodajTreningToolStripMenuItem";
-            this.dodajTreningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dodajTreningToolStripMenuItem.Text = "Dodaj trening";
-            this.dodajTreningToolStripMenuItem.Click += new System.EventHandler(this.dodajTreningToolStripMenuItem_Click);
-            // 
-            // prikaziSveObrokeToolStripMenuItem
-            // 
-            this.prikaziSveObrokeToolStripMenuItem.Name = "prikaziSveObrokeToolStripMenuItem";
-            this.prikaziSveObrokeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.prikaziSveObrokeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.prikaziSveObrokeToolStripMenuItem.Text = "Prikazi sve obroke";
-            this.prikaziSveObrokeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveObrokeToolStripMenuItem_Click);
-            // 
-            // dodajObrokToolStripMenuItem
-            // 
-            this.dodajObrokToolStripMenuItem.Name = "dodajObrokToolStripMenuItem";
-            this.dodajObrokToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dodajObrokToolStripMenuItem.Text = "Dodaj obrok";
-            this.dodajObrokToolStripMenuItem.Click += new System.EventHandler(this.dodajObrokToolStripMenuItem_Click);
-            // 
             // prikaziSveRecenzijeToolStripMenuItem
             // 
             this.prikaziSveRecenzijeToolStripMenuItem.Name = "prikaziSveRecenzijeToolStripMenuItem";
-            this.prikaziSveRecenzijeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prikaziSveRecenzijeToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.prikaziSveRecenzijeToolStripMenuItem.Text = "Prikazi sve recenzije";
             this.prikaziSveRecenzijeToolStripMenuItem.Click += new System.EventHandler(this.prikaziSveRecenzijeToolStripMenuItem_Click);
             // 
             // dodajRecenzijuToolStripMenuItem
             // 
             this.dodajRecenzijuToolStripMenuItem.Name = "dodajRecenzijuToolStripMenuItem";
-            this.dodajRecenzijuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajRecenzijuToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.dodajRecenzijuToolStripMenuItem.Text = "Dodaj recenziju";
             this.dodajRecenzijuToolStripMenuItem.Click += new System.EventHandler(this.dodajRecenzijuToolStripMenuItem_Click);
-            //
+            // 
+            // dodajPlanPrehraneToolStripMenuItem
+            // 
+            this.dodajPlanPrehraneToolStripMenuItem.Name = "dodajPlanPrehraneToolStripMenuItem";
+            this.dodajPlanPrehraneToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // prikažiPlanovePrehraneToolStripMenuItem
+            // 
+            this.prikažiPlanovePrehraneToolStripMenuItem.Name = "prikažiPlanovePrehraneToolStripMenuItem";
+            this.prikažiPlanovePrehraneToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(804, 781);
+            this.ClientSize = new System.Drawing.Size(884, 635);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);

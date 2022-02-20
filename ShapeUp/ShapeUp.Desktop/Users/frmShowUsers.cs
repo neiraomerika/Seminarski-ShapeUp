@@ -22,7 +22,7 @@ namespace ShapeUp.Desktop.Users
             InitializeComponent();
         }
 
-        private async void frmShowUsers_Load(object sender, EventArgs e)
+        private void frmShowUsers_Load(object sender, EventArgs e)
         {
             LoadDgv();
             LoadCmb();

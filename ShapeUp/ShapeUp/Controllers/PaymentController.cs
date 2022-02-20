@@ -40,7 +40,7 @@ namespace ShapeUp.Controllers
             {
                 var Token = CreateToken(creditCard);
                 if (Token != null)
-                    IsTransactionSuccess = MakePayment(Token, creditCard.Amount, creditCard.Currency, creditCard.UplataId, creditCard.Description);
+                    IsTransactionSuccess = MakePayment(Token, creditCard.Amount, creditCard.Currency, creditCard.MentorstvoId, creditCard.Description);
             });
 
             if (IsTransactionSuccess)
@@ -71,9 +71,6 @@ namespace ShapeUp.Controllers
                         AddressCountry = creditCard.AddressCountry,
                         AddressLine1 = creditCard.AddressLine1,
                         Currency = creditCard.Currency,
-                        AddressLine2 = "SpringBoard",
-                        AddressCity = "Gurgoan",
-                        AddressZip = "284005",
                     }
                 };
 
@@ -87,7 +84,7 @@ namespace ShapeUp.Controllers
             }
         }
 
-        private bool MakePayment(string token, long? amount, string currency, int uplataId, string description)
+        private bool MakePayment(string token, long? amount, string currency, int mentorstvoId, string description)
         {
             try
             {
@@ -105,7 +102,7 @@ namespace ShapeUp.Controllers
 
                 var service = new ChargeService();
                 Charge charge = service.Create(options);
-                _uplataService.SetPaid(uplataId, true, charge.Id);
+                _uplataService.CreateUplata(mentorstvoId, true, charge.Id, amount);
                 return true;
             }
             catch (Exception ex)

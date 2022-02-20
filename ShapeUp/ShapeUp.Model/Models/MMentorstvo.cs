@@ -11,6 +11,7 @@ namespace ShapeUp.Model.Models
         public DateTime DatumZavrsetka { get; set; }
         public int UplataId { get; set; }
         public virtual MUplata Uplata { get; set; }
- 
+        public string NazivKlijenta { get; set; }
+
     }
 }

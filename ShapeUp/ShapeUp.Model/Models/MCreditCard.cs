@@ -37,8 +37,8 @@ namespace ShapeUp.Model.Models
         public object MetaData { get; set; }
         [JsonProperty("issuing_card")]
         public string IssuingCardId { get; set; }
-        [JsonProperty("uplataId")]
-        public int UplataId { get; set; }
+        [JsonProperty("mentorstvoId")]
+        public int MentorstvoId { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
     }

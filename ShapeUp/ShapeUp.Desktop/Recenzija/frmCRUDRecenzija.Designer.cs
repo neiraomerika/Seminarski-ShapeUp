@@ -40,6 +40,7 @@ namespace ShapeUp.Desktop.Recenzija
             this.cmbMentorstvo = new System.Windows.Forms.ComboBox();
             this.btnSpasi = new System.Windows.Forms.Button();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,11 +125,27 @@ namespace ShapeUp.Desktop.Recenzija
             // 
             this.errProvider.ContainerControl = this;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Maroon;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Location = new System.Drawing.Point(15, 292);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(100, 23);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "Obrisi";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmCRUDRecenzija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSpasi);
             this.Controls.Add(this.cmbMentorstvo);
             this.Controls.Add(this.dtmRecenzija);
@@ -160,5 +177,6 @@ namespace ShapeUp.Desktop.Recenzija
         private System.Windows.Forms.ComboBox cmbMentorstvo;
         private System.Windows.Forms.Button btnSpasi;
         private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

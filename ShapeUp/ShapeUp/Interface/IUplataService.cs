@@ -7,7 +7,7 @@ namespace ShapeUp.Interface
 {
     public interface IUplataService
     {
-        public bool SetPaid(int id, bool paid, string chargeId);
+        public bool CreateUplata(int id, bool paid, string chargeId, long? amount);
         public bool SetFinished(int id, bool finished);
     }
 }
