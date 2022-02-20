@@ -1,5 +1,4 @@
-﻿using ShapeUp.Desktop.PlanPrehrane;
-using ShapeUp.Desktop.Recenzija;
+﻿using ShapeUp.Desktop.Recenzija;
 using ShapeUp.Desktop.Training;
 using ShapeUp.Desktop.Users;
 using System;
