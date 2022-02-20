@@ -1,4 +1,5 @@
-﻿using ShapeUp.Desktop.Recenzija;
+﻿using ShapeUp.Desktop.PlanPrehrane;
+using ShapeUp.Desktop.Recenzija;
 using ShapeUp.Desktop.Training;
 using ShapeUp.Desktop.Users;
 using System;
@@ -69,16 +70,6 @@ namespace ShapeUp.Desktop
         {
         }
 
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
-
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
@@ -107,58 +98,99 @@ namespace ShapeUp.Desktop
             }
         }
 
-        private void prikaziSveTreningeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmShowTrainings frm = new frmShowTrainings();
-            if(this.ActiveMdiChild != null)
-                this.ActiveMdiChild.Close();
-            frm.MdiParent = this;
-            frm.Size = this.ClientRectangle.Size;
-            frm.Text = "Treninzi";
-            frm.Show();
-        }
-
-        private void dodajNoviTreningToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmCRUDTraining frm = new frmCRUDTraining();
-            if(this.ActiveMdiChild != null)
-                this.ActiveMdiChild.Close();
-            frm.MdiParent = this;
-            frm.Size = this.ClientRectangle.Size;
-            frm.Text = "Trening";
-            frm.Show();
-        }
-
         private void prikaziSveKorisnikeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowUsers frm = new frmShowUsers();
+            frm.MdiParent = this;
+            frm.Text = "Korisnici";
+
             if (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
-            frm.MdiParent = this;
-            frm.Size = this.ClientRectangle.Size;
-            frm.Text = "Korisnici";
+
             frm.Show();
         }
 
-        private void prikaziSveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowRecenzije frm = new frmShowRecenzije();
+            frmKlijent frm = new frmKlijent(null);
+            frm.MdiParent = this;
+            frm.Text = "Korisnik";
+
             if (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void prikaziSveTreningeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowTrainings frm = new frmShowTrainings();
             frm.MdiParent = this;
-            frm.Size = this.ClientRectangle.Size;
+            frm.Text = "Treninzi";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void dodajTreningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCRUDTraining frm = new frmCRUDTraining();
+            frm.MdiParent = this;
+            frm.Text = "Trening";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void prikaziSveObrokeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowPlanPrehrane frm = new frmShowPlanPrehrane();
+            frm.MdiParent = this;
+            frm.Text = "Obroci";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void dodajObrokToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCRUDPlanPrehrane frm = new frmCRUDPlanPrehrane();
+            frm.MdiParent = this;
+            frm.Text = "Obrok";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void prikaziSveRecenzijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowRecenzije frm = new frmShowRecenzije();
+            frm.MdiParent = this;
             frm.Text = "Recenzije";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
             frm.Show();
         }
 
         private void dodajRecenzijuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCRUDRecenzija frm = new frmCRUDRecenzija(null);
+            frmCRUDRecenzija frm = new frmCRUDRecenzija();
+            frm.MdiParent = this;
+            frm.Text = "Recenzija";
+
             if (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
-            frm.MdiParent = this;
-            frm.Size = this.ClientRectangle.Size;
-            frm.Text = "Recenzije";
+
             frm.Show();
         }
     }

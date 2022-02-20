@@ -20,7 +20,7 @@ namespace ShapeUp.Desktop.Recenzija
         private bool _isUpdate = false;
         private bool _feeldsEmpty = true;
         private MBoxHelper _mboxHelper = new MBoxHelper();
-        public frmCRUDRecenzija(MRecenzija recenzija)
+        public frmCRUDRecenzija(MRecenzija recenzija = null)
         {
             InitializeComponent();
 
