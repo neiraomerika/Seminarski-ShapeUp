@@ -1,4 +1,5 @@
 ﻿using ShapeUp.Desktop.PlanPrehrane;
+using ShapeUp.Desktop.Proizvodi;
 using ShapeUp.Desktop.Recenzija;
 using ShapeUp.Desktop.Training;
 using ShapeUp.Desktop.Uplata;
@@ -200,6 +201,30 @@ namespace ShapeUp.Desktop
             frmShowUplate frm = new frmShowUplate();
             frm.MdiParent = this;
             frm.Text = "Uplate";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void prikaziSveProizvodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowProizvodi frm = new frmShowProizvodi();
+            frm.MdiParent = this;
+            frm.Text = "Proizvodi";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void dodajProizvodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCRUDProizvod frm = new frmCRUDProizvod();
+            frm.MdiParent = this;
+            frm.Text = "Proizvod";
 
             if (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();

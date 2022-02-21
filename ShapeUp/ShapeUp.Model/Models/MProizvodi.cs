@@ -13,5 +13,6 @@ namespace ShapeUp.Model.Models
         public byte[] Slika { get; set; }
         public decimal Cijena { get; set; }
         public int KategorijaProizvodaId { get; set; }
+        public string KategorijaProizvoda { get; set; }
     }
 }

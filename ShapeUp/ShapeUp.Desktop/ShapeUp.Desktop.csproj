@@ -245,6 +245,18 @@
       <DependentUpon>frmDodajPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Proizvodi\frmCRUDProizvod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proizvodi\frmCRUDProizvod.Designer.cs">
+      <DependentUpon>frmCRUDProizvod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proizvodi\frmShowProizvodi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proizvodi\frmShowProizvodi.Designer.cs">
+      <DependentUpon>frmShowProizvodi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recenzija\frmCRUDRecenzija.cs">
       <SubType>Form</SubType>
@@ -315,6 +327,12 @@
     <EmbeddedResource Include="Plan\frmDodajPlan.resx">
       <DependentUpon>frmDodajPlan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Proizvodi\frmCRUDProizvod.resx">
+      <DependentUpon>frmCRUDProizvod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proizvodi\frmShowProizvodi.resx">
+      <DependentUpon>frmShowProizvodi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -356,6 +374,7 @@
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MPayment.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MPlan.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MPlanPrehrane.datasource" />
+    <None Include="Properties\DataSources\ShapeUp.Model.Models.MProizvodi.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MRecenzija.datasource" />
     <None Include="Properties\DataSources\ShapeUp.Model.Models.MTrening.datasource" />
     <None Include="Properties\Settings.settings">
@@ -379,6 +398,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\profilePicture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
