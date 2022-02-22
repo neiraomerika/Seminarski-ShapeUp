@@ -1,4 +1,5 @@
 ﻿using ShapeUp.Desktop.Plan;
+using ShapeUp.Desktop.Report;
 using ShapeUp.Helpers;
 using ShapeUp.Model.Models;
 using System;
@@ -87,6 +88,14 @@ namespace ShapeUp.Desktop.Users
             MPlan plan = dgvPlanovi.SelectedRows[0].DataBoundItem as MPlan;
 
             frmDodajPlan frm = new frmDodajPlan(plan, true);
+            frm.MdiParent = this.ParentForm;
+            this.Close();
+            frm.Show();
+        }
+
+        private void btnRprt_Click(object sender, EventArgs e)
+        {
+            frmReportKlijenta frm = new frmReportKlijenta(_klijent);
             frm.MdiParent = this.ParentForm;
             this.Close();
             frm.Show();

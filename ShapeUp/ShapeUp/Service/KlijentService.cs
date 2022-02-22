@@ -91,7 +91,12 @@ namespace ShapeUp.Service
             {
                 var klijent = _context.Set<Klijent>().AsQueryable();
                 var signUp = _context.Set<Prijava>().AsQueryable();
-                
+                var mentorshipPlans = _context.Set<Plan>().AsQueryable()
+                .Include(x => x.Mentorstvo)
+                .Include(x => x.Mentorstvo).ThenInclude(x => x.Uplata)
+                .Include(x => x.PlanPrehrane)
+                .Include(x => x.Trening);
+
                 if (!string.IsNullOrEmpty(Id))
                 {
                     klijent = klijent.Where(x => x.Id == Id);
@@ -100,10 +105,22 @@ namespace ShapeUp.Service
 
                 var lista = await klijent.FirstAsync();
                 var mappedClient = _mapper.Map<MKlijent>(lista);
+                var mappedPlan = _mapper.Map<List<MPlan>>(mentorshipPlans).AsQueryable();
 
                 foreach (Prijava item in signUp)
                 {
                     mappedClient.SignUpDate = item.Datum;
+                }
+
+                foreach (MPlan plan in mappedPlan)
+                {
+                    if (mappedClient.Id == plan.KlijentId)
+                    {
+                        if (mappedClient.Plans == null)
+                            mappedClient.Plans = new List<MPlan>();
+
+                        mappedClient.Plans.Add(plan);
+                    }
                 }
 
                 return mappedClient;

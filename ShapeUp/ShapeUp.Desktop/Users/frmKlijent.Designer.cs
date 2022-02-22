@@ -53,6 +53,7 @@ namespace ShapeUp.Desktop.Users
             this.cbActive = new System.Windows.Forms.CheckBox();
             this.pbProfilna = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnRprt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilna)).BeginInit();
@@ -260,11 +261,22 @@ namespace ShapeUp.Desktop.Users
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnRprt
+            // 
+            this.btnRprt.Location = new System.Drawing.Point(453, 295);
+            this.btnRprt.Name = "btnRprt";
+            this.btnRprt.Size = new System.Drawing.Size(140, 23);
+            this.btnRprt.TabIndex = 18;
+            this.btnRprt.Text = "Generisi report";
+            this.btnRprt.UseVisualStyleBackColor = true;
+            this.btnRprt.Click += new System.EventHandler(this.btnRprt_Click);
+            // 
             // frmKlijent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 588);
+            this.Controls.Add(this.btnRprt);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.cbActive);
             this.Controls.Add(this.lblDodaj);
@@ -319,5 +331,6 @@ namespace ShapeUp.Desktop.Users
         private System.Windows.Forms.DataGridViewTextBoxColumn planPrehraneIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mentorstvoIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource mPlanBindingSource;
+        private System.Windows.Forms.Button btnRprt;
     }
 }
