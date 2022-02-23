@@ -128,7 +128,7 @@ namespace ShapeUp.Desktop.Plan
                 var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);
                 var plans = await _planService.Get<List<MPlan>>(klijent.Id);
 
-                klijent.Plans = plans;
+                klijent.Plans = plans.AsQueryable().Where(x => x.KlijentId == klijent.Id).ToList();
 
                 frmKlijent frm = new frmKlijent(klijent);
 

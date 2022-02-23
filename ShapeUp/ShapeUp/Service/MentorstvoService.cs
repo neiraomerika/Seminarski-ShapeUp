@@ -28,10 +28,10 @@ namespace ShapeUp.Service
             var entity = _context.Set<Mentorstvo>().AsQueryable();
             entity = entity.Include(x => x.Uplata);
 
-            //if(!string.IsNullOrEmpty(search.Naziv))
-            //{
-            //    entity = entity.Where(x => x.Naziv.StartsWith(search.Naziv));
-            //}
+            if (!string.IsNullOrEmpty(search.Klijent))
+            {
+                entity = entity.Where(x => x.NazivKlijenta.Contains(search.Klijent));
+            }
 
             var list = await entity.ToListAsync();
             return _mapper.Map<List<MMentorstvo>>(list);

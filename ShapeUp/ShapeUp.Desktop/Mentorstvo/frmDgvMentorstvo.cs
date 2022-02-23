@@ -1,5 +1,7 @@
-﻿using ShapeUp.Desktop.Plan;
+﻿using ShapeUp.Desktop.Helpers;
+using ShapeUp.Desktop.Plan;
 using ShapeUp.Model.Models;
+using ShapeUp.Model.SearchObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,7 @@ namespace ShapeUp.Desktop.Mentorstvo
         public MPlan _plan;
         public bool _isUpdate;
         private readonly APIService _mentorstvoService = new APIService("Mentorstvo");
+        private MBoxHelper _mboxHelper = new MBoxHelper();
         public frmDgvMentorstvo(MPlan plan, bool update = false)
         {
             InitializeComponent();
@@ -28,12 +31,24 @@ namespace ShapeUp.Desktop.Mentorstvo
 
         private async void frmDgvMentorstvo_Load(object sender, EventArgs e)
         {
-            dgvMentorstvo.DataSource = await _mentorstvoService.Get<List<MMentorstvo>>(null);
+            MentorstvoSearchObject search = new MentorstvoSearchObject
+            {
+                Klijent = $"{_plan.Klijent.FirstName} {_plan.Klijent.LastName}"
+            };
+            dgvMentorstvo.DataSource = await _mentorstvoService.Get<List<MMentorstvo>>(search);
         }
 
-        private void dgvMentorstvo_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        private void dgvMentorstvo_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             MMentorstvo mentorstvo = dgvMentorstvo.SelectedRows[0].DataBoundItem as MMentorstvo;
+
+            var imePrezime = $"{_plan.Klijent.FirstName} {_plan.Klijent.LastName}";
+
+            if (mentorstvo.NazivKlijenta != imePrezime)
+            {
+                _mboxHelper.Error($"Mozete dodijeliti mentorstvo samo od {imePrezime} klijenta.");
+                return;
+            }
 
             _plan.Mentorstvo = mentorstvo;
             _plan.MentorstvoId = mentorstvo.Id;

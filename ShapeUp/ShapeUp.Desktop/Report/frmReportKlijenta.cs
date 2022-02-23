@@ -28,17 +28,19 @@ namespace ShapeUp.Desktop.Report
             rpc.Add(new ReportParameter("ImePrezime", $"{_klijent.FirstName} {_klijent.LastName}"));
 
             dsKlijent.PlanoviDataTable tabel = new dsKlijent.PlanoviDataTable();
-            foreach (var item in _klijent.Plans)
+            if(_klijent.Plans != null)
             {
-                dsKlijent.PlanoviRow red = tabel.NewPlanoviRow();
-                red.Id = item.Id;
-                red.Datum = item.Datum.ToString("dd.MM.yyyy");
-                red.Trening = item.Trening.Opis;
-                red.Obrok = item.PlanPrehrane.Opis;
-                red.Mentorstvo = $"{item.Mentorstvo.NazivKlijenta} {item.Mentorstvo.DatumPocetka} | {item.Mentorstvo.DatumZavrsetka}";
-                tabel.Rows.Add(red);
+                foreach (var item in _klijent.Plans)
+                {
+                    dsKlijent.PlanoviRow red = tabel.NewPlanoviRow();
+                    red.Id = item.Id;
+                    red.Datum = item.Datum.ToString("dd.MM.yyyy");
+                    red.Trening = item.Trening.Opis;
+                    red.Obrok = item.PlanPrehrane.Opis;
+                    red.Mentorstvo = $"{item.Mentorstvo.NazivKlijenta} {item.Mentorstvo.DatumPocetka} | {item.Mentorstvo.DatumZavrsetka}";
+                    tabel.Rows.Add(red);
+                }
             }
-
 
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "Planovi";

@@ -8,5 +8,6 @@ namespace ShapeUp.Model.SearchObjects
     {
         public DateTime DatumOd { get; set; }
         public DateTime DatumDo { get; set; }
+        public string Klijent { get; set; }
     }
 }
