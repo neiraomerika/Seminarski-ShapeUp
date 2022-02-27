@@ -1,4 +1,5 @@
-﻿using ShapeUp.Model.Models;
+﻿using ShapeUp.Desktop.Helpers;
+using ShapeUp.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace ShapeUp.Desktop.Uplata
     public partial class frmShowUplate : Form
     {
         private APIService _paymentService = new APIService("Payment");
+        private MBoxHelper _mboxHelper = new MBoxHelper();
 
         public frmShowUplate()
         {
@@ -31,10 +33,9 @@ namespace ShapeUp.Desktop.Uplata
                 txtUplate.Text = payments.Count.ToString();
                 txtIznos.Text = payments.Where(x => x.Status == "succeeded").Sum(x => x.Amount).ToString() + " KM";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                _mboxHelper.Error("Doslo je do greske!");
             }
         }
     }

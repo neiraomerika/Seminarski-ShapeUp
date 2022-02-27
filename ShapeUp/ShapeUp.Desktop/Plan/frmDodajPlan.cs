@@ -226,7 +226,7 @@ namespace ShapeUp.Desktop.Plan
 
                 if (confirmation)
                 {
-                    object result = _planService.Delete(_plan.Id);
+                    object result = _planService.Delete<MPlan>(_plan.Id);
                     _mboxHelper.Inform("Uspjesno obrisan trening.");
 
                     var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);

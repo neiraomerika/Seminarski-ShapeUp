@@ -175,7 +175,7 @@ namespace ShapeUp.Desktop.Recenzija
 
                 if (confirmation)
                 {
-                    object result = _recenzijaService.Delete(_recenzija.Id);
+                    object result = _recenzijaService.Delete<MRecenzija>(_recenzija.Id);
                     _mboxHelper.Inform("Uspjesno obrisana recenzija.");
 
                     frmShowRecenzije frm = new frmShowRecenzije();

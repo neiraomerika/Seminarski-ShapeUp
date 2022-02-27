@@ -180,7 +180,7 @@ namespace ShapeUp.Desktop.Proizvodi
 
                 if (confirmation)
                 {
-                    object result = _proizvodService.Delete(_proizvod.Id);
+                    object result = _proizvodService.Delete<MProizvodi>(_proizvod.Id);
                     _mboxHelper.Inform("Uspjesno obrisan proizvod.");
 
                     frmShowProizvodi frm = new frmShowProizvodi(_kategorije);

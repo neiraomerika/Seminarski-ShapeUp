@@ -156,7 +156,7 @@ namespace ShapeUp.Desktop.Training
 
                 if (confirmation)
                 {
-                    object result = _treningAPI.Delete(_training.Id);
+                    object result = _treningAPI.Delete<MTrening>(_training.Id);
                     _mboxHelper.Inform("Uspjesno obrisan trening.");
 
                    ShowTrainingsForm();

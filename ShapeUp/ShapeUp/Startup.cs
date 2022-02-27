@@ -43,6 +43,13 @@ namespace ShapeUp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+             
             services.AddDbContext<ShapeUpDBContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("MiralemovaConnection")));
 
@@ -54,7 +61,7 @@ namespace ShapeUp
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
             {
                 opt.Cookie.HttpOnly = true;
-                opt.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                opt.ExpireTimeSpan = TimeSpan.FromMinutes(60);
 
                 opt.LoginPath = "/Identity/Account/Login";
                 opt.AccessDeniedPath = "/Identity/Account/AccessDenied";
@@ -76,12 +83,10 @@ namespace ShapeUp
                 };
             });
 
-            services.AddControllers(
-            //    x =>
-            //{
-            //    x.Filters.Add<ErrorFilter>();
-            //}
-            );
+            services.AddControllers(x =>
+            {
+                x.Filters.Add<ErrorFilter>();
+            });
                        
             services.AddAutoMapper(typeof(Startup));
 
@@ -89,28 +94,28 @@ namespace ShapeUp
 
             services.AddMvc();
 
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShapeUp_API", Version = "v1" });
-            //    c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
-            //    {
-            //        Name = "Authorization",
-            //        Type = SecuritySchemeType.Http,
-            //        Scheme = "basic",
-            //        In = ParameterLocation.Header
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShapeUp_API", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    In = ParameterLocation.Header,
+                    Description = "Please insert JWT with Bearer into field"
 
-            //    });
-            //    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            //    {
-            //        {
-            //            new OpenApiSecurityScheme
-            //            {
-            //                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basic" }
-            //            },
-            //            new string[]{}
-            //        }
-            //    });
-            //});
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                        },
+                        new string[]{}
+                    }
+                });
+            });
 
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShapeUp.Interface;
 using ShapeUp.Model.Models;
@@ -112,7 +113,7 @@ namespace ShapeUp.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<IActionResult> GetCharges()
         {
             StripeConfiguration.SetApiKey(stripeSecretApiKey);

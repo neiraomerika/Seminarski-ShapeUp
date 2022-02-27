@@ -154,7 +154,7 @@ namespace ShapeUp.Desktop.PlanPrehrane
 
                 if (confirmation)
                 {
-                    object result = _planPrehraneAPI.Delete(_planPrehrane.Id);
+                    object result = _planPrehraneAPI.Delete<MPlanPrehrane>(_planPrehrane.Id);
                     _mboxHelper.Inform("Uspjesno obrisan plan prehrane.");
 
                     ShowPlanPrehraneForm();

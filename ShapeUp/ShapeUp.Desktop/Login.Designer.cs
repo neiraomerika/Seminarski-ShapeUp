@@ -1,7 +1,7 @@
 ﻿
 namespace ShapeUp.Desktop
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,7 @@ namespace ShapeUp.Desktop
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtEmail.Location = new System.Drawing.Point(13, 126);
+            this.txtEmail.Location = new System.Drawing.Point(13, 119);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(182, 23);
             this.txtEmail.TabIndex = 0;
@@ -49,18 +49,17 @@ namespace ShapeUp.Desktop
             // 
             this.lbl1.AutoSize = true;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl1.Location = new System.Drawing.Point(21, 49);
+            this.lbl1.Location = new System.Drawing.Point(14, 45);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(165, 20);
+            this.lbl1.Size = new System.Drawing.Size(179, 20);
             this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "Welcome to ShapeUp";
-            this.lbl1.Click += new System.EventHandler(this.lbl1_Click);
+            this.lbl1.Text = "Dobrodosli na ShapeUp";
             // 
             // lbl2
             // 
             this.lbl2.AutoSize = true;
             this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl2.Location = new System.Drawing.Point(10, 106);
+            this.lbl2.Location = new System.Drawing.Point(10, 99);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(42, 17);
             this.lbl2.TabIndex = 2;
@@ -70,16 +69,16 @@ namespace ShapeUp.Desktop
             // 
             this.lbl3.AutoSize = true;
             this.lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl3.Location = new System.Drawing.Point(10, 164);
+            this.lbl3.Location = new System.Drawing.Point(10, 157);
             this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(69, 17);
+            this.lbl3.Size = new System.Drawing.Size(57, 17);
             this.lbl3.TabIndex = 4;
-            this.lbl3.Text = "Password";
+            this.lbl3.Text = "Lozinka";
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtPassword.Location = new System.Drawing.Point(13, 184);
+            this.txtPassword.Location = new System.Drawing.Point(13, 177);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(182, 23);
             this.txtPassword.TabIndex = 3;
@@ -91,11 +90,11 @@ namespace ShapeUp.Desktop
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(112, 30);
             this.btnLogin.TabIndex = 5;
-            this.btnLogin.Text = "Sign in";
+            this.btnLogin.Text = "Prijavi se";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnLogin_MouseClick);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -106,9 +105,9 @@ namespace ShapeUp.Desktop
             this.Controls.Add(this.lbl2);
             this.Controls.Add(this.lbl1);
             this.Controls.Add(this.txtEmail);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 
