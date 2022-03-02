@@ -31,6 +31,9 @@ namespace ShapeUp.Desktop
             {
                 LoginResponse response = await _apiAuth.Login(login);
 
+                if (response.Role != "Administrator")
+                    throw new Exception();
+
                 if (response.IsAuthSuccessful)
                 {
                     APIService.Token = response.Token;

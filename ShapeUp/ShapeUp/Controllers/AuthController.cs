@@ -72,6 +72,7 @@ namespace ShapeUp.Controllers
         public async Task<IActionResult> Login([FromBody] UserLogin model)
         {
             var user = await _userManager.FindByNameAsync(model.Email);
+            var role = await _userManager.GetRolesAsync(user);
 
             if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
                 return Unauthorized(new LoginResponse { ErrorMessage = "Sorry we couldn\'t log you in. Try different email or password" });
@@ -84,7 +85,9 @@ namespace ShapeUp.Controllers
             var tokenOptions = _jwtHandler.GenerateTokenOptions(signingCredentials, claims);
             var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-            return Ok(new LoginResponse { IsAuthSuccessful = true, Token = token });
+            LoginResponse response = new LoginResponse { IsAuthSuccessful = true, Token = token, Role = role[0].ToString() };
+
+            return Ok(response);
 
         }
     }

@@ -87,7 +87,7 @@ namespace ShapeUp
             {
                 x.Filters.Add<ErrorFilter>();
             });
-                       
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen();
