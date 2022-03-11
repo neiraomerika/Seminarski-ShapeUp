@@ -36,8 +36,21 @@ namespace ShapeUp.Service
             {
                 entity = entity.Where(x => x.KategorijaProizvodaId == search.KategorijaProizvodaId);
             }
-            var list = await entity.ToListAsync();
+            var recommended = Recommend(entity);
+            var list = recommended.ToList();
             return _mapper.Map<List<MProizvodi>>(list);
+        }
+
+        public IEnumerable<Proizvod> Recommend(IQueryable<Proizvod> proizvodi)
+        {
+            var ocjeneProizvoda = new List<Tuple<decimal, Proizvod>>();
+            foreach (var item in proizvodi)
+            {
+                ocjeneProizvoda.Add(Tuple.Create(item.ProsjecnaOcjena, item));
+            }
+            ocjeneProizvoda = ocjeneProizvoda.OrderByDescending(x => x.Item1).ToList();
+            var list = ocjeneProizvoda.Select(x => x.Item2);
+            return list;
         }
 
     }

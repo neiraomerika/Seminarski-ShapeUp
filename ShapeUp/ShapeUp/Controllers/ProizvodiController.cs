@@ -1,4 +1,6 @@
-﻿using ShapeUp.Interface;
+﻿using Microsoft.AspNetCore.Mvc;
+using ShapeUp.Database;
+using ShapeUp.Interface;
 using ShapeUp.Model;
 using ShapeUp.Model.Models;
 using ShapeUp.Model.Request;
@@ -13,8 +15,14 @@ namespace ShapeUp.Controllers
     {
         private readonly IProizvodiService _service;
         public ProizvodiController(IProizvodiService service) : base (service)
-            {
-                _service = service;
-            }
+        {
+            _service = service;
+        }
+
+        public override async Task<List<MProizvodi>> Get(ProizvodiSearchObject search)
+        {
+            return await _service.Get(search);
+        }
+
     }
 }

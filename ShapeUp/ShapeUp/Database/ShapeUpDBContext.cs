@@ -95,7 +95,6 @@ namespace ShapeUp.Database
                                 .HasForeignKey(d => d.ProizvodId)
                                 .HasConstraintName("Proizvod_Ocjena_FK");
                 });
-
             modelBuilder.Entity<Mentorstvo>(entity =>
             {
                 entity.ToTable("Mentorstvo");
@@ -192,7 +191,7 @@ namespace ShapeUp.Database
 
                 entity.Property(e => e.Opis).HasMaxLength(450);
 
-                entity.Property(e => e.ProsjecnaOcjena).HasColumnType("decimal(18, 0)");
+                entity.Property(e => e.ProsjecnaOcjena).HasColumnType("decimal(18, 2)");
 
                 entity.HasOne(d => d.KategorijaProizvoda)
                     .WithMany(p => p.Proizvods)
