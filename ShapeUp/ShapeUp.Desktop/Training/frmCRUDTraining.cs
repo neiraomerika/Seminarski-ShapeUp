@@ -61,6 +61,11 @@ namespace ShapeUp.Desktop.Training
                 pbTrainingPicture.Image = ImageHelper.FromByteToImage(obj.Slika);
                 pbTrainingPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             }
+            else
+            {
+                pbTrainingPicture.Image = ShapeUp.Desktop.Properties.Resources.no_image;
+                pbTrainingPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
             txtVideo.Text = obj.VideoUrl;
         }
 

@@ -107,7 +107,8 @@ namespace ShapeUp.Desktop.Proizvodi
                         Naziv = txtNaziv.Text,
                         Opis = txtOpis.Text,
                         Cijena = decimal.Parse(txtCijena.Text),
-                        KategorijaProizvodaId = Int32.Parse(cmbKategorije.SelectedValue.ToString())
+                        KategorijaProizvodaId = Int32.Parse(cmbKategorije.SelectedValue.ToString()),
+                        ProsjecnaOcjena = decimal.Parse(txtProsjecnaOcjena.Text)
                     };
 
                     if (pbProizvod.Image != null)
@@ -124,7 +125,8 @@ namespace ShapeUp.Desktop.Proizvodi
                         Naziv = txtNaziv.Text,
                         Opis = txtOpis.Text,
                         Cijena = decimal.Parse(txtCijena.Text),
-                        KategorijaProizvodaId = Int32.Parse(cmbKategorije.SelectedValue.ToString())
+                        KategorijaProizvodaId = Int32.Parse(cmbKategorije.SelectedValue.ToString()),
+                        ProsjecnaOcjena = decimal.Parse(txtProsjecnaOcjena.Text)
                     };
 
                     if (pbProizvod.Image != null)

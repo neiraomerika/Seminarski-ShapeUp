@@ -61,9 +61,15 @@ namespace ShapeUp.Desktop.PlanPrehrane
             _isUpdate = true;
 
             txtDesc.Text = planPrehrane.Opis;
+            txtNutritivnaDesc.Text = planPrehrane.NutritivneVrijednosti;
             if (planPrehrane.Slika != null && planPrehrane.Slika.Length > 0)
             {
                 pbPlanPrehranePicture.Image = ImageHelper.FromByteToImage(planPrehrane.Slika);
+                pbPlanPrehranePicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                pbPlanPrehranePicture.Image = ShapeUp.Desktop.Properties.Resources.no_image;
                 pbPlanPrehranePicture.SizeMode = PictureBoxSizeMode.StretchImage;
             }
 
