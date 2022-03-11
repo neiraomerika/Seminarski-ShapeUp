@@ -77,5 +77,14 @@ namespace ShapeUp.Desktop.Users
 
             frm.Show();
         }
+
+        private void btnDodajKlijenta_Click(object sender, EventArgs e)
+        {
+            frmDodajKlijenta frm = new frmDodajKlijenta();
+            frm.MdiParent = this.ParentForm;
+
+            this.Close();
+            frm.Show();
+        }
     }
 }

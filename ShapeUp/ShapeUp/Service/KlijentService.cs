@@ -1,16 +1,19 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using ShapeUp.Database;
 using ShapeUp.Database.Models;
 using ShapeUp.Interface;
+using ShapeUp.Model.Dto;
 using ShapeUp.Model.Models;
 using ShapeUp.Model.Request;
 using ShapeUp.Model.SearchObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
@@ -23,8 +26,10 @@ namespace ShapeUp.Service
         private readonly UserManager<Klijent> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
+        private Klijent _klijent;
 
         public KlijentService(ShapeUpDBContext context,
+                              IHttpContextAccessor httpContextAccessor,
                               IMapper mapper,
                               UserManager<Klijent> userManager,
                               RoleManager<IdentityRole> roleManager,
@@ -35,6 +40,9 @@ namespace ShapeUp.Service
             _userManager = userManager;
             _roleManager = roleManager;
             _emailSender = emailSender;
+
+            if (httpContextAccessor.HttpContext.User.Identity.Name != null)
+                _klijent = _context.Users.First(x => x.UserName == httpContextAccessor.HttpContext.User.Identity.Name);
         }
 
         public async Task<List<MKlijent>> Get(KlijentSearchObject search)
@@ -162,14 +170,16 @@ namespace ShapeUp.Service
                 UserName = request.Email
             };
 
-            var result = await _userManager.CreateAsync(entity, request.Password);
+            string password = generatePassword();
+
+            var result = await _userManager.CreateAsync(entity, password);
             var role = _roleManager.FindByNameAsync(request.Role).Result;
 
             if (!result.Succeeded)
             {
                 var err = result.Errors.Select(e => e.Description);
 
-                throw new Exception();
+                throw new Exception(err.FirstOrDefault());
             }
 
             if (result.Succeeded)
@@ -179,14 +189,81 @@ namespace ShapeUp.Service
                 if (!roleAdd.Succeeded)
                     throw new Exception();
 
+                var prijave = _context.Set<Prijava>().AsQueryable();
+                if(prijave != null)
+                {
+                    var prijava = prijave.Where(x => x.KlijentId == entity.Id);
+                    if(!prijava.Any())
+                    {
+                        Prijava nova = new Prijava()
+                        {
+                            Datum = DateTime.Now,
+                            KlijentId = entity.Id
+                        };
+                    
+                        _context.Add<Prijava>(nova);
+                        _context.SaveChanges();
+                    }
+
+                }
+
                 string subject = "Shape Up - Lozinka korisničkog računa";
-                string htmlMessage = @"Poštovani,<br/><br/>" + "Lozinka za vas korisnički račun je: <b>{0}</b><br/>" + "Molimo Vas da nakon prijave promijenite svoju lozinku." + "<br/><br/>" + "Lijep pozdrav!" + "<br/>" + "Shape Up admin tim";
-                htmlMessage = string.Format(htmlMessage, request.Password);
+                string htmlMessage = @"Poštovani,<br/><br/>" + "Lozinka za vas korisnički račun je: <b>{0}</b><br/>" + "<br/><br/>" + "Lijep pozdrav!" + "<br/>" + "Shape Up admin tim";
+                htmlMessage = string.Format(htmlMessage, password);
                 await _emailSender.SendEmail(request.Email, subject, htmlMessage);
 
                 return _mapper.Map<MKlijent>(entity);
             }
             return _mapper.Map<MKlijent>(null);
+        }
+
+        string generatePassword ()
+        {
+            var chars = "1234567890zxcvbnmasdfghjklqwertyuiop";
+            int length = 10;
+            string password = null;
+            Random random = new Random();
+            for (int i = 0; i < length; i++)
+            {
+                password += chars[random.Next(0, chars.Length)];
+            }
+            return password;
+        }
+
+        public async Task<MKlijent> GetProfileInfo()
+        {
+            var klijent = _context.Set<Klijent>().AsQueryable();
+            var signUp = _context.Set<Prijava>().AsQueryable();
+
+            if(_klijent != null)
+            {
+                klijent = klijent.Where(x => x.Id == _klijent.Id);
+                signUp = signUp.Where(x => x.KlijentId == _klijent.Id);
+            }
+
+            var lista = await klijent.FirstAsync();
+            var mappedClient = _mapper.Map<MKlijent>(lista);
+
+            foreach (Prijava item in signUp)
+            {
+                mappedClient.SignUpDate = item.Datum;
+            }
+
+            return mappedClient;
+        }
+
+        public async Task<string> PostProfilePicture(UserImageUpload image)
+        {
+            if (_klijent != null)
+            {
+                var klijent = _context.Set<Klijent>().Find(_klijent.Id);
+                klijent.Picture = Convert.FromBase64String(image.Image);
+                _context.Update<Klijent>(klijent);
+                await _context.SaveChangesAsync();
+            
+                return "Uspjesno dodana slika";
+            }
+            return null;
         }
     }
 }

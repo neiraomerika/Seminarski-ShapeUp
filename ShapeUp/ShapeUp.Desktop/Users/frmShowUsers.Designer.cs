@@ -31,12 +31,6 @@ namespace ShapeUp.Desktop.Users
         {
             this.components = new System.ComponentModel.Container();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.mKlijentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.cmbActive = new System.Windows.Forms.ComboBox();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.btnPonistiFiltere = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +39,13 @@ namespace ShapeUp.Desktop.Users
             this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.signUpDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mKlijentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cmbActive = new System.Windows.Forms.ComboBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.btnPonistiFiltere = new System.Windows.Forms.Button();
+            this.btnDodajKlijenta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mKlijentBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -73,59 +74,6 @@ namespace ShapeUp.Desktop.Users
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.UseWaitCursor = true;
             this.dgvUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvUsers_MouseDoubleClick);
-            // 
-            // mKlijentBindingSource
-            // 
-            this.mKlijentBindingSource.DataSource = typeof(ShapeUp.Model.Models.MKlijent);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtSearch.Location = new System.Drawing.Point(77, 6);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(232, 23);
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // cmbActive
-            // 
-            this.cmbActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cmbActive.FormattingEnabled = true;
-            this.cmbActive.Location = new System.Drawing.Point(77, 35);
-            this.cmbActive.Name = "cmbActive";
-            this.cmbActive.Size = new System.Drawing.Size(232, 24);
-            this.cmbActive.TabIndex = 2;
-            this.cmbActive.SelectedIndexChanged += new System.EventHandler(this.cmbActive_SelectedIndexChanged);
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblSearch.Location = new System.Drawing.Point(10, 9);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(61, 17);
-            this.lblSearch.TabIndex = 3;
-            this.lblSearch.Text = "Pretrazi:";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblStatus.Location = new System.Drawing.Point(10, 38);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(52, 17);
-            this.lblStatus.TabIndex = 4;
-            this.lblStatus.Text = "Status:";
-            // 
-            // btnPonistiFiltere
-            // 
-            this.btnPonistiFiltere.Location = new System.Drawing.Point(182, 65);
-            this.btnPonistiFiltere.Name = "btnPonistiFiltere";
-            this.btnPonistiFiltere.Size = new System.Drawing.Size(127, 23);
-            this.btnPonistiFiltere.TabIndex = 5;
-            this.btnPonistiFiltere.Text = "Ponisti Filtere";
-            this.btnPonistiFiltere.UseVisualStyleBackColor = true;
-            this.btnPonistiFiltere.Click += new System.EventHandler(this.btnPonistiFiltere_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -183,6 +131,69 @@ namespace ShapeUp.Desktop.Users
             this.signUpDateDataGridViewTextBoxColumn.Name = "signUpDateDataGridViewTextBoxColumn";
             this.signUpDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // mKlijentBindingSource
+            // 
+            this.mKlijentBindingSource.DataSource = typeof(ShapeUp.Model.Models.MKlijent);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtSearch.Location = new System.Drawing.Point(77, 6);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(232, 23);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // cmbActive
+            // 
+            this.cmbActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cmbActive.FormattingEnabled = true;
+            this.cmbActive.Location = new System.Drawing.Point(77, 35);
+            this.cmbActive.Name = "cmbActive";
+            this.cmbActive.Size = new System.Drawing.Size(232, 24);
+            this.cmbActive.TabIndex = 2;
+            this.cmbActive.SelectedIndexChanged += new System.EventHandler(this.cmbActive_SelectedIndexChanged);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblSearch.Location = new System.Drawing.Point(10, 9);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(61, 17);
+            this.lblSearch.TabIndex = 3;
+            this.lblSearch.Text = "Pretrazi:";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblStatus.Location = new System.Drawing.Point(10, 38);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(52, 17);
+            this.lblStatus.TabIndex = 4;
+            this.lblStatus.Text = "Status:";
+            // 
+            // btnPonistiFiltere
+            // 
+            this.btnPonistiFiltere.Location = new System.Drawing.Point(182, 65);
+            this.btnPonistiFiltere.Name = "btnPonistiFiltere";
+            this.btnPonistiFiltere.Size = new System.Drawing.Size(127, 23);
+            this.btnPonistiFiltere.TabIndex = 5;
+            this.btnPonistiFiltere.Text = "Ponisti Filtere";
+            this.btnPonistiFiltere.UseVisualStyleBackColor = true;
+            this.btnPonistiFiltere.Click += new System.EventHandler(this.btnPonistiFiltere_Click);
+            // 
+            // btnDodajKlijenta
+            // 
+            this.btnDodajKlijenta.Location = new System.Drawing.Point(645, 94);
+            this.btnDodajKlijenta.Name = "btnDodajKlijenta";
+            this.btnDodajKlijenta.Size = new System.Drawing.Size(136, 23);
+            this.btnDodajKlijenta.TabIndex = 6;
+            this.btnDodajKlijenta.Text = "Dodaj Klijenta";
+            this.btnDodajKlijenta.UseVisualStyleBackColor = true;
+            this.btnDodajKlijenta.Click += new System.EventHandler(this.btnDodajKlijenta_Click);
+            // 
             // frmShowUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +201,7 @@ namespace ShapeUp.Desktop.Users
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(794, 453);
+            this.Controls.Add(this.btnDodajKlijenta);
             this.Controls.Add(this.btnPonistiFiltere);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblSearch);
@@ -226,5 +238,6 @@ namespace ShapeUp.Desktop.Users
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn pictureDataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn signUpDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnDodajKlijenta;
     }
 }

@@ -114,9 +114,9 @@ namespace ShapeUp.Desktop
 
         private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKlijent frm = new frmKlijent(null);
+            frmDodajKlijenta frm = new frmDodajKlijenta();
             frm.MdiParent = this;
-            frm.Text = "Korisnik";
+            frm.Text = "Dodaj Klijenta";
 
             if (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();
