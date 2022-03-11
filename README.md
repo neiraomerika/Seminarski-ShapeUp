@@ -5,6 +5,3 @@ Seminarski iz predmeta Razvoj Softvera 2
 Admin: <br />
   email: admin@admin.com <br />
   password: Lozinka123! <br />
-User:<br />
-  email: test@test.com<br />
-  password: Lozinka123!<br />
