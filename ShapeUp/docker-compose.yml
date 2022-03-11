@@ -1,0 +1,33 @@
+version: '3'
+services:
+#mssql docker
+  shapeup-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Lozinka123!
+      - MSSQL_PID=Developer
+    ports:
+      - 1433:1433
+    networks:
+      - shapeupnet
+
+  shapeup-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=shapeup-sql,1433;Database=180010;User=sa;Password=Lozinka123!;ConnectRetryCount=0
+    ports:
+      - 8010:5010
+    networks:
+      - shapeupnet
+    links:
+      - shapeup-sql
+    depends_on:
+      - shapeup-sql
+      
+networks:
+  shapeupnet:
+    driver: bridge      
