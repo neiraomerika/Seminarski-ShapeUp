@@ -6,8 +6,7 @@ namespace ShapeUp.Model.SearchObjects
 {
     public class MentorstvoSearchObject
     {
-        public DateTime DatumOd { get; set; }
-        public DateTime DatumDo { get; set; }
+        public DateTime Datum { get; set; }
         public string Klijent { get; set; }
     }
 }

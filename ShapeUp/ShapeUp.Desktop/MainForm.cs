@@ -1,4 +1,5 @@
-﻿using ShapeUp.Desktop.PlanPrehrane;
+﻿using ShapeUp.Desktop.Mentorstvo;
+using ShapeUp.Desktop.PlanPrehrane;
 using ShapeUp.Desktop.Proizvodi;
 using ShapeUp.Desktop.Recenzija;
 using ShapeUp.Desktop.Training;
@@ -225,6 +226,30 @@ namespace ShapeUp.Desktop
             frmCRUDProizvod frm = new frmCRUDProizvod();
             frm.MdiParent = this;
             frm.Text = "Proizvod";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void prikaziSvaMentorstvaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowMentorstva frm = new frmShowMentorstva();
+            frm.MdiParent = this;
+            frm.Text = "Mentorstva";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
+            frm.Show();
+        }
+
+        private void dodajMentorstvoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCreateMentorstvo frm = new frmCreateMentorstvo();
+            frm.MdiParent = this;
+            frm.Text = "Mentorstvo";
 
             if (this.ActiveMdiChild != null)
                 this.ActiveMdiChild.Close();

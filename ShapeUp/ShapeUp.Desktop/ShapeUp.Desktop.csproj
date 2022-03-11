@@ -233,11 +233,23 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mentorstvo\frmCreateMentorstvo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mentorstvo\frmCreateMentorstvo.Designer.cs">
+      <DependentUpon>frmCreateMentorstvo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mentorstvo\frmDgvMentorstvo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mentorstvo\frmDgvMentorstvo.Designer.cs">
       <DependentUpon>frmDgvMentorstvo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mentorstvo\frmShowMentorstva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mentorstvo\frmShowMentorstva.Designer.cs">
+      <DependentUpon>frmShowMentorstva.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanPrehrane\frmCRUDPlanPrehrane.cs">
       <SubType>Form</SubType>
@@ -352,8 +364,14 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mentorstvo\frmCreateMentorstvo.resx">
+      <DependentUpon>frmCreateMentorstvo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mentorstvo\frmDgvMentorstvo.resx">
       <DependentUpon>frmDgvMentorstvo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mentorstvo\frmShowMentorstva.resx">
+      <DependentUpon>frmShowMentorstva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanPrehrane\frmCRUDPlanPrehrane.resx">
       <DependentUpon>frmCRUDPlanPrehrane.cs</DependentUpon>
