@@ -77,15 +77,12 @@ namespace ShapeUp.Controllers
             if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
                 return Unauthorized(new LoginResponse { ErrorMessage = "Sorry we couldn\'t log you in. Try different email or password" });
 
-            if (!await _userManager.IsEmailConfirmedAsync(user))
-                return Unauthorized(new LoginResponse { ErrorMessage = "Email is not confirmed" });
-
             var signingCredentials = _jwtHandler.GetSigningCredentials();
             var claims = await _jwtHandler.GetClaims(user);
             var tokenOptions = _jwtHandler.GenerateTokenOptions(signingCredentials, claims);
             var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-            LoginResponse response = new LoginResponse { IsAuthSuccessful = true, Token = token, Role = role[0].ToString() };
+            LoginResponse response = new LoginResponse { IsAuthSuccessful = true, Token = token, Role = role[0].ToString(), Firstname = user.FirstName };
 
             return Ok(response);
 

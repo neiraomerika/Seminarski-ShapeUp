@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShapeUp.Interface;
 using ShapeUp.Model;
+using ShapeUp.Model.Dto;
 using ShapeUp.Model.Models;
 using ShapeUp.Model.Request;
 using ShapeUp.Model.SearchObjects;
@@ -44,6 +47,20 @@ namespace ShapeUp.Controllers
         public async Task<bool> Delete(string Id)
         {
             return await _service.Delete(Id);
+        }
+
+        [HttpGet("profile-info")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<MKlijent> GetProfileInfo()
+        {
+            return await _service.GetProfileInfo();
+        }
+
+        [HttpPost("profile-picture")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<string> PostProfilePicture(UserImageUpload img)
+        {
+            return await _service.PostProfilePicture(img);
         }
     }
 }

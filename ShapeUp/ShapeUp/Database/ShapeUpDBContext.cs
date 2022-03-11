@@ -86,11 +86,9 @@ namespace ShapeUp.Database
 
             modelBuilder.Entity<KlijentProizvodOcjena>(entity =>
                 {
-                    entity.HasNoKey();
-
                     entity.ToTable("KlijentProizvodOcjena");
 
-                    entity.Property(e => e.Ocjena).HasColumnType("decimal(18, 0)");
+                    entity.Property(e => e.Ocjena).HasColumnType("decimal(18, 2)");
 
                     entity.HasOne(d => d.Proizvod)
                                 .WithMany()

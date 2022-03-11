@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShapeUp.Model.Dto;
 using ShapeUp.Model.Models;
 using ShapeUp.Model.Request;
 using ShapeUp.Model.SearchObjects;
@@ -12,8 +13,10 @@ namespace ShapeUp.Interface
     {
         Task<List<MKlijent>> Get(KlijentSearchObject search);
         Task<MKlijent> GetById(string Id);
+        Task<MKlijent> GetProfileInfo();
         Task<MKlijent> Update(string Id, KlijentUpdateRequest request);
         Task<bool> Delete(string Id);
         Task<MKlijent> Insert(KlijentInsertRequest request);
+        Task<string> PostProfilePicture(UserImageUpload img);
     }
 }

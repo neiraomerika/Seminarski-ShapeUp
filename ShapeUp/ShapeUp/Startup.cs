@@ -53,7 +53,18 @@ namespace ShapeUp
             services.AddDbContext<ShapeUpDBContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("MiralemovaConnection")));
 
-            services.AddIdentity<Klijent, IdentityRole>()
+            services.AddIdentity<Klijent, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 0;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.User.RequireUniqueEmail = true;
+            })
                 .AddEntityFrameworkStores<ShapeUpDBContext>();
 
             var jwtSettings = Configuration.GetSection("JwtSettings");
@@ -131,6 +142,8 @@ namespace ShapeUp
             services.AddScoped<IMentorstvoService, MentorstvoService>();
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IUplataService, UplataService>();
+            services.AddScoped<INapredakService, NapredakService>();
+            services.AddScoped<IKlijentProizvodOcjenaService, KlijentProizvodOcjenaService>();
             services.AddTransient<JwtHandler>();
 
 
