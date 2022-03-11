@@ -36,5 +36,30 @@ namespace ShapeUp.Service
             var list = await entity.ToListAsync();
             return _mapper.Map<List<MMentorstvo>>(list);
         }
+        
+        public virtual async Task<MMentorstvo> Insert(MentorstvoInsertRequest request)
+        {
+            var mentorstvo = new Mentorstvo
+            {
+                DatumPocetka = request.DatumPocetka,
+                DatumZavrsetka = request.DatumZavrsetka,
+                NazivKlijenta = request.NazivKlijenta
+            };
+            var uplata = new Uplatum
+            {
+                Datum = request.DatumUplate,
+                Iznos = request.Iznos
+            };
+
+            _context.Set<Uplatum>().Add(uplata);
+            _context.SaveChanges();
+
+            mentorstvo.UplataId = uplata.Id;
+
+            _context.Set<Mentorstvo>().Add(mentorstvo);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<MMentorstvo>(mentorstvo);
+        }
     }
 }

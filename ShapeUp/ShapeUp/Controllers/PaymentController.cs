@@ -85,7 +85,7 @@ namespace ShapeUp.Controllers
             }
         }
 
-        private bool MakePayment(string token, long? amount, string currency, int mentorstvoId, string description)
+        private bool MakePayment(string token, long? amount, string currency, int? mentorstvoId, string description)
         {
             try
             {

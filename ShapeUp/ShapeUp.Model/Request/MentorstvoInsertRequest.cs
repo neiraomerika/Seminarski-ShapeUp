@@ -8,6 +8,9 @@ namespace ShapeUp.Model.Request
     {
         public DateTime DatumPocetka { get; set; }
         public DateTime DatumZavrsetka { get; set; }
-        public int UplataId { get; set; }
+        public string NazivKlijenta { get; set; }
+
+        public DateTime DatumUplate { get; set; }
+        public decimal Iznos { get; set; }
     }
 }

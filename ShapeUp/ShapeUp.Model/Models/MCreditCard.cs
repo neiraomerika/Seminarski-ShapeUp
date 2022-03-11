@@ -38,7 +38,7 @@ namespace ShapeUp.Model.Models
         [JsonProperty("issuing_card")]
         public string IssuingCardId { get; set; }
         [JsonProperty("mentorstvoId")]
-        public int MentorstvoId { get; set; }
+        public int? MentorstvoId { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
     }
