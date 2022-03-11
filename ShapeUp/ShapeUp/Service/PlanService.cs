@@ -31,11 +31,11 @@ namespace ShapeUp.Service
                 .Include(x => x.Mentorstvo)
                 .Include(x => x.PlanPrehrane)
                 .Include(x => x.Trening);
-            
-           //if (search.Id.HasValue)
-           // {
-           //     entity = entity.Where(x => x.KategorijaTreningaId == search.Id);
-           // }
+
+            if (!string.IsNullOrEmpty(search.KlijentId))
+            {
+                entity = entity.Where(x => x.KlijentId == search.KlijentId).OrderByDescending(x => x.Datum);
+            }
 
             var list = await entity.ToListAsync();
             return _mapper.Map<List<MPlan>>(list);

@@ -19,7 +19,7 @@ namespace ShapeUp.Controllers
         }
 
         [HttpPost]
-        public async Task<T>Insert(TInsert request)
+        public virtual async Task<T>Insert(TInsert request)
         {
             return await _service.Insert(request);
         }

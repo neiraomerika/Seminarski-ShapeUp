@@ -1,14 +1,11 @@
-﻿using ShapeUp.Database.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-//#nullable disable
-
-namespace ShapeUp.Database
+namespace ShapeUp.Model.Request
 {
-    public partial class Napredak
+    public class NapredakUpdateRequest
     {
-        public int Id { get; set; }
         public int? Tezina { get; set; }
         public int? ObimDesneRuke { get; set; }
         public int? ObimLijeveRuke { get; set; }
@@ -18,6 +15,5 @@ namespace ShapeUp.Database
         public int? ObimLijeveNoge { get; set; }
         public string KlijentId { get; set; }
         public DateTime Datum { get; set; }
-        public virtual Klijent Klijent { get; set; }
     }
 }
