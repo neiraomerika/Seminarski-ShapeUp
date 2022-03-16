@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShapeUp.Database;
 
 namespace ShapeUp.Migrations
 {
     [DbContext(typeof(ShapeUpDBContext))]
-    partial class ShapeUpDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220316202334_add_rest_of_the_data")]
+    partial class add_rest_of_the_data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -375,6 +377,44 @@ namespace ShapeUp.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8c12529b-2522-41d0-9e41-81765011d8d7",
+                            AccessFailedCount = 0,
+                            Active = false,
+                            ConcurrencyStamp = "af0a9c1b-48b0-48db-a712-84e508489939",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = false,
+                            FirstName = "Admin",
+                            LastName = "Admin",
+                            LockoutEnabled = false,
+                            PasswordHash = "AQAAAAEAACcQAAAAEDN+cf7SfbN5luvDHi3DZKeie49/i/5EeXxD2tQauLllyyTrceb6qNjwb3aKXLfmxQ==",
+                            PhoneNumber = "123-123-123",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "42e828d3-72fc-4913-abff-743dd43fbd6b",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        },
+                        new
+                        {
+                            Id = "7ed7b7ac-1ca0-4a8c-a6a8-43e786872cf8",
+                            AccessFailedCount = 0,
+                            Active = false,
+                            ConcurrencyStamp = "68522e8b-ee35-4624-8eae-59f62066a9f3",
+                            Email = "test@test.com",
+                            EmailConfirmed = false,
+                            FirstName = "Test",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            PasswordHash = "AQAAAAEAACcQAAAAEDvqm0caG71RYK7u2oJYw+h6UQoXa9VqarhIW9mEZd+J1hffFcOuiGRAZaf7rpxvrA==",
+                            PhoneNumber = "123-123-123",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6f70a850-3dbd-4394-97c0-7d0366f86b5e",
+                            TwoFactorEnabled = false,
+                            UserName = "test@test.com"
+                        });
                 });
 
             modelBuilder.Entity("ShapeUp.Database.Napredak", b =>
@@ -562,14 +602,6 @@ namespace ShapeUp.Migrations
                     b.HasIndex("KlijentId");
 
                     b.ToTable("Prijava");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Datum = new DateTime(2022, 3, 16, 21, 40, 15, 35, DateTimeKind.Local).AddTicks(7616),
-                            KlijentId = "KLIJENT"
-                        });
                 });
 
             modelBuilder.Entity("ShapeUp.Database.Proizvod", b =>
@@ -651,16 +683,6 @@ namespace ShapeUp.Migrations
                     b.HasIndex("MentorstvoId");
 
                     b.ToTable("Recenzija");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Datum = new DateTime(2022, 3, 16, 21, 40, 15, 42, DateTimeKind.Local).AddTicks(3677),
-                            MentorstvoId = 1,
-                            Ocjena = 0,
-                            Opis = "Vrlo dobro odradjen mjesec, u slijedecem idemo jos jace."
-                        });
                 });
 
             modelBuilder.Entity("ShapeUp.Database.Trening", b =>
@@ -718,6 +740,22 @@ namespace ShapeUp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Uplata");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Datum = new DateTime(2022, 3, 16, 21, 23, 33, 780, DateTimeKind.Local).AddTicks(7632),
+                            Iznos = 200m,
+                            Placeno = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Datum = new DateTime(2022, 3, 16, 21, 23, 33, 787, DateTimeKind.Local).AddTicks(105),
+                            Iznos = 250m,
+                            Placeno = false
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

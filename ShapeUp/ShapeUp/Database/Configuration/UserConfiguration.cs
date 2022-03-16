@@ -15,7 +15,6 @@ namespace ShapeUp.Database.Configuration
             builder.HasData(
             new Klijent
             {
-                Id = "admin",
                 FirstName = "Admin",
                 LastName = "Admin",
                 Email = "admin@admin.com",
@@ -25,13 +24,13 @@ namespace ShapeUp.Database.Configuration
             },
             new Klijent
             {
-                Id = "korisnik",
                 FirstName = "Test",
                 LastName = "Test",
                 Email = "test@test.com",
                 PhoneNumber = "123-123-123",
                 UserName = "test@test.com",
                 PasswordHash = "AQAAAAEAACcQAAAAEDvqm0caG71RYK7u2oJYw+h6UQoXa9VqarhIW9mEZd+J1hffFcOuiGRAZaf7rpxvrA==",
+                Active = true,
             });
         }
     }

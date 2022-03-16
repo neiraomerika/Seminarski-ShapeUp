@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ShapeUp.Database;
+using ShapeUp.Database.Models;
 
 namespace ShapeUp
 {
@@ -19,7 +21,8 @@ namespace ShapeUp
             using (var scope = host.Services.CreateScope())
             {
                 var database = scope.ServiceProvider.GetService<ShapeUpDBContext>();
-                new SetupService().Init(database);
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Klijent>>();
+                new SetupService().Init(database, userManager);
             }
             host.Run();
         }

@@ -22,16 +22,16 @@ namespace ShapeUp.Database.Configuration
                 KategorijaProizvodaId = 2,
                 Slika = null
             },
-             new Proizvod
-             {
-                 Id = 2,
-                 Naziv = "Vitamin C",
-                 Opis = "1000mg vitamina c",
-                 ProsjecnaOcjena = 5,
-                 Cijena = 20,
-                 KategorijaProizvodaId = 9,
-                 Slika = null
-             });
+            new Proizvod
+            {
+                Id = 2,
+                Naziv = "Vitamin C",
+                Opis = "1000mg vitamina c",
+                ProsjecnaOcjena = 5,
+                Cijena = 20,
+                KategorijaProizvodaId = 9,
+                Slika = null
+            });
         }
     }
 }

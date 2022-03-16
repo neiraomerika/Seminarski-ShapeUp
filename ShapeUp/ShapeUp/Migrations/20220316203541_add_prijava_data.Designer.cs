@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShapeUp.Database;
 
 namespace ShapeUp.Migrations
 {
     [DbContext(typeof(ShapeUpDBContext))]
-    partial class ShapeUpDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220316203541_add_prijava_data")]
+    partial class add_prijava_data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -567,7 +569,7 @@ namespace ShapeUp.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2022, 3, 16, 21, 40, 15, 35, DateTimeKind.Local).AddTicks(7616),
+                            Datum = new DateTime(2022, 3, 16, 21, 35, 41, 57, DateTimeKind.Local).AddTicks(6461),
                             KlijentId = "KLIJENT"
                         });
                 });
@@ -651,16 +653,6 @@ namespace ShapeUp.Migrations
                     b.HasIndex("MentorstvoId");
 
                     b.ToTable("Recenzija");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Datum = new DateTime(2022, 3, 16, 21, 40, 15, 42, DateTimeKind.Local).AddTicks(3677),
-                            MentorstvoId = 1,
-                            Ocjena = 0,
-                            Opis = "Vrlo dobro odradjen mjesec, u slijedecem idemo jos jace."
-                        });
                 });
 
             modelBuilder.Entity("ShapeUp.Database.Trening", b =>
