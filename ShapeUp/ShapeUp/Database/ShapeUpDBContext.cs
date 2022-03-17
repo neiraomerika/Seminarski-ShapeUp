@@ -49,16 +49,16 @@ namespace ShapeUp.Database
             base.OnModelCreating(modelBuilder);
 
             // pocetni podaci za bazu
-            //modelBuilder.ApplyConfiguration(new RoleConfiguration());
-            //modelBuilder.ApplyConfiguration(new CiljConfiguration());
-            //modelBuilder.ApplyConfiguration(new KategTreningConfiguration());
-            //modelBuilder.ApplyConfiguration(new PlanPrehraneConfiguration());
-            //modelBuilder.ApplyConfiguration(new TreningConfiguration());
-            //modelBuilder.ApplyConfiguration(new KategProizvodaConfiguration());
-            //modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new CiljConfiguration());
+            modelBuilder.ApplyConfiguration(new KategTreningConfiguration());
+            modelBuilder.ApplyConfiguration(new PlanPrehraneConfiguration());
+            modelBuilder.ApplyConfiguration(new TreningConfiguration());
+            modelBuilder.ApplyConfiguration(new KategProizvodaConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ProizvodiConfiguration());
             modelBuilder.ApplyConfiguration(new MentorstvoConfiguration());
-            //modelBuilder.ApplyConfiguration(new UplataConfiguration());
+            modelBuilder.ApplyConfiguration(new UplataConfiguration());
             modelBuilder.ApplyConfiguration(new PlanConfiguration());
             modelBuilder.ApplyConfiguration(new KlijentProizvodOcjenaConf());
             modelBuilder.ApplyConfiguration(new PrijavaConfiguration());

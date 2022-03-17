@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using ShapeUp.Database;
+using ShapeUp.Database.Models;
 
 namespace ShapeUp.Migrations
 {
@@ -12,8 +14,17 @@ namespace ShapeUp.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Active", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Picture", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "8c12529b-2522-41d0-9e41-81765011d8d7", 0, false, "af0a9c1b-48b0-48db-a712-84e508489939", "admin@admin.com", false, "Admin", "Admin", false, null, null, null, "AQAAAAEAACcQAAAAEDN+cf7SfbN5luvDHi3DZKeie49/i/5EeXxD2tQauLllyyTrceb6qNjwb3aKXLfmxQ==", "123-123-123", false, null, "42e828d3-72fc-4913-abff-743dd43fbd6b", false, "admin@admin.com" },
-                    { "7ed7b7ac-1ca0-4a8c-a6a8-43e786872cf8", 1, false, "68522e8b-ee35-4624-8eae-59f62066a9f3", "test@test.com", false, "Test", "Test", false, null, null, null, "AQAAAAEAACcQAAAAEDvqm0caG71RYK7u2oJYw+h6UQoXa9VqarhIW9mEZd+J1hffFcOuiGRAZaf7rpxvrA==", "123-123-123", false, null, "6f70a850-3dbd-4394-97c0-7d0366f86b5e", false, "test@test.com" }
+                    { "8c12529b-2522-41d0-9e41-81765011d8d7", 0, false, "af0a9c1b-48b0-48db-a712-84e508489939", "admin@admin.com", false, "Admin", "Admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", null, "123-123-123", false, null, "42e828d3-72fc-4913-abff-743dd43fbd6b", false, "admin@admin.com" },
+                    { "7ed7b7ac-1ca0-4a8c-a6a8-43e786872cf8", 1, false, "68522e8b-ee35-4624-8eae-59f62066a9f3", "test@test.com", false, "Test", "Test", false, null, "TEST@TEST.COM", "TEST@TEST.COM", null, "123-123-123", false, null, "6f70a850-3dbd-4394-97c0-7d0366f86b5e", false, "test@test.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[,]
+                {
+                    { "8c12529b-2522-41d0-9e41-81765011d8d7", "ebd8d330-d576-4f9b-a0cf-a758edc0c3c7" },
+                    { "7ed7b7ac-1ca0-4a8c-a6a8-43e786872cf8", "b2870dbf-8690-4ba1-a52a-6714ef8c0fb6" }
                 });
 
             migrationBuilder.InsertData(

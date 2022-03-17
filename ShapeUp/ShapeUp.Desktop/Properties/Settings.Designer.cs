@@ -25,7 +25,7 @@ namespace ShapeUp.Desktop.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44341/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8010/api")]
         public string ApiURL {
             get {
                 return ((string)(this["ApiURL"]));

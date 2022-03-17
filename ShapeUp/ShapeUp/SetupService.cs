@@ -18,6 +18,22 @@ namespace ShapeUp
         public void Init(ShapeUpDBContext context, UserManager<Klijent> userManager)
         {
             context.Database.Migrate();
+
+            var korisnici = context.Set<Klijent>().AsQueryable();
+
+            PasswordHasher<Klijent> hasher = new PasswordHasher<Klijent>();
+
+            Klijent admin = korisnici.Where(x => x.FirstName == "Admin").First() as Klijent;
+            Klijent klijent = korisnici.Where(x => x.FirstName == "Test").First() as Klijent;
+
+            admin.PasswordHash = hasher.HashPassword(admin, "Lozinka123!");
+            klijent.PasswordHash = hasher.HashPassword(klijent, "Lozinka123!");
+
+            context.Update<Klijent>(admin);
+            context.SaveChanges();
+
+            context.Update<Klijent>(klijent);
+            context.SaveChanges();
         }
     }
 }
