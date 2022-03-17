@@ -32,7 +32,7 @@ namespace ShapeUp.Controllers
         }
 
         [HttpPost]
-        public async Task<MKlijent> Insert([FromQuery] KlijentInsertRequest request)
+        public async Task<MKlijent> Insert([FromBody] KlijentInsertRequest request)
         {
             return await _service.Insert(request);
         }

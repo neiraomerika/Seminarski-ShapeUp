@@ -141,15 +141,15 @@ namespace ShapeUp.Desktop.Plan
 
         private async void btnBack_Click(object sender, EventArgs e)
         {
-            var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);
-            var plans = await _planService.Get<List<MPlan>>(klijent.Id);
+            MKlijent klijent =_plan.Klijent;
+            var plans = await _planService.Get<List<MPlan>>(null);
 
-            klijent.Plans = plans;
+            klijent.Plans = plans.AsQueryable().Where(x => x.KlijentId == klijent.Id).ToList();
 
             frmKlijent frm = new frmKlijent(klijent);
             frm.MdiParent = this.ParentForm;
-            this.Close();
             frm.Show();
+            this.Close();
         }
 
         private void btnTrening_Click(object sender, EventArgs e)

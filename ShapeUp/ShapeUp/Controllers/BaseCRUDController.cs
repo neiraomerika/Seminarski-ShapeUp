@@ -30,7 +30,7 @@ namespace ShapeUp.Controllers
             return await _service.Update(ID, request);
         }
         [HttpDelete("{ID}")]
-        public async Task<bool>Delete(int ID)
+        public async Task<T>Delete(int ID)
         {
             return await _service.Delete(ID);
         }

@@ -21,20 +21,12 @@ namespace ShapeUp.Service
             _mapper = mapper;
         }
 
-        public virtual async Task<bool> Delete(int ID)
+        public virtual async Task<TModel> Delete(int ID)
         {
             var entity = _context.Set<TDatabase>().Find(ID);
-            try
-            {
                 _context.Set<TDatabase>().Remove(entity);
                 await _context.SaveChangesAsync();
-                return true;
-
-            }
-            catch(Exception ex)
-            {
-                return false;
-            }
+                return _mapper.Map<TModel>(entity);
         }
 
         public virtual Task<List<TModel>> Get(ProizvodiSearchObject search = null)

@@ -126,7 +126,6 @@ namespace ShapeUp.Desktop.Proizvodi
                         Opis = txtOpis.Text,
                         Cijena = decimal.Parse(txtCijena.Text),
                         KategorijaProizvodaId = Int32.Parse(cmbKategorije.SelectedValue.ToString()),
-                        ProsjecnaOcjena = decimal.Parse(txtProsjecnaOcjena.Text)
                     };
 
                     if (pbProizvod.Image != null)

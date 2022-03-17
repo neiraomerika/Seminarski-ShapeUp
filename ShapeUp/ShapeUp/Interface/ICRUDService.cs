@@ -9,7 +9,7 @@ namespace ShapeUp.Interface
     {
         Task<T> Insert(TInsert request);
         Task<T> Update(int ID, TUpdate request);
-        Task<bool> Delete(int ID);
+        Task<T> Delete(int ID);
        
     }
 }

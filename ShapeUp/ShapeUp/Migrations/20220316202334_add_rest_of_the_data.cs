@@ -15,7 +15,7 @@ namespace ShapeUp.Migrations
                 values: new object[,]
                 {
                     { "8c12529b-2522-41d0-9e41-81765011d8d7", 0, false, "af0a9c1b-48b0-48db-a712-84e508489939", "admin@admin.com", false, "Admin", "Admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", null, "123-123-123", false, null, "42e828d3-72fc-4913-abff-743dd43fbd6b", false, "admin@admin.com" },
-                    { "7ed7b7ac-1ca0-4a8c-a6a8-43e786872cf8", 1, false, "68522e8b-ee35-4624-8eae-59f62066a9f3", "test@test.com", false, "Test", "Test", false, null, "TEST@TEST.COM", "TEST@TEST.COM", null, "123-123-123", false, null, "6f70a850-3dbd-4394-97c0-7d0366f86b5e", false, "test@test.com" }
+                    { "7ed7b7ac-1ca0-4a8c-a6a8-43e786872cf8", 0, true, "68522e8b-ee35-4624-8eae-59f62066a9f3", "test@test.com", false, "Test", "Test", false, null, "TEST@TEST.COM", "TEST@TEST.COM", null, "123-123-123", false, null, "6f70a850-3dbd-4394-97c0-7d0366f86b5e", false, "test@test.com" }
                 });
 
             migrationBuilder.InsertData(
