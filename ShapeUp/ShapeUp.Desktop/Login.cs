@@ -12,7 +12,7 @@ namespace ShapeUp.Desktop
 {
     public partial class Login : Form
     {
-        APIService _apiAuth = new APIService("auth");
+        APIService _apiAuth = new APIService("auth/login");
         private MBoxHelper _mboxHelper = new MBoxHelper();
 
         public Login()

@@ -46,13 +46,11 @@ namespace ShapeUp.Desktop
             }
             catch (FlurlHttpException ex)
             {
-                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+                var errors = ex.GetBaseException();
 
                 var stringBuilder = new StringBuilder();
-                foreach (var error in errors)
-                {
-                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
-                }
+                 
+                stringBuilder.AppendLine(errors.ToString());
 
                 MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default(T);
@@ -61,24 +59,15 @@ namespace ShapeUp.Desktop
 
         public async Task<LoginResponse> Login(object request)
         {
-            var url = $"{Properties.Settings.Default.ApiURL}/{_route}/login";
+            var url = $"{Properties.Settings.Default.ApiURL}/{_route}";
             try
             {
                 var result = await url.PostJsonAsync(request).ReceiveJson<LoginResponse>();
 
                 return result;
             }
-            catch (FlurlHttpException ex)
+            catch
             {
-                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
-
-                var stringBuilder = new StringBuilder();
-                foreach (var error in errors)
-                {
-                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
-                }
-
-                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return (new LoginResponse { ErrorMessage = "Doslo je do greske prilikom prijave!" });
             }
         }

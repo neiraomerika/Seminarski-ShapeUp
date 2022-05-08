@@ -35,12 +35,13 @@ namespace ShapeUp.Desktop.Mentorstvo
             this.mMentorstvoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mMentorstvoBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dgvMentorstvo = new System.Windows.Forms.DataGridView();
-            this.mMentorstvoBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumPocetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumZavrsetkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uplataIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivKlijentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mMentorstvoBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnDodajMentorstvo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mMentorstvoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMentorstvoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMentorstvoBindingSource2)).BeginInit();
@@ -90,10 +91,6 @@ namespace ShapeUp.Desktop.Mentorstvo
             this.dgvMentorstvo.TabIndex = 4;
             this.dgvMentorstvo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMentorstvo_MouseDoubleClick);
             // 
-            // mMentorstvoBindingSource3
-            // 
-            this.mMentorstvoBindingSource3.DataSource = typeof(ShapeUp.Model.Models.MMentorstvo);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -136,11 +133,26 @@ namespace ShapeUp.Desktop.Mentorstvo
             this.nazivKlijentaDataGridViewTextBoxColumn.Name = "nazivKlijentaDataGridViewTextBoxColumn";
             this.nazivKlijentaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // mMentorstvoBindingSource3
+            // 
+            this.mMentorstvoBindingSource3.DataSource = typeof(ShapeUp.Model.Models.MMentorstvo);
+            // 
+            // btnDodajMentorstvo
+            // 
+            this.btnDodajMentorstvo.Location = new System.Drawing.Point(469, 53);
+            this.btnDodajMentorstvo.Name = "btnDodajMentorstvo";
+            this.btnDodajMentorstvo.Size = new System.Drawing.Size(133, 23);
+            this.btnDodajMentorstvo.TabIndex = 5;
+            this.btnDodajMentorstvo.Text = "Dodaj mentorstvo";
+            this.btnDodajMentorstvo.UseVisualStyleBackColor = true;
+            this.btnDodajMentorstvo.Click += new System.EventHandler(this.btnDodajMentorstvo_Click);
+            // 
             // frmDgvMentorstvo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 433);
+            this.Controls.Add(this.btnDodajMentorstvo);
             this.Controls.Add(this.dgvMentorstvo);
             this.Controls.Add(this.lblInfo);
             this.Name = "frmDgvMentorstvo";
@@ -171,5 +183,6 @@ namespace ShapeUp.Desktop.Mentorstvo
         private System.Windows.Forms.DataGridViewTextBoxColumn uplataIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazivKlijentaDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource mMentorstvoBindingSource3;
+        private System.Windows.Forms.Button btnDodajMentorstvo;
     }
 }

@@ -42,7 +42,15 @@ namespace ShapeUp.Desktop.Users
 
                 result = await _userService.Insert<KlijentInsertRequest>(klijent);
 
-                _mboxHelper.Inform("Uspjesno dodan klijent.");
+                if(result == null)
+                {
+                    _mboxHelper.Error("Greška prilikom dodavanja klijenta.");
+                }
+                else
+                {
+                    _mboxHelper.Inform("Uspjesno dodan klijent.");
+
+                }
 
                 ShowUsersForm();
             }

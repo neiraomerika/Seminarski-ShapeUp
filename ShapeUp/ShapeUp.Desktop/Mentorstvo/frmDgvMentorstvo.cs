@@ -35,7 +35,15 @@ namespace ShapeUp.Desktop.Mentorstvo
             {
                 Klijent = $"{_plan.Klijent.FirstName} {_plan.Klijent.LastName}"
             };
-            dgvMentorstvo.DataSource = await _mentorstvoService.Get<List<MMentorstvo>>(search);
+            
+            var mentorstva = await _mentorstvoService.Get<List<MMentorstvo>>(search);
+
+            if(mentorstva.Count == 0)
+            {
+                lblInfo.Text = "Nema dostupnog mentorstva. \nDodajte novo mentorstvo.";
+            }
+            
+            dgvMentorstvo.DataSource = mentorstva;
         }
 
         private void dgvMentorstvo_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -56,6 +64,18 @@ namespace ShapeUp.Desktop.Mentorstvo
             frmDodajPlan frm = new frmDodajPlan(_plan, _isUpdate);
             frm.MdiParent = this.ParentForm;
             this.Close();
+            frm.Show();
+        }
+
+        private void btnDodajMentorstvo_Click(object sender, EventArgs e)
+        {
+            frmCreateMentorstvo frm = new frmCreateMentorstvo();
+            frm.MdiParent = this.ParentForm;
+            frm.Text = "Mentorstvo";
+
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close();
+
             frm.Show();
         }
     }

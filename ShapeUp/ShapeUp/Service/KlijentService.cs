@@ -177,9 +177,7 @@ namespace ShapeUp.Service
 
             if (!result.Succeeded)
             {
-                var err = result.Errors.Select(e => e.Description);
-
-                throw new Exception(err.FirstOrDefault());
+                return _mapper.Map<MKlijent>(null);
             }
 
             if (result.Succeeded)
