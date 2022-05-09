@@ -103,7 +103,7 @@ namespace ShapeUp.Controllers
 
                 var service = new ChargeService();
                 Charge charge = service.Create(options);
-                _uplataService.CreateUplata(mentorstvoId, true, charge.Id, amount);
+                _uplataService.CreateUplata(true, charge.Id, amount);
                 return true;
             }
             catch (Exception ex)

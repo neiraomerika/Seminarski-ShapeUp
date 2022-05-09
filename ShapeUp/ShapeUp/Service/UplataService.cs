@@ -28,24 +28,10 @@ namespace ShapeUp.Service
             return true;
         }
 
-        public bool CreateUplata(int? mentorstvoId, bool paid, string chargeId, long? amount)
+        public bool CreateUplata(bool paid, string chargeId, long? amount)
         {
             try
             {
-                if (mentorstvoId != null)
-                {
-                    var mentorstvo = _context.Set<Mentorstvo>().Find(mentorstvoId);
-                    var uplata = _context.Set<Uplatum>().Find(mentorstvo.UplataId);
-
-                    if(uplata != null)
-                    {
-                        uplata.Placeno = paid;
-                        uplata.ChargeId = chargeId;
-                        _context.Update<Uplatum>(uplata);
-                        _context.SaveChanges();
-                    }
-                }
-
                 var entity = new Uplatum()
                 {
                     Datum = DateTime.Now,
