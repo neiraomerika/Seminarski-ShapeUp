@@ -21,6 +21,7 @@ namespace ShapeUp.Controllers
             _service = service;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public override async Task<List<MNapredak>> Get(NapredakSearchObject search)
         {
             return await _service.Get(search);

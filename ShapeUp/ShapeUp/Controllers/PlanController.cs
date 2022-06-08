@@ -27,5 +27,11 @@ namespace ShapeUp.Controllers
         {
             return await _service.Get(search);
         }
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
+        public override async Task<MPlan> Insert(PlanInsertRequest request)
+        {
+            return await _service.Insert(request);
+        }
     }
 }

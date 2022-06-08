@@ -1,4 +1,6 @@
-﻿using ShapeUp.Interface;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using ShapeUp.Interface;
 using ShapeUp.Model.Models;
 using ShapeUp.Model.Request;
 using ShapeUp.Model.SearchObjects;
@@ -21,6 +23,12 @@ namespace ShapeUp.Controllers
         public override async Task<List<MRecenzija>> Get(RecenzijaSearchObject search)
         {
             return await _service.Get(search);
+        }
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
+        public override async Task<MRecenzija> Insert(RecenzijaInsertRequest request)
+        {
+            return await _service.Insert(request);
         }
     }
 }

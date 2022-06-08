@@ -21,16 +21,16 @@ namespace ShapeUp.Service
         private readonly ShapeUpDBContext _context;
         private readonly IMapper _mapper;
         private Klijent _klijent;
-        private UserManager<Klijent> userManager;
+        private UserManager<Klijent> _userManager;
 
         public PlanService(ShapeUpDBContext context, 
                            IMapper mapper,
                            IHttpContextAccessor httpContextAccessor,
-                           UserManager<Klijent> _userManager) :base(context,mapper)
+                           UserManager<Klijent> userManager) :base(context,mapper)
         {
             _context = context;
             _mapper = mapper;
-            userManager = _userManager;
+            _userManager = userManager;
 
             if (httpContextAccessor.HttpContext.User.Identity.Name != null)
                 _klijent = _context.Users.First(x => x.UserName == httpContextAccessor.HttpContext.User.Identity.Name);
@@ -44,17 +44,37 @@ namespace ShapeUp.Service
                 .Include(x => x.PlanPrehrane)
                 .Include(x => x.Trening);
 
-            if (!string.IsNullOrEmpty(search.KlijentId))
+            if (_klijent != null)
             {
-                entity = entity.Where(x => x.KlijentId == search.KlijentId).OrderByDescending(x => x.Datum);
+                var role = _userManager.GetRolesAsync(_klijent);
+                if (role.Result.Count != 0)
+                {
+                    bool isAdmin = false;
+                    bool isKlijent = false;
+
+                    foreach (var item in role.Result)
+                    {
+                        if (item == "Administrator")
+                            isAdmin = true;
+                        if (item == "Klijent")
+                            isKlijent = true;
+                    }
+                    if (isAdmin)
+                    {
+                        if (!string.IsNullOrEmpty(search.KlijentId))
+                        {
+                            entity = entity.Where(x => x.KlijentId == search.KlijentId).OrderByDescending(x => x.Datum);
+                        }
+                    }
+                    else if (isKlijent)
+                    {
+                        entity = entity.Where(x => x.KlijentId == _klijent.Id);
+                    }
+                }
             }
 
             var list = await entity.ToListAsync();
-
-            if (list.Count != 0)
-                return _mapper.Map<List<MPlan>>(list); 
-            else
-                return new List<MPlan>();
+            return _mapper.Map<List<MPlan>>(list);
         }
 
     }

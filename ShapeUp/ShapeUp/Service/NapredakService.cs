@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShapeUp.Database;
 using ShapeUp.Database.Models;
@@ -19,13 +20,16 @@ namespace ShapeUp.Service
         private readonly ShapeUpDBContext _context;
         private readonly IMapper _mapper;
         private Klijent _klijent;
+        private UserManager<Klijent> _userManager;
 
-        public NapredakService(ShapeUpDBContext context, 
+        public NapredakService(ShapeUpDBContext context,
                                IMapper mapper,
-                               IHttpContextAccessor httpContextAccessor) : base(context, mapper)
+                               IHttpContextAccessor httpContextAccessor,
+                               UserManager<Klijent> userManager) : base(context, mapper)
         {
             _context = context;
             _mapper = mapper;
+            _userManager = userManager;
 
             if (httpContextAccessor.HttpContext.User.Identity.Name != null)
                 _klijent = _context.Users.First(x => x.UserName == httpContextAccessor.HttpContext.User.Identity.Name);
@@ -35,10 +39,37 @@ namespace ShapeUp.Service
         {
             var entity = _context.Set<Napredak>().AsQueryable();
 
-            if (search.KijentId != null)
+            if (_klijent != null)
             {
-                entity = entity.Where(x => x.KlijentId == search.KijentId);
+                var role = _userManager.GetRolesAsync(_klijent);
+                if (role.Result.Count != 0)
+                {
+                    bool isAdmin = false;
+                    bool isKlijent = false;
+
+                    foreach (var item in role.Result)
+                    {
+                        if (item == "Administrator")
+                            isAdmin = true;
+                        if (item == "Klijent")
+                            isKlijent = true;
+                    }
+                    if (isAdmin)
+                    {
+                        entity = entity.Include(x => x.Klijent);
+
+                        if (search.KijentId != null)
+                        {
+                            entity = entity.Where(x => x.KlijentId == search.KijentId);
+                        }
+                    }
+                    else if (isKlijent)
+                    {
+                        entity = entity.Where(x => x.KlijentId == _klijent.Id);
+                    }
+                }
             }
+
             var list = await entity.ToListAsync();
             return _mapper.Map<List<MNapredak>>(list);
         }

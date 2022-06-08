@@ -32,6 +32,7 @@ namespace ShapeUp.Controllers
         }
 
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<MKlijent> Insert([FromBody] KlijentInsertRequest request)
         {
             return await _service.Insert(request);
@@ -44,6 +45,7 @@ namespace ShapeUp.Controllers
         }
 
         [HttpDelete("{Id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<bool> Delete(string Id)
         {
             return await _service.Delete(Id);
