@@ -83,6 +83,7 @@ namespace ShapeUp.Desktop
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(182, 23);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
             // btnLogin
             // 

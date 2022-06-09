@@ -96,6 +96,7 @@ namespace ShapeUp.Desktop.Mentorstvo
             this.dtmPocetak.Name = "dtmPocetak";
             this.dtmPocetak.Size = new System.Drawing.Size(200, 20);
             this.dtmPocetak.TabIndex = 5;
+            this.dtmPocetak.ValueChanged += new System.EventHandler(this.dtmPocetak_ValueChanged);
             // 
             // dtmZavrsetak
             // 
@@ -103,6 +104,7 @@ namespace ShapeUp.Desktop.Mentorstvo
             this.dtmZavrsetak.Name = "dtmZavrsetak";
             this.dtmZavrsetak.Size = new System.Drawing.Size(200, 20);
             this.dtmZavrsetak.TabIndex = 6;
+            this.dtmZavrsetak.ValueChanged += new System.EventHandler(this.dtmZavrsetak_ValueChanged);
             // 
             // cmbKlijenti
             // 

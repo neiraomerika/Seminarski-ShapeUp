@@ -5,6 +5,7 @@ using ShapeUp.Desktop.Training;
 using ShapeUp.Desktop.Users;
 using ShapeUp.Model.Models;
 using ShapeUp.Model.Request;
+using ShapeUp.Model.SearchObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -96,6 +97,31 @@ namespace ShapeUp.Desktop.Plan
 
             if (!_fieldsEmpty)
             {
+                var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);
+                PlanSearchObject search = new PlanSearchObject()
+                {
+                    KlijentId = klijent.Id
+                };
+                var plans = await _planService.Get<List<MPlan>>(search);
+
+                if (!plans.Any() || plans != null)
+                {
+                    foreach (MPlan item in plans)
+                    {
+                        if(item.Datum.Date == dtmPlan.Value.Date)
+                        {
+                            _mboxHelper.Error("Plan sa unesenim datumom već postoji.");
+                            return;
+                        }
+                    }
+                }
+
+                if(dtmPlan.Value.Date < DateTime.Now.Date)
+                {
+                    _mboxHelper.Error("Nije moguće dodati plan na dan iz prošlosti.");
+                    return;
+                }
+
                 if (_isUpdate)
                 {
                     PlanUpdateRequest update = new PlanUpdateRequest
@@ -125,8 +151,7 @@ namespace ShapeUp.Desktop.Plan
                     _mboxHelper.Inform("Uspjesno dodan plan.");
                 }
 
-                var klijent = await _usersService.GetById<MKlijent>(_plan.KlijentId);
-                var plans = await _planService.Get<List<MPlan>>(klijent.Id);
+                plans = await _planService.Get<List<MPlan>>(klijent.Id);
 
                 klijent.Plans = plans.AsQueryable().Where(x => x.KlijentId == klijent.Id).ToList();
 

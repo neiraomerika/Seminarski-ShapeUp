@@ -48,5 +48,13 @@ namespace ShapeUp.Desktop
                 _mboxHelper.Error("Problem prilikom prijave!");
             }
         }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                btnLogin.PerformClick();
+            }
+        }
     }
 }
